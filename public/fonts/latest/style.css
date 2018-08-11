@@ -1,0 +1,135 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?9ewgxg');
+  src:  url('fonts/icomoon.eot?9ewgxg#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?9ewgxg') format('truetype'),
+    url('fonts/icomoon.woff?9ewgxg') format('woff'),
+    url('fonts/icomoon.svg?9ewgxg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-breakfast_focus:before {
+  content: "\e913";
+}
+.icon-brunch_focus:before {
+  content: "\e914";
+}
+.icon-lunch:before {
+  content: "\e922";
+}
+.icon-regular:before {
+  content: "\e923";
+}
+.icon-Add-icon:before {
+  content: "\e90a";
+}
+.icon-Address-Icon:before {
+  content: "\e90b";
+}
+.icon-Checkmark-Icon:before {
+  content: "\e90c";
+}
+.icon-Contune-With-Facebook .path1:before {
+  content: "\e90d";
+}
+.icon-Contune-With-Facebook .path2:before {
+  content: "\e90e";
+  margin-left: -1em;
+}
+.icon-Credit-Card-Icon:before {
+  content: "\e90f";
+}
+.icon-Delete-Icon:before {
+  content: "\e910";
+}
+.icon-Email-Icon:before {
+  content: "\e911";
+}
+.icon-Expiration-Date-Icon:before {
+  content: "\e912";
+}
+.icon-Orders-Icons:before {
+  content: "\e915";
+}
+.icon-Password-Icon:before {
+  content: "\e916"; 
+}
+.icon-Pencil-Icon:before {
+  content: "\e917";
+}
+.icon-Phone-book-Icon:before {
+  content: "\e918";
+}
+.icon-Phone-Icon:before {
+  content: "\e919";
+}
+.icon-Profile-Icon:before {
+  content: "\e91a";
+}
+.icon-Profile2-Icon:before {
+  content: "\e91b";
+}
+.icon-Referal-Icon:before {
+  content: "\e91c";
+}
+.icon-Saved-Restaurants-Icon:before {
+  content: "\e91d";
+}
+.icon-Search-Icon:before {
+  content: "\e91e";
+}
+.icon-Security-Code-Icon:before {
+  content: "\e91f";
+}
+.icon-Shopping-Bag-Icon:before {
+  content: "\e920";
+}
+.icon-Zip-Code-Icon:before {
+  content: "\e921";
+}
+.icon-top_arrow:before {
+  content: "\e900";
+}
+.icon-play:before {
+  content: "\e901";
+}
+.icon-appstore:before {
+  content: "\e902";
+}
+.icon-fork:before {
+  content: "\e903";
+}
+.icon-playstore:before {
+  content: "\e904";
+}
+.icon-facebook:before {
+  content: "\e905";
+}
+.icon-instagram:before {
+  content: "\e906";
+}
+.icon-twitter:before {
+  content: "\e907";
+}
+.icon-youtube:before {
+  content: "\e908";
+}
+.icon-product_hunt:before {
+  content: "\e909";
+}

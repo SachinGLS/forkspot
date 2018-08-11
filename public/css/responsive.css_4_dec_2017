@@ -1,0 +1,1245 @@
+@media(max-width:1800px) {
+}
+
+@media(max-width:1700px) {
+}
+
+@media(max-width:1600px) {
+    /*.left-cont-area {width: 72%;}*/
+    .app-stores h2.p-head.mar_bottom_20 {
+        color: #fff;
+        font-size: 29px;
+    }
+
+    .app-stores .p-store-txt > span {
+        display: block;
+        font-size: 9px;
+    }
+}
+
+@media(max-width:1500px) {
+    .resta-img img {
+        width: 220px;
+    }
+
+    span.discoout-rate {
+        padding: 20px 0;
+    }
+
+    span.icon-Address-Icon, span.icon-forkpoint {
+        font-size: 30px;
+        padding-bottom: 2px;
+    }
+
+    .resta-name.left {
+        width: 27%;
+        font-size: 20px;
+        padding-left: 30px;
+    }
+
+    .resta-act {
+        padding: 60px 0;
+    }
+
+    .right-cont-area .device-sec {
+        width: 150px;
+    }
+
+    .device-sec .touchslider {
+        position: absolute;
+        top: 38px;
+        left: 17px;
+    }
+
+    .touchslider-item img {
+        max-width: 117px;
+    }
+
+    .about-sec .touchslider-item img {
+        max-width: 232px;
+        top: 38px;
+        left: 18px;
+    }
+
+    .city-scape-content {
+        padding-top: 15px;
+        padding-left: 0;
+    }
+}
+
+@media(max-width:1400px) {
+    input.btn-fork.edt {
+        padding: 15px 0;
+        font-size: 18px;
+    }
+
+    a.cnt-fb {
+        background: #3B5998;
+        color: #fff;
+        padding: 15px 0;
+        font-size: 18px;
+    }
+
+    .uploded-one {
+        width: 150px;
+        height: 150px;
+        margin-left: 23px;
+    }
+
+    .location-fill input {
+        width: 84%;
+    }
+
+    a.sp-ad.btn.btn-fork {
+        width: 31%;
+    }
+
+    a.sp-ad.btn.btn-fork {
+        margin: 23px 1% 0 0;
+    }
+
+    /*30-11-2017 PK*/
+    .p-btn-wrap{ -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: center; align-items: center;}
+    .p-edit{ width: 100%; padding: 15px 0; margin-bottom: 30px;}
+    .p-fb-btn{ margin: 0; width: 350px; padding: 7px 0; font-size: 18px;}
+    /*30-11-2017 PK*/
+
+    /*1-12-2017 PK*/
+    .order-confirmation-thanks h2{ font-size: 30px;}
+    .order-confirmation-thanks p{ font-size: 16px;}
+    .progressbar{ width: 800px; margin-left: auto; margin-right: auto;}
+    .blog-n-refer p{ font-size: 18px;}
+    ul.social-share li a{ width: 60px; height: 60px; line-height: 63px; margin: 0 20px;}
+    .Thanks_order .blog-n-refer .inp-log input{ font-size: 16px; padding: 10px 35px;}
+    .inp-log .form-group span{ font-size: 26px; top: 7px;}
+    .card-added p{ font-size: 17px; padding-top: 3px;}
+    /*1-12-2017 PK*/
+}
+
+@media(max-width:1310px) {
+    .resta-act {
+        width: 12%;
+    }
+
+    .resta-loc {
+        width: 25%;
+    }
+
+    .resta-img {
+        overflow: hidden;
+    }
+
+    .resta-name.left {
+        width: 35%;
+    }
+
+    span.loc-points {
+        width: 34%;
+    }
+
+    .re-order {
+        text-align: center !important;
+    }
+
+    h1.fork-caption {
+        font-size: 38px;
+    }
+
+    .p-right-sec {
+        float: right;
+        width: 40%;
+    }
+
+    span.loco.right {
+        width: 30%;
+        margin-top: -11px;
+    }
+
+    .web-list-grid li {
+        min-height: 360px;
+    }
+
+    .restaurant-inner-content {
+        width: calc(100% - 370px);
+        width: -webkit-calc(100% - 370px);
+        width: -moz-calc(100% - 370px);
+    }
+
+    .app-stores .p-store-wrap {
+        margin: 5px 5px 5px 0;
+        float: left;
+        width: 41%;
+        padding: 10px 7px;
+    }
+
+    .app-stores .p-store-txt > span:last-child {
+        font-size: 10px;
+    }
+
+    .rhs-fixed-ord-deatail.resto-profile-page {
+        width: 370px;
+    }
+
+    .problem-list li {
+        min-height: 560px;
+    }
+
+    .blog-on-fork p.text-center {
+        color: #fff;
+        font-size: 18px;
+        margin: 30px 0;
+    }
+}
+
+@media(max-width:1200px) {
+    
+    /*1-12-2017 PK*/
+    .order-form-deatils.half{ width: 48%;}
+    .blog-n-refer p{ font-size: 16px; width: 95%; margin: 15px auto;}
+    .recipt-listing.unstyle li{ font-size: 15px;}
+    span.item-price.right{ font-size: 18px;}
+    .sub-total li{ font-size: 15px;}
+    .card-added .card-exp p{ margin-left: 10px;}
+    .p-account-head{ font-size: 16px;}
+    /*1-12-2017 PK*/
+
+    .right-cont-area {
+        display: none;
+    }
+
+    .left-cont-area {
+        width: 100%;
+        text-align: center;
+    }
+
+    .app-stores h2.p-head.mar_bottom_20 {
+        font-size: 40px;
+    }
+
+    .app-stores .p-sub-head {
+        margin-bottom: 52px;
+    }
+
+    .p-store-txt.mar_left_25 {
+        text-align: left;
+    }
+
+    .app-stores .p-store-wrap {
+        width: 48%;
+    }
+
+        .app-stores .p-store-wrap i {
+            font-size: 26px;
+        }
+
+    .app-stores .p-store-txt > span {
+        display: block;
+        font-size: 12px;
+    }
+
+        .app-stores .p-store-txt > span:last-child {
+            font-size: 15px;
+            text-align: left;
+        }
+
+    span.prob-title {
+        font-size: 24px;
+        width: 173px !important;
+        min-height: 53px;
+        line-height: 25px;
+        float: none !important;
+        margin: 15px auto !important;
+    }
+
+    span.prob-detailed {
+        font-size: 15px;
+    }
+
+    .owl-next {
+        position: absolute;
+        right: -60px;
+    }
+
+    .owl-prev {
+        left: -75px;
+    }
+
+    li .ph-no {
+        width: 20%;
+        float: left;
+        text-align: center;
+    }
+
+    li .adr {
+        float: left;
+        width: 35%;
+        margin-right: 2%;
+    }
+
+    .device-sec .touchslider .touchslider-viewport .touchslider-item img {
+        width: 231px;
+    }
+
+    li .ph-no {
+        width: 22%;
+        float: left;
+        text-align: right;
+    }
+
+    .re-order {
+        float: left;
+        width: 38%;
+        margin: 0 0 18px 0;
+        text-align: left;
+    }
+
+    .searc-for-resta {
+        width: 55%;
+        margin-left: 30px;
+    }
+
+    .location-fill input {
+        font-size: 17px;
+    }
+
+    span.icon-Address-Icon, span.icon-forkpoint {
+        font-size: 23px;
+        padding-top: 10px;
+    }
+
+    .resta-name.left {
+        padding-left: 10px;
+    }
+
+    .resta-img img {
+        width: 160px;
+    }
+
+    .resta-name.left {
+        width: 25%;
+        font-size: 25px;
+        padding: 30px 0 0px 21px;
+    }
+
+    span.dolllar-cont {
+        font-size: 18px;
+    }
+
+    span.est-time {
+        font-size: 13px;
+    }
+
+    span.rate-number {
+        font-size: 12px;
+    }
+
+    span.discoout-rate {
+        font-size: 15px;
+    }
+
+    span.loc-points {
+        width: 30%;
+        padding: 3px 7px;
+    }
+
+    .resta-act {
+        padding: 50px 0;
+    }
+
+    span.discoout-rate {
+        padding: 15px 0;
+    }
+
+    span.loc-rate {
+        margin-bottom: 5px;
+    }
+
+    .resta-name.left {
+        font-size: 20px;
+    }
+
+    .resta-loc {
+        width: 35%;
+    }
+
+    .lhs-menu {
+        width: 230px;
+    }
+
+    .rhs-main-content {
+        width: calc(100% - 250px);
+        width: -webkit-calc(100% - 250px);
+        width: -moz-calc(100% - 250px);
+    }
+
+    .menu-items li a {
+        padding: 20px 0 20px 12px;
+        font-size: 17px;
+    }
+
+    ul.menu-items li i {
+        font-size: 25px;
+    }
+
+    .my-Account i.icon-Profile2-Icon, span.my-Account {
+        font-size: 18px;
+    }
+
+    span.bag {
+        float: right;
+        width: 32px;
+    }
+
+    span.my-Account {
+        padding: 12px 30px;
+    }
+
+    .bag img {
+        width: 95%;
+        margin: 7px 0;
+    }
+}
+
+@media(max-width:1150px) {
+    span.acco-price {
+        width: 42px;
+    }
+}
+
+@media(max-width:1024px) {
+    input.btn-fork.edt {
+        width: 40%;
+        font-size: 20px;
+    }
+
+
+    a.cnt-fb {
+        background: #009ca7;
+        color: #fff;
+        width: 54%;
+        font-size: 20px;
+        float: right;
+        padding: 19px 0;
+    }
+
+    .prom-inp input[type="text"] {
+        width: 66%;
+    }
+
+    img.banner-img {
+        width: auto;
+    }
+
+    .nbs-flexisel-container {
+        width: 100%;
+    }
+
+    .nbs-flexisel-nav-left, .nbs-flexisel-nav-right {
+        display: none;
+    }
+    .inner-page-cont{width:100%;}
+}
+
+
+@media(max-width:1000px) {
+    
+    /*1-12-2017 PK*/
+    .lhs-menu.p-desk-none{ display: block;}
+    .ord-sect .card-added li .ph-no{ position: absolute; top: 35px; left: 32px;}
+    .card-added p{ font-size: 15px;}
+    ul.sub-total li span.item-norm.left{ padding-left: 0;}
+    .blog-n-refer h1{ font-size: 35px;}
+    .my-Account{ cursor: pointer;}
+    /*1-12-2017 PK*/
+
+    .lhs-menu {
+        right: -300px;
+        -webkit-transition: 1s all;
+        -ms-transition: 1s all;
+        -moz-transition: 1s all;
+        -o-transition: 1s all;
+    }
+
+    .rhs-main-content {
+        width: 96%;
+        margin: 0 auto;
+        display: block;
+        float: none;
+    }
+
+
+
+    .lhs-menu.show {
+        display: block;
+        right: 0px;
+        transition: 1s all;
+    }
+
+    .p-btn-inp {
+        padding: 12px 0;
+    }
+    /*.p-left-sec{width:100%;}*/
+    .app-store-links p.p-para {
+        width: 100%;
+        float: left;
+    }
+
+    .p-get-app {
+        float: left;
+        width: 100%;
+        -webkit-justify-content: center;
+        justify-content: center;
+    }
+}
+
+@media(max-width: 850px){
+
+    /*1-12-2017 PK*/
+    .area-blog-logo img{ width: 250px;}
+    .blog-n-refer p{ font-size: 14px;}
+    .btn.btn-fork{ font-size: 16px;}
+    .p-add-head{ font-size: 22px;}
+    .p-num-info{ font-size: 14px;}
+    .card-added li{ padding-bottom: 20px; padding-top: 10px;}
+    .card-added .adr p{ font-size: 18px;}
+    .card-added span.icon-Credit-Card-Icon{ font-size: 25px; width: 35px;}
+    .ord-sect .card-added li .ph-no{ left: 25px;}
+    .p-amount{ font-size: 18px;}
+    .progressbar{ width: 80%; margin-top: 85px;}
+    /*1-12-2017 PK*/
+}
+
+@media(max-width:768px) {
+    
+    /*30-11-2017 PK*/
+    .p-profile-wrap{ display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; -webkit-flex-flow: column-reverse; flex-flow: column-reverse;}
+    .profile-sec{ width: 100%; text-align: center;}
+    .actions{ display: -webkit-flex; display: flex; -webkit-justify-content: center; justify-content: center;}
+    .reminder-sec ul li{ font-size: 17px;}
+    .reminder-sec p{ font-size: 15px;}
+    .promoliz p{ font-size: 16px;}
+    header{ padding: 10px 0 6px;}
+    header .logo{ width: 30%;}
+    header .logo img{ width: 100px;}
+    span.my-Account{ padding: 8px 20px;}
+    span.bag{ margin: 6px 0; width: 25px;}
+    .bag img{ margin: 0;}
+    .lhs-menu{ top: 55px;}
+    section.dash-main-wrapper{ padding-top: 54px;}
+    .p-receipt{ font-size: 14px; top: -20px;}
+    /*30-11-2017 PK*/
+
+
+    .profile-dec .inp-box {
+    width: 90%;
+    float: none;
+    margin: 0 auto;
+   }
+    .resta-loc {
+        width: 65%;
+            margin-top: 16px;
+        
+    }
+    .pay-meth-lists span.add-sign {
+    display: block;
+     }
+    .ad-new-adr span.add-sign {
+    height: 40px;
+    width: 40px;
+    position: static;
+    float: left;
+     }
+    .adress-list ul.unstyle li{margin:10px 0;}
+    .adress-list ul.unstyle {
+    padding-right: 0px;
+    }
+    .adress-list
+    {
+        margin-top:20px;
+    }
+    li.resta-saved {
+    box-shadow: 0px 14px 7px -17px #000;
+     }
+    .adress-list {
+    float: left;
+    width: 100%;
+    position: relative !important;
+    padding-top: 40px;
+     }
+    span.adr-edt.dlts {
+    order: 1;
+     }
+    .action span {
+    color: #ccc;
+    margin: 5px 0;
+     }
+    .adress-list .adr, .adress-list .ph-no {
+    font-size: 20px;
+    color: #666666 !important;
+    width: 100%;
+    float: left;
+    text-align: left;
+    padding: 0px;
+     }
+  .pay-meth-lists .action {
+    position: absolute;
+    right: 0;
+    padding: 0px;
+    width: 100px;
+    top: 12px;
+     }
+   a.btn.btn-fork.ad-new-adr {
+    position: absolute;
+    top: -1px;
+    right: 0;
+    background: none;
+    color: #009da9;
+    padding: 2px;
+    width:auto;
+    margin: 1px 0;
+        right: 8px;
+    text-align: right;
+    }
+    .find-order input[type="text"], .filter-order select{width:98%;}
+    li.resta-saved{padding:0px !important;}
+
+    .resto-rate {
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+
+    footer {
+        padding-top:35px;
+    }
+
+  span.dolllar-cont {
+    text-align: left;
+    float: right;
+    width: 50%;
+    text-align: left;
+    padding: 47px 17px 0;
+   }
+
+    .resta-saved .loc-rate {
+        background: transparent;
+        color: #f98408;
+        margin-top: 24px;
+    }
+
+    .app-stores .p-sub-head {
+        margin-bottom: 19px;
+    }
+
+    span.dolllar-cont {
+        font-size: 24px;
+    }
+
+    .resta-act {
+        padding: 14px 0;
+    }
+
+    span.icon-Address-Icon, span.icon-forkpoint {
+        font-size: 43px;
+        padding-top: 0;
+    }
+
+    .resta-name.left {
+        width: 270px;
+        font-size: 25px;
+        padding: 0px 26px;
+    }
+
+    .resta-name.left {
+        font-size: 24px;
+            padding: 7px 12px;
+    }
+
+   li.resta-saved {
+    padding: 9px;
+    background: #F2F2F2;
+    position: relative;
+    border-bottom: none;
+    margin-bottom: 6px;
+   }
+
+
+    span.location-lef {
+    float: left;
+    width: 60px;
+    }
+
+    .resta-act {
+        width: 21%;
+        position: absolute;
+        top: 0;
+        right: 2%;
+    }
+
+    span.est-time {
+        font-size: 10px;
+    }
+
+    span.star-rates {
+        padding: 6px;
+    }
+
+    span.discoout-rate {
+        display: none;
+    }
+
+    .resta-img img {
+        width: 100%;
+    }
+
+    span.dolllar-cont {
+        font-size: 16px;
+    }
+
+    span.star-rates {
+        font-size: 14px;
+    }
+
+    .resta-img {
+        width: 35%;
+    }
+
+    span.star-rates {
+        font-size: 20px;
+    }
+
+    span.locto span.loc-icon.loc-line {
+        float: left;
+        padding: 5px 10px;
+    }
+    span.loc-rate
+    {
+        width:120px;
+    }
+   span.loc-points{
+    float: left;
+    width:calc(100% - 120px) !important;
+   }
+
+    span.locto {
+        float: left;
+        width: 63px;
+    }
+
+    .inner-haxo {
+        margin: 0px;
+    }
+    .adress-list ul.unstyle, .adress-list ul.unstyle li {   
+    padding: 0 8px;
+    float: left;
+    width: 100%;
+    margin-bottom:0px;
+    border-radius:5px;
+    position:relative;
+    }
+    .adress-list ul.unstyle li 
+    {
+         background: #F2F2F2;
+         padding:8px !important;
+    }
+    .adress-list.pay-meth-lists ul.unstyle li {
+    background: #F2F2F2;
+    padding: 23px 11px !important;
+    }
+
+
+}
+
+@media(max-width: 767px){
+    /*1-12-2017 PK*/
+    .order-form-deatils.half{ width: 100%;}
+    .rhs.blog-n-refer{ width: 100%;}
+    .blog-area{ width: 105%; margin-left: -2.5%; padding: 60px 130px;}
+    .ord-sect .card-added li .ph-no{ position: static;}
+    .order-confirmation-thanks h2{ font-size: 22px;}
+    .order-confirmation-thanks p{ font-size: 14px; padding: 0 10px;}
+    .progressbar li{ font-size: 14px;}
+    /*1-12-2017 PK*/
+}
+
+@media(max-width:600px) {
+
+    /*30-11-2017 PK*/
+    .promo{ border-bottom: 0; margin-top: 30px;}
+    .promo h1{ font-size: 25px;}
+    .promo-code{ top: 37px;}
+    .promolist{ margin-top: 55px;}
+
+    .profile-sec{ display: none;}
+    .inp-box div.half input{ width: 100%;}
+    .half.p-res{ width: 100%;}
+    .p-icon-res{ position: relative;}
+    .p-icon-res > i { display: block; position: absolute; top: 10px; font-size: 20px; left: 0;}
+    .inp-box div.p-icon-res input{ padding-left: 35px;}
+    .p-profile-wrap{ padding-top: 50px;}
+    .inp-box div:not(.p-btn-wrap) input{ margin-bottom: 20px;}
+    .p-hide-txt{ display: none;}
+    .p-edit{ width: 96%; margin-bottom: 25px; margin-top: 20px;}
+    .p-fb-btn{ font-size: 16px;}
+    .lhs-menu{ width: 200px; right: -200px;}
+    .menu-items li a{ font-size: 15px;}
+    ul.menu-items li i{ font-size: 22px;}
+    .blog-area{ padding: 40px 0;}
+    /*30-11-2017 PK*/
+
+
+    span.icon-Address-Icon, span.icon-forkpoint {
+        font-size: 27px;
+        padding-top: 10px;
+    }
+    .resta-loc {
+    margin-top: 0px;
+    }
+    span.loc-icon.loc-line.search-bar {
+        width: 60% !important;
+        padding: 5px 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    span.loc-icon.loc-line.s-acto {
+        width: 200px;
+        margin: 15px auto;
+        display: inline-block;
+        float: none;
+        border-radius: 10px !important;
+    }
+
+    span.dolllar-cont {
+        text-align: left;
+        float: right;
+        width: 91px;
+        text-align: right;
+        padding: 32px 6px;
+    }
+
+    span.dolllar-cont {
+        font-size: 16px;
+    }
+
+    span.loc-points {
+        width: 168px;
+        float: left;
+    }
+
+    .inner-page-cont {
+        width: 98%;
+    }
+
+    span.star-rates {
+        font-size: 14px;
+    }
+
+    .resta-name.left {
+        font-size: 20px;
+    }
+
+
+    span.dolllar-cont {
+        text-align: left;
+        float: right;
+        width: 100px;
+        text-align: center;
+        padding: 44px 35px 0px 0;
+    }
+
+
+    .p-address-select {
+        padding: 17px 42px;
+        font-size: 19px;
+    }
+
+    span.loc-icon.loc-line {
+        float: left;
+        padding: 5px 10px;
+    }
+
+    .lhs-cont .timeline-content {
+        position: static;
+    }
+
+    .search-bar input[type="text"] {
+        padding: 13px 5px;
+        font-size: 17px;
+    }
+
+    .p-switch-wrap {
+        float: none;
+    }
+
+    .searc-for-resta {
+        display: none;
+    }
+
+    .p-address-icon {
+        line-height: 46px;
+    }
+
+    .p-switch span {
+        padding: 10px 0;
+    }
+
+    header .logo {
+        width: 30%;
+    }
+    /*about page responsive css*/
+    .orange-range .lhs-cont {
+        min-height: initial;
+        width: 100%;
+        margin-top: 229px;
+        text-align: left;
+        float: left;
+    }
+
+    .orange-range .rhs-cont {
+        min-height: 197px;
+        position: absolute;
+        left: 50px;
+    }
+
+    .lhs-cont .timeline-content {
+        text-align: left;
+        padding: 0px;
+        margin-bottom: 12px;
+        padding-left: 14px;
+    }
+
+    .orange-range .partation {
+        background: #F19410;
+        min-height: 150px;
+        position: absolute;
+        left: 0;
+    }
+
+    h2.company-timeline-heading {
+        position: static;
+        font-size: 36px;
+        padding: 25px;
+        background: #f19310;
+        color: #fff;
+        padding-left: 30px;
+        text-align: center;
+    }
+
+    span.year-count {
+        float: left;
+        width: 110px;
+        text-align: center;
+        height: 110px;
+        background: #fff;
+        border-radius: 50%;
+        margin: 15px;
+        box-shadow: 6px 9px 36px -9px rgba(0, 0, 0, 0.5803921568627451);
+        padding: 38px 0;
+        font-size: 29px;
+        font-weight: bold;
+    }
+
+    .rhs-cont span.year-step {
+        width: 140px;
+        height: 140px;
+    }
+
+    .red-range .partation {
+        background: #f42d54;
+        right: 0;
+        position: absolute;
+    }
+
+    .lg-green-range .lhs-cont {
+        position: relative;
+        min-height: 150px;
+        position: absolute;
+        right: 44px;
+    }
+
+    .lg-green-range .rhs-cont {
+        min-height: initial;
+        width: 100%;
+        margin-top: 150px;
+        float: right;
+        text-align: right;
+    }
+
+    .dg-green-range .partation {
+        position: absolute;
+        left: 0;
+        min-height: 150px;
+    }
+
+    .orange-range .partation {
+        min-height: 200px;
+    }
+
+    .dg-green-range .rhs-cont {
+        min-height: 150px;
+        position: absolute;
+        left: 50px;
+    }
+
+    .dg-green-range .lhs-cont {
+        min-height: initial;
+        width: 100%;
+        margin-top: 205px;
+    }
+
+    .lg-green-range .partation {
+        min-height: 150px;
+        position: absolute;
+        right: 0;
+    }
+
+    .container-inner.yellow-range .partation {
+        background: #FCD93A;
+        position: absolute;
+        height: 150px !important;
+    }
+
+    .container-inner.yellow-range .partation {
+        background: #FCD93A;
+        position: absolute;
+        min-height: 150px !important;
+    }
+
+    .yellow-range .rhs-cont {
+        position: absolute;
+        left: 50px;
+        min-height: 150px;
+    }
+
+    .yellow-range .lhs-cont {
+        float: left;
+        width: calc(50% - 25px);
+        width: -webkit-calc(50% - 25px);
+        width: -moz-calc(50% - 25px);
+        width: 100%;
+        margin-top: 150px;
+    }
+
+    .rhs-cont .timeline-content {
+        padding: 0px 20px 20px 0px;
+    }
+
+    .orange-range .lhs-cont {
+        margin-top: 290px;
+        margin-bottom: -40px;
+    }
+
+    .timeline-content p {
+        width: 90%;
+    }
+
+    /*23-11-2017 PK*/
+    .owl-prev{ left: -60px;}
+    .owl-next{ right: -50px;}
+    /*23-11-2017 PK*/
+}
+
+
+@media(max-width: 560px) {
+
+   
+    /*23-11-2017 PK*/
+    .orange-range .lhs-cont{ margin-top: 290px !important;}
+    .dg-green-range .lhs-cont{ margin-top: 215px;}
+    .yellow-range .lhs-cont{ margin-top: 160px;}
+    /*23-11-2017 PK*/
+
+
+    span.resta-right-clif {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        background: rgba(87, 87, 87, 0.68);
+        padding: 16px 16px 17px;
+        font-size: 20px;
+        color: #fff;
+        text-align: center;
+    }
+
+    h3.p-sub-head {
+        margin-bottom: 23px;
+    }
+}
+
+
+@media(max-width:500px) {
+
+    /*30-11-2017 PK*/
+    .p-fb-btn{ font-size: 14px; width: 250px; -webkit-justify-content: space-evenly; justify-content: space-evenly;}
+    .p-edit{ font-size: 20px;}
+    .reminder-sec p{ font-size: 13px;}
+    .promoliz p{ font-size: 15px;}
+    .p-profile-wrap{ padding-top: 25px;}
+    .profile-dec .inp-box{ width: 96%;}
+    header .logo{ width: 40%;}    
+    /*30-11-2017 PK*/
+
+    /*1-12-2017 PK*/
+    .progressbar{ width: 95%;}
+    .order-confirmation-thanks p{ font-size: 13px;}
+    .p-num-info{ font-size: 13px;}
+    .card-added span.icon-Credit-Card-Icon{ width: 30px; font-size: 22px;}
+    .card-added .adr p{ font-size: 16px;}
+    .card-added .card-exp p{ margin-left: 5px; padding-top: 1px;}
+    .p-amount{ font-size: 16px;}
+    ul.social-share li a { width: 50px; height: 50px; line-height: 53px; margin: 0 15px; font-size: 25px;}
+    .Thanks_order .inp-log{ width: 95%;}
+    .Thanks_order .blog-n-refer .inp-log input{ width: 100%;}
+    input.btn.btn-fork.referal-btn{ width: 100% !important;}
+    .order-form-deatils.half{ padding: 25px 20px;}
+    .blog-n-refer p{ font-size: 13px;}    
+    /*1-12-2017 PK*/
+
+    span.loc-rate{ width:88px;}
+    span.loc-points{ float: left; width: calc(100% - 88px) !important;}
+    span.dolllar-cont{ padding: 44px 0 0;}
+    .adress-list .adr, .adress-list .ph-no{font-size:18px;}
+}
+
+
+@media(max-width: 480px) {
+    .orange-range .lhs-cont {
+        margin-top: 300px !important;
+    }
+    span.dolllar-cont {
+    text-align: center;
+    padding: 44px 0px 0px 0;
+    }
+    .adress-list .adr, .adress-list .ph-no{
+     width:80%;
+    }
+
+    span.dolllar-cont {
+    text-align: left;
+    float: right;
+    width: 54px;
+    padding: 40px 35px 0px 0;
+    }
+    .resta-act {
+    width: 14%;
+    position: absolute;
+    top: -20px;
+    right: -22px;
+    }
+
+    .owl-prev {
+        left: -45px;
+    }
+    span.rmv {
+    display: none;
+    }
+    .resta-loc {
+    width: calc(100% - 100px);
+    }
+    .resta-img img {
+    width: 170PX;
+    }
+    .resta-img {
+    width: 100px;
+    height: 100px;
+    }
+    .resta-name.left {
+    width: calc(100% - 100px);
+    font-size: 18px;
+     padding:7px 8px 0;
+    }
+
+    .p-store-txt > span:last-child {
+        font-size: 12px;
+    }
+
+    .inner-haxo {
+        width: 92%;
+    }
+
+    span.loco.right {
+        width: 30%;
+        margin-top: -42px;
+    }
+
+    .s-acto input.btn {
+        padding: 14px 14px;
+    }
+
+    .absolute-method {
+        top: 40%;
+    }
+    /*.p-get-app {
+        flex-direction:column;
+        -ms-flex-direction:column;
+        -webkit-flex-direction:column;
+    }*/
+    .owl-next {
+        right: -35px;
+    }
+
+    .p-store-wrap {
+        border: 2px solid #cdcdcd;
+        border-radius: 10px;
+        padding: 6px 10px;
+    }
+
+    .app-store-links .p-store-txt {
+        margin-left: 6px;
+    }
+   
+  
+
+}
+
+@media (max-width: 410px) {
+    
+    /*1-12-2017 PK*/
+    .progressbar li{ font-size: 12px;}
+    .order-confirmation-thanks h2{ font-size: 20px;}
+    .p-add-head{ font-size: 20px;}
+    .blog-n-refer h1{ font-size: 30px;}
+    /*1-12-2017 PK*/
+
+    .orange-range .lhs-cont {
+        margin-top: 325px !important;
+    }
+    .find-order input[type="text"], .filter-order select{width:100%;}
+    .half.filter-order {
+    width: 100%;
+    margin-top:6px;
+    }
+    .left.half.find-order {
+    width: 100%;
+    }
+    span.loc-points {
+    width: 30%;
+    padding: 3px 3px;
+    }
+    span.dolllar-cont {
+    text-align: left;
+    float: right;
+    width: 54px;
+    padding: 44px 6px 2px 0;
+    font-size: 14px;
+    }
+    .resta-name.left{ font-size:20px;padding-left:10px;}
+    span.dolllar-cont {
+    text-align: left;
+    float: right;
+    width: 40px;
+    padding: 44px 0px 0px 0;
+    font-size: 14px;
+    }
+    .adress-list .adr, .adress-list .ph-no {
+    width: 72%;
+    font-size:16px;
+    }
+
+}
+
+@media(max-width: 380px){
+    /*1-12-2017 PK*/
+    .ord-sect .card-added li .ph-no{ position: absolute; top: 30px; width: auto;}
+    /*1-12-2017 PK*/
+}
