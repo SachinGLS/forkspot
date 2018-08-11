@@ -33,7 +33,8 @@ const app = express();
 /**
  * Route handlers
  */
-const cmsController = require('./src/cms')(app, express);
+const routsController = require('./src')(app, express);
+const betaRoutsController = require('./src/beta')(app, express);
 
 /**
  * Express configuration.
@@ -52,11 +53,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.disable('x-powered-by');
 
 app.use('/', express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+app.use('/beta', express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
 /**
  * App routes.
  */
-app.use("/", cmsController);
+app.use("/", routsController);
+app.use("/beta", betaRoutsController);
 
 /**
  * Error Handler.
