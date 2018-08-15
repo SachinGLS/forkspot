@@ -1,0 +1,179 @@
+<%- include('../partials/head'); %>
+<body>
+    <div class="pop-wrapper">
+        <div class="main_warapper">
+            <%- include('../partials/header'); %>
+            <section class="comingsoon-sec">
+             <!-- <div class="big-logo">
+                  <img src="images/Forkspot_Logo_Big.png" alt="Forkspot">
+              </div>
+              <h1>Coming S<span>oo</span>n...</h1>
+              <div class="go-home">
+                  <a href="https://forkspot.com/demo/" class="btn">Go Back to Home</a>
+              </div>-->
+             
+              <div class="link_sec">
+              
+            <div class="container">
+                 <div class="link_content">
+                      <a href="https://www.killerstartups.com/startup-reviews/forkspot" target="_blank">Feast On Great Food And Great Deals Using Forkspot - KillerStartups.com</a>
+                      <p>Receive on-demand discounts every time you walk into restaurants, bars, and coffee shops with the Forkspot app.</p>
+                 </div>
+                 <div class="link_content">
+                    <a href="http://www.builtinla.com/2017/03/09/la-food-tech-startups" target="_blank">9 LA-based food tech startups you should know</a>
+                    <p>Over the last several years, a number of companies have developed in the LA area dedicated to serving the food industry —
+    helping businesses run more efficiently and helping consumers have the positive experience they desire.</p>
+                 </div>
+               </div>
+          </div>
+          </section>
+          <%- include('../partials/footer'); %>
+            
+        </div>
+        <a href="#" id="back-to-top" title="Back to top"><i class="icon-top_arrow"></i></a>
+        <div id="loader-sec" style="display:block">
+            <div class="loader-img"><img src="images/fork_new.gif" alt="loader image"></div>
+        </div>
+        
+    </div>
+
+        <!-- Login Popups -->
+        <div data-pop="fork-login" class="fork-pop log-pop">
+            <div class="fork-pop-header p-login-bar">
+                <img src="images/logo.png" />
+                <span class="close_model">X</span>
+            </div>
+            <span class="p-close p-res-close">x</span>
+            <div class="pop-container">
+                <h2 class="p-login-head text-center">Log In</h2>
+                <div class="inp-log p-login-inp">
+                    <div class="form-group">
+                        <span class="icon-Email-Icon"></span>
+                        <input type="text" placeholder="Email" />
+                    </div>
+                    <div class="form-group">
+                        <span class="icon-Password-Icon"></span>
+                        <input type="password" placeholder="Password" />
+                    </div>
+                    <div class="clearfix p-forgot-wrap"><a href="#" class="forgo-pass" data-attribute="fork-forgot-pass">Forgot Password ?</a></div>
+                    <div class="p-login-btn">
+                        <input class="btn btn-fork p-login" type="button" value="Log In" />
+                        <div class="p-login-fb">
+                            <i class="icon-facebook"></i>
+                            <input class="btn btn-fork fb" type="button" value="Continue with Facebook" />
+                        </div>
+                    </div>
+
+                    <p class="switch-to-pop">Don't have an account? <a data-attribute="fork-reg" href="javascript:void(0)">Create Your Account</a></p>
+                </div>
+            </div>
+        </div>
+        <div data-pop="fork-forgot-pass" class="fork-pop log-pop p-forgot-pop reg-pop">
+            <div class="fork-pop-header p-login-bar">
+                <img src="images/logo.png" />
+                <span class="close_model">X</span>
+            </div>
+            <span class="p-close p-res-close">x</span>
+            <div class="pop-container">
+                <h2 class="p-login-head text-center">Forgot Password</h2>
+                <div class="inp-log p-login-inp mar_bottom_35">
+                    <div class="form-group">
+                        <span class="icon-Email-Icon"></span>
+                        <input type="text" placeholder="Email" />
+                    </div>
+                    <div class="p-login-btn">
+                        <input class="btn btn-fork p-login" type="button" value="Reset Password" />                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-pop="fork-reg" class="fork-pop reg-pop p-signup-pop">
+            <div class="fork-pop-header">
+                <img src="images/logo.png" />
+                <span class="close_model">X</span>
+            </div>
+            <span class="p-close p-res-close">x</span>
+            <div class="pop-container">
+                <h2 class="p-login-head text-center">Create Your Account</h2>
+                
+                <div class="p-signup-wrap">
+                    <div class="p-login-fb">
+                        <i class="icon-facebook"></i>
+                        <input class="btn btn-fork fb" type="button" value="Sign up via Facebook">
+                    </div>
+                    <div class="p-login-fb">
+                        <i class="icon-google-plus"></i>
+                        <input class="btn btn-fork google-up" type="button" value="Sign up via Google">
+                    </div>
+                    <div class="text-center">
+                        <span class="p-or-span">OR</span>
+                    </div>
+                </div>
+
+                <div class="inp-log p-signup-form">
+                    <div class="form-group half left">
+                        <input type="text" placeholder="First Name" />
+                    </div>
+                    <div class="form-group half right">
+
+                        <input type="text" placeholder="Last Name" />
+                    </div>
+                    <div class="form-group">
+                        <span class="icon-Email-Icon"></span>
+                        <input type="text" placeholder="Email" />
+                    </div>
+                    <div class="form-group">
+                        <span class="icon-Password-Icon"></span>
+                        <input type="password" placeholder="Password" />
+                    </div>
+                    <div class="form-group p-form-mar">
+                        <span class="icon-Password-Icon"></span>
+                        <input type="password" placeholder="Confirm Password" />
+                    </div>
+                    <div class="p-signup-btn"><input class="btn btn-fork" type="button" value="Create your Account" /></div>
+                    
+                    <p class="p-pop-txt">By tapping ‘CreateYour Account’ You agree to the Forkspot <a href="javascript:void(0)">Term of services</a> &amp; <a href="javascript:void(0)">Privacy Policy</a></p>
+                    <p class="p-pop-txt">Already a Forkspot member?<a data-attribute="fork-login" class="st-log" href="javascript:void(0)"> Sign In</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- Login Popups -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#testimonial-slider").owlCarousel({
+                items: 1,
+                itemsDesktop: [1000, 1],
+                itemsDesktopSmall: [979, 1],
+                itemsTablet: [767, 1],
+                pagination: false,
+                transitionStyle: "fade",
+                navigation: true,
+                navigationText: ["", ""],
+                autoPlay: true
+            });
+
+            $("#about-slider").flexisel({
+                visibleItems: 1,
+                itemsToScroll: 1,
+                autoPlay: {
+                    enable: true,
+                    interval: 1000000,
+                    pauseOnHover: true
+                }
+            });
+
+            $('.flexslider').flexslider({
+                animation: "slide"
+              });
+
+            // New instance of Wallop
+            var slider = document.querySelector('.Wallop');
+            new Wallop(slider, {
+                carousel: false
+            });
+        });
+    </script>
+
+</body>
+</html>

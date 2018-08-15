@@ -39,8 +39,8 @@ const betaRoutsController = require('./src/beta')(app, express);
 /**
  * Express configuration.
  */
-app.set('host', process.env.DEV_IP || '0.0.0.0');
-app.set('port', process.env.PORT || 3030);
+app.set('host', '165.227.253.56');
+app.set('port', 8080);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressStatusMonitor());
