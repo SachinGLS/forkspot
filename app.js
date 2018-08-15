@@ -23,7 +23,7 @@ const upload = multer({ dest: path.join(__dirname, 'uploads') });
 /**
  * Load environment variables from .env file.
  */
-dotenv.load({ path: '.env.example' });
+dotenv.load({ path: '.env' });
 
 /**
  * Create Express server.
@@ -39,8 +39,8 @@ const betaRoutsController = require('./src/beta')(app, express);
 /**
  * Express configuration.
  */
-app.set('host', '165.227.253.56');
-app.set('port', 8080);
+app.set('host', process.env.DEV_IP || '0.0.0.0');
+app.set('port', process.env.PORT || 8080);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(expressStatusMonitor());
@@ -73,7 +73,7 @@ if (process.env.NODE_ENV === 'development') {
  * Start Express server.
  */
 app.listen(app.get('port'), () => {
-  console.log('%s Running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
+  console.log('%s Running at http://%s:%d in %s mode', chalk.green('✓'), app.get('host'), app.get('port'), app.get('env'));
   console.log('  Stop by pressing CTRL+C\n');
 });
 
