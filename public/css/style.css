@@ -1694,6 +1694,11 @@ footer .bot-strip ul li a{color:#ffffff;font-family:'Lato', sans-serif;}
 footer .bot-strip ul li a:hover{}
 footer input.btn.btn-fork {width: 80%;font-size: 20px;padding: 11px 0;}
 .left-foot-nav input[type="text"] {height: 36px;width: 80%;border-radius: 5px;border: none;margin-bottom: 10px;padding: 0 7px;}
+.contactForm input[type="text"] {height: 36px;width: 100%;border-radius: 5px;border: 1px solid #ccc;margin-bottom: 10px;padding: 0 7px;}
+.contactForm textarea {width: 100%;border-radius: 5px;border: 1px solid #ccc;margin-bottom: 10px;padding: 0 7px;}
+.success-message {
+  color: green;
+}
 footer .foot-text .foot-logo {
     position: absolute;
     bottom: 67px;
