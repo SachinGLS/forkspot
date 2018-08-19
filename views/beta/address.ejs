@@ -1,0 +1,390 @@
+﻿<% include include/head.ejs %>
+
+    <body>
+        <div class="pop-wrapper">
+            <% include include/header.ejs %>
+                <section class="dash-main-wrapper">
+
+                    <% include include/menu.ejs %>
+
+                        <div class="rhs-main-content">
+                            <div class="inner-page-cont">
+                                <h2 class="page-heading">Addresses</h2>
+                                <span class="error">
+                                    <%=error_messages%>
+                                </span>
+                                <span class="success">
+                                    <%=success_messages%>
+                                </span>
+                                <div class="adress-list">
+                                    <ul class="p-pay-list p-alt">
+                                        <%
+                                for(var i=0;i< output.address.length;i++){
+                                %>
+                                            <li>
+                                                <div class="p-card-num p-alt">
+                                                    <span>
+                                                        <%=output.address[i].address_name%>
+                                                    </span>
+                                                    <span class="p-card-exp">
+                                                        <%=output.address[i].address%>,
+                                                            <%=output.address[i].city%>
+                                                                <%=output.address[i].zipcode%>
+                                                    </span>
+                                                </div>
+                                                <div class="p-phn-num">
+                                                    <span>
+                                                        <%=output.address[i].phone%>
+                                                    </span>
+                                                </div>
+                                                <div class="p-icon-wrap p-alt">
+                                                    <span>
+                                                        <i class="icon-Pencil-Icon"></i>
+                                                        <span>
+                                                            <a href="javascript:void(0)" onclick="edit('<%=output.address[i].id%>')">Edit</a>
+                                                        </span>
+                                                    </span>
+                                                    <span class="p-del mar_left_15">
+                                                        <i class="icon-Delete-Icon"></i>
+                                                        <span>
+                                                            <a href="javascript:void(0)" onclick="deleteAddress('<%=output.address[i].id%>')">
+                                                                Delete
+                                                            </a>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </li>
+                                            <% } %>
+                                    </ul>
+
+                                    <!-- <ul class="unstyle">
+                            <li>
+                                <div class="adr"><p class="adr-cat">Home</p><p>315 Arden Ave Glendale, CA 91203</p></div>
+                                <div class="ph-no"><p>818-555-5555</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p class="adr-cat">Home</p><p>315 Arden Ave Glendale, CA 91203</p></div>
+                                <div class="ph-no"><p>818-555-5555</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p class="adr-cat">Home</p><p>315 Arden Ave Glendale, CA 91203</p></div>
+                                <div class="ph-no"><p>818-555-5555</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p class="adr-cat">Home</p><p>315 Arden Ave Glendale, CA 91203</p></div>
+                                <div class="ph-no"><p>818-555-5555</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p class="adr-cat">Home</p><p>315 Arden Ave Glendale, CA 91203</p></div>
+                                <div class="ph-no"><p>818-555-5555</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p class="adr-cat">Home</p><p>315 Arden Ave Glendale, CA 91203</p></div>
+                                <div class="ph-no"><p>818-555-5555</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span></div>
+                            </li>
+
+                          
+                        </ul> -->
+                                    <a href="javascript:void(0)" data-attribute="add-address" class="btn btn-fork ad-new-adr p-new-add btn-newaddress">
+                                        <span class="add-sign p-add-sign"></span>
+                                        <span class="inner-btn-txt"></span>Add New Address</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+                <a href="#" id="back-to-top" title="Back to top">
+                    <i class="icon-top_arrow"></i>
+                </a>
+                <!-- <div id="loader-sec" style="display:block">
+                    <div class="loader-img">
+                        <img src="images/fork_new.gif" alt="loader image">
+                    </div>
+                </div> -->
+                <div data-pop="add-address" class="fork-pop address-pop">
+                    <div class="fork-pop-header">
+                        <h2 class="text-center" id="add_add_text">Add New Address</h2>
+                        <span class="close_model">X</span>
+                    </div>
+                    <span class="p-close p-res-close">x</span>
+                    <div class="p-pad-fix">
+                        <form method="POST" action="/address" id="addressForm">
+                            <div class="p-pop-scroll">
+                                <div class="pop-container p-add-wrap">
+                                    <div class="inp-log clearfix p-new-add-form">
+                                        <div class="form-group">
+                                            <input class="p-inp-100" type="text" placeholder="Address*" name="address" id="address" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="p-inp-60" type="text" placeholder="Apt # / Suite" name="address1" id="address1" />
+                                        </div>
+                                        <div class="form-group left col-3">
+                                            <input type="text" placeholder="City*" name="city" id="city" />
+                                        </div>
+                                        <div class="form-group left col-3">
+                                            <input type="text" placeholder="State*" name="state" id="state" />
+                                        </div>
+                                        <div class="form-group left col-3">
+                                            <input type="text" placeholder="Zip Code*" name="zipcode" id="zipcode" />
+                                        </div>
+                                        <div class="form-group left col-3 mar_bottom_10">
+                                            <input type="text" placeholder="Phone*" name="phone" id="phone" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="left p-label-txt">Instructions</label>
+                                            <textarea rows="5" class="p-textarea" name="instructions" id="instructions"></textarea>
+                                        </div>
+                                        <div class="form-group spec-adress">
+                                            <form action="#">
+                                                <label class="left p-label-txt">Name this address</label>
+                                                <div class="p-add-radio p-add-par">
+                                                    <div class="form-group left">
+                                                        <p>
+                                                            <input type="radio" id="test1" name="address_name" value="Office">
+                                                            <label class="radio-lab" for="test1">Office</label>
+                                                        </p>
+                                                    </div>
+                                                    <div class="form-group left">
+                                                        <p>
+                                                            <input type="radio" id="test2" name="address_name" value="Home">
+                                                            <label class="radio-lab" for="test2">Home</label>
+                                                        </p>
+                                                    </div>
+                                                    <div class="form-group left">
+                                                        <p>
+                                                            <input class="p-other" type="radio" id="test3" value="Other" name="address_name">
+                                                            <label class="radio-lab" for="test3">Other</label>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group p-other-add">
+                                                    <input class="others-ad p-add-inp" type="text" value="" name="other_comments" id="other_comments" />
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="pay-controler p-pop-btn">
+                                            <div class="half">
+                                                <input class="btn btn-default half close_model p-btn-alt" type="button" value="Cancel" />
+                                            </div>
+                                            <div class="half">
+                                                <input class="btn btn-fork half" type="Submit" value="Submit" />
+                                                <input type="hidden" id="addressId" name="addressId" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+
+        <!--Address page loader start-->
+        <div id="loader-sec" style="display:block">
+            <div class="box-loader-html">
+                <header class="fixed_header fs-header">
+                    <div class="container">
+                        <a class="logo" href="#">
+                            <img src="images/logo-gray.png" alt="Fork Spot">
+                        </a>
+                        <div class="topbar-actions">
+                            <span class="bag p-cart-slide">
+                                <i class="icon-Shopping-Bag-Icon"></i>
+                            </span>
+                        </div>
+                    </div>
+                </header>
+                <section class="dash-main-wrapper">
+                    <div class="lhs-menu" style="z-index:99;">
+                        <div class="box-loader__pavatar-row">
+                            <div class="box-loader__animation box-loader__profile-avatar"></div>
+                            <div class="box-loader__animation box-loader__pavatar-name"></div>
+                        </div>
+                        <div class="box-loader__menu-wrap">
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rhs-main-content">
+                        <div class="inner-page-cont">
+                            <div class="box-loader__animation box-loading__heading"></div>
+                            <div class="box-loading__adress-list">
+                                <div class="box-loading__adress-row">
+                                    <div class="box-loader__animation box-loading__adress-col1"></div>
+                                    <div class="box-loader__animation box-loading__adress-col2"></div>
+                                    <div class="box-loader__animation box-loading__adress-col3"></div>
+                                </div>
+                                <div class="box-loading__adress-row">
+                                    <div class="box-loader__animation box-loading__adress-col1"></div>
+                                    <div class="box-loader__animation box-loading__adress-col2"></div>
+                                    <div class="box-loader__animation box-loading__adress-col3"></div>
+                                </div>
+                                <div class="box-loading__adress-row">
+                                    <div class="box-loader__animation box-loading__adress-col1"></div>
+                                    <div class="box-loader__animation box-loading__adress-col2"></div>
+                                    <div class="box-loader__animation box-loading__adress-col3"></div>
+                                </div>
+                                <div class="box-loading__adress-row">
+                                    <div class="box-loader__animation box-loading__adress-col1"></div>
+                                    <div class="box-loader__animation box-loading__adress-col2"></div>
+                                    <div class="box-loader__animation box-loading__adress-col3"></div>
+                                </div>
+                                <div class="box-loading__adress-row">
+                                    <div class="box-loader__animation box-loading__adress-col1"></div>
+                                    <div class="box-loader__animation box-loading__adress-col2"></div>
+                                    <div class="box-loader__animation box-loading__adress-col3"></div>
+                                </div>
+                                <div class="box-loading__adress-row">
+                                    <div class="box-loader__animation box-loading__adress-col1"></div>
+                                    <div class="box-loader__animation box-loading__adress-col2"></div>
+                                    <div class="box-loader__animation box-loading__adress-col3"></div>
+                                </div>
+                                <div class="box-loader__animation box-loading__adress-button"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!--Address page loader end-->
+        <script src="js/validate.min.js"></script>
+        <script>
+            $(function () {
+                // $('.p-pop-scroll').slimScroll({
+                // });
+            });
+
+            function deleteAddress(id) {
+                if (confirm('Are you sure want to delete this?') == true) {
+                    $.ajax({
+                        method: "delete",
+                        url: "/address",
+                        data: { id: id },
+                        success: function (res) {
+                            location.reload();
+                        }
+                    })
+                }
+            }
+            function edit(id) {
+                console.log(id);
+                $.ajax({
+                    method: "GET",
+                    url: "/address/" + id,
+                    data: { id: id },
+                    success: function (res) {
+                        if (res.success == true) {
+                            $('label.error').hide()
+                            console.log($('label.error').hide());
+                            let result = res.result;
+                            $('#add_add_text').html('Edit new address');
+                            $('.p-new-add').trigger('click');
+                            $('#addressId').val(id);
+                            $('#address').val(result.address);
+                            $('#address1').val(result.address1);
+                            $('#city').val(result.city);
+                            $('#state').val(result.state);
+                            $('#zipcode').val(result.zipcode);
+                            $('#phone').val(result.phone);
+                            $('#instructions').val(result.instruction);
+                            $('#other_comments').val(result.other_comments);
+                            if (result.other_comments != '' && result.address_name == 'Other') {
+                                $('#other_comments').parent().show();
+                            }
+                            $("[name='address_name']").each(function (i, j) {
+                                $(this).prop("checked", false);
+                                if ($(this).val() == result.address_name) {
+                                    $(this).prop("checked", true);
+                                }
+                            });
+                        }
+                    }
+                })
+            }
+
+            $("#addressForm").validate({
+                rules: {
+                    address: {
+                        required: true,
+                    }, address1: {
+                        required: true,
+                    },
+                    city: {
+                        required: true
+                    },
+                    state: {
+                        required: true
+                    },
+                    zipcode: {
+                        required: true
+                    },
+                    phone: {
+                        required: true
+                    },
+                    instructions: {
+                        required: true
+                    }
+                },
+                messages: {
+                    email: {
+                        email: "Your email address must be in the format of name@domain.com"
+                    }
+                }
+            });
+
+            $(".btn-newaddress").on("click", function addNewAddress() {
+                $('#add_add_text').html('Add new address');
+                $('#addressId').val('');
+                $('#address').val('');
+                $('#address1').val('');
+                $('#city').val('');
+                $('#state').val('');
+                $('#zipcode').val('');
+                $('#phone').val('');
+                $('#instructions').val('');
+                $('#other_comments').val('');
+
+                $("[name='address_name']").each(function (i, j) {
+                    $(this).prop("checked", false);
+                });
+            });
+        </script>
+    </body>
+
+    </html>

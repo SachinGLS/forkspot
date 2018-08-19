@@ -1,0 +1,137 @@
+﻿<div data-pop="add-card" class="fork-pop pay-pop">
+    <div class="fork-pop-header">
+        <h2 class="text-center">Add new payment method</h2>
+        <span class="close_model">X</span>
+    </div>
+    <span class="p-close p-res-close">x</span>
+    <div class="pop-container">
+        <span class="errorCard">
+        </span>
+        <div class="inp-log p-res-form">
+            <h2 class="p-pay-head">Payment Methods</h2>
+            <div class="form-group p-card-inp p-icon-inp">
+                <i class="icon-Credit-Card-Icon"></i>
+                <input type="text" id="txtCardHolderName" placeholder="Name on Card" name="name" maxlength="200" />
+            </div>
+
+            <div class="form-group p-card-inp p-icon-inp">
+                <i class="icon-Credit-Card-Icon"></i>
+                <input type="text" id="txtCardNo" placeholder="Card number*" name="cardNumber" maxlength="16" />
+            </div>
+            <!-- <div class="form-group half left p-icon-inp">
+                            <i class="icon-Expiration-Date-Icon"></i>
+                            <input type="text" placeholder="Expire On*" />
+                        </div> -->
+            <div class="form-group half right p-icon-inp">
+                <i class="icon-Security-Code-Icon"></i>
+                <input type="text" id="txtCvv" placeholder="CVV Code*" name="cvv" maxlength="4" />
+            </div>
+            <div class="form-group half right p-icon-inp">
+                <i class="icon-Security-Code-Icon"></i>
+                <input type="text" id="txtZip" placeholder="ZIP Code*" name="zipcode" maxlength="10" />
+            </div>
+            <div class="form-group half right p-icon-inp">
+                <i class="fa fa-calendar"></i>
+                <select name="expiryYear" id="year" class="yea  f-control">
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                </select>
+            </div>
+            <div class="form-group half right p-icon-inp">
+                <i class="fa fa-calendar"></i>
+                <select name="expiryMonth" id="month" class="month f-control">
+                    <option value="1">JAN</option>
+                    <option value="2">FEB</option>
+                    <option value="3">MAR</option>
+                    <option value="4">APR</option>
+                    <option value="5">MAY</option>
+                    <option value="6">JUNE</option>
+                    <option value="7">JULY</option>
+                    <option value="8">AUG</option>
+                    <option value="9">SEP</option>
+                    <option value="10">OCT</option>
+                    <option value="11">NOV</option>
+                    <option value="12">DEC</option>
+                </select>
+            </div>
+            <div class="pay-controler p-pop-btn">
+                <div class="half">
+                    <input class="btn btn-default half close_model p-btn-alt" type="button" value="Cancel" />
+                </div>
+                <div class="half">
+                    <input class="btn btn-fork half" type="button" onclick="addCard()" value="Submit" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>      
+    function addCard() {
+        var cardHolderName = $("#txtCardHolderName").val();
+        var cardNumber = $("#txtCardNo").val();
+        var cvc = $("#txtCvv").val();
+        var zipCode = $("#txtZip").val();
+        if (cardNumber || cvc || zipCode) {
+            $(".errorCard").html("");
+            $.ajax({
+                method: "POST",
+                url: "/addCard",
+                data: {
+                    name: cardHolderName,
+                    exp_month: $("#month").val(),
+                    exp_year: $("#year").val(),
+                    cvc: cvc,
+                    number: cardNumber,
+                    address_zip: zipCode,
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.success == true) {
+                        $(".success").html("Card added successfully");
+                        //location.reload();
+                        $(".pop-wrapper").removeClass("overlaypop");
+                        $(".fork-pop").removeClass("opend-pop");
+                        $(".fork-pop").fadeOut();
+                        $("html,body").css("overflow", "visible");
+
+                        var cardList = $(".p-card");
+                        var cardCount = $(cardList).children().length + 1;
+                        var itemName = $("<li class='full left'/>").append("<div class='adr'></div>").
+                            append("<input type='hidden' id='card" + cardCount + 1 + "' value='" + res.result.id + "' />").
+                            append("<input type='hidden' id='cardNo" + cardCount + 1 + "' value='" + res.result.last4 + "' />").
+                            append("<input type='hidden' id='cardType" + cardCount + 1 + "' value='" + res.result.funding + "' />").
+                            append("<span class='icon-Credit-Card-Icon'/>").append("<p>xxx-xxx-xxx-" + res.result.last4 + "</p>");
+                        var subItem = $("<div class='ph-no card-exp'/>").
+                            append("<p>Exp. " + res.result.exp_month + "/ " + res.result.exp_year + "</p>");
+                        var actionItem = $("<div class='action2'/>").
+                            append("<label class='checkradio'/>").
+                            append("<input type='radio' name='cardgrp' id='card" + cardCount + "' value='" + cardCount + 1 + "'/>").
+                            append("<span class='checkmark'/>");
+                        $(itemName).append(subItem);
+                        $(itemName).append(actionItem);
+                        $(cardList).append(itemName);
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+        else {
+            $(".errorCard").html("Please fill all the required fields");
+        }
+    }
+
+</script>

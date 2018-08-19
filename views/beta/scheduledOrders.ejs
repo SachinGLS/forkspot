@@ -1,0 +1,398 @@
+﻿<% include include/head.ejs %>
+
+    <body>
+        <% include include/header.ejs %>
+            <div class="pop-wrapper">
+                <section class="dash-main-wrapper">
+                    <% include include/menu.ejs %>
+                        <div class="rhs-main-content">
+                            <div class="inner-page-cont">
+                                <!--<h2 class="page-heading">Payment Methods</h2>-->
+                                <div class="top-filter-bar p-order-page">
+                                    <div class="left half find-order">
+                                        <span class="icon-Search-Icon"></span>
+                                        <input type="text" id="txtSearch" value="<%=output.searchQuery%>" onchange="filterOrders()" placeholder="Find Order History"
+                                        />
+                                    </div>
+                                    <div class="right half filter-order">
+                                        <select id="ddlFilterOrder" onchange="filterOrders()">
+                                            <%if(output.filterBy ==1){%>
+                                                <option value="1" selected>All</option>
+                                                <%}else{%>
+                                                    <option value="1">All</option>
+                                                    <%}%>
+                                                        <%if(output.filterBy ==2){%>
+                                                            <option value="2" selected>Accepted</option>
+                                                            <%}else{%>
+                                                                <option value="2">Accepted</option>
+                                                                <%}%>
+                                                                    <%if(output.filterBy ==3){%>
+                                                                        <option value="3" selected>Pending</option>
+                                                                        <%}else{%>
+                                                                            <option value="3">Pending</option>
+                                                                            <%}%>
+                                                                                <%if(output.filterBy ==4){%>
+                                                                                    <option value="4" selected>Delayed</option>
+                                                                                    <%}else{%>
+                                                                                        <option value="4">Delayed</option>
+                                                                                        <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="menu">
+                                    <ul class="menu__tabs mar_bottom_30 p-tab-res">
+                                        <li>
+                                            <a href="#" onclick="activeOrders()">Active Orders</a>
+                                        </li>
+                                        <li>
+                                            <a class="active" href="#item-3">Scheduled Orders</a>
+                                        </li>
+                                        <li>
+                                            <a href="#item-2" onclick="completedOrders()">Completed Orders</a>
+                                        </li>
+                                    </ul>
+                                    <div class="p-search">
+                                        <i class="icon-Search-Icon"></i>
+                                        <input type="text">
+                                    </div>
+                                    <section class="menu__wrapper">
+                                        <article id="item-1" class="menu__item item-active">
+                                            <div class="orders">
+                                                <div class="p-res-head-wrap">
+                                                    <input type="hidden" id="hfId">
+                                                    <h2 class="page-heading mar_bottom_10">Scheduled Orders</h2>
+                                                    <!-- <select class="p-select">
+                                                        <option value="Alphabetically">Alphabetically</option>
+                                                        <option value="Order Number">Order Number</option>
+                                                        <option value="Pending">Pending</option>
+                                                        <option value="Completed">Completed</option>
+                                                    </select> -->
+                                                </div>
+                                                <ul class="accordion p-order-accord" id="ordersList">
+                                                    <%
+                                                if(output.Success==true){                                                
+                                                    for(var i=0;i< output.Result.length;i++){
+                                                    %>
+                                                        <li id="itemRow<%=output.Result[i].orderId%>" class="clearfix p-order-toggle" onclick="getOrderDetail('<%=output.Result[i].orderId%>')">
+                                                            <div class="p-toggle-wrap" href="javascript:void(0);">
+                                                                <div class="left ord-details p-txt-wrap">
+                                                                    <div class="ord-name">
+                                                                        <span class="name-ordo">
+                                                                            <span class="resta-name">
+                                                                                <%=output.Result[i].name%>
+                                                                            </span>
+                                                                            <span class="ord-state">
+                                                                                <%switch (output.Result[i].orderStatus) {
+                                                                                case 0: %>Pending
+                                                                                    <%break;
+                                                                                case 1: %>Accepted
+                                                                                        <%break;
+                                                                                case 2:%> Cancelled
+                                                                                            <%break;
+                                                                                case 3:%> Delayed
+                                                                                                <%break;
+                                                                                case 4: %>Rejected
+                                                                                                    <%break;
+                                                                                case 5: %>Cancelled
+                                                                                                        <%break;
+                                                                                case 6: %>Completed
+                                                                                                            <%break;
+                                                                                case 7: %>Cancelled
+                                                                                                                <%break;
+                                                                                }%>
+                                                                            </span>
+                                                                            <span class="success_order success" id="success_order<%=output.Result[i].orderId%>"></span>
+                                                                            <span class="error_order error" id="error_order<%=output.Result[i].orderId%>"></span>
+                                                                        </span>
+                                                                        <p id="dtNow" class="dt-order" style="width:300px;">
+                                                                            <%=output.Result[i].orderTime%>
+                                                                        </p>
+                                                                        <p style="width: 180px;float: right;margin: -32px 75px 0 0;">
+                                                                            <%  if(output.Result[i].pickupType==1) { %> Pick up
+                                                                                <%}else{%>Dine in
+                                                                                    <%}%> Order #
+                                                                                        <%=output.Result[i].orderId%>
+                                                                        </p>
+                                                                        <input type="hidden" id="hfdelayTime" value="<%= output.Result[i].hfdelayTime%>">
+                                                                    </div>
+                                                                    <div style="display:none;" class="order-loader loader-img<%=output.Result[i].orderId%>">
+                                                                        <img src="images/loader-orders.gif" alt="loader image">
+                                                                    </div>
+                                                                </div>
+                                                                <!-- <div class="re-order">
+                                                                <a class="re-ord">Express Reorder</a>
+                                                            </div> -->
+                                                                <div class="re-order" onclick="trackOrder('<%=output.Result[i].orderId%>')">
+                                                                    <a class="re-ord">Track order</a>
+                                                                </div>
+                                                                <div class="re-order p-order-alt">
+                                                                    <a class="re-ord">Add to bag</a>
+                                                                </div>
+                                                                <span class="p-toggle-arrow"></span>
+                                                                <span class="p-res-total">$44.06</span>
+                                                                <a href="#" class="p-res-receipt">View recepit</a>
+                                                            </div>
+                                                            <div class="inner">
+                                                                <ul class="p-total-list p-last-fix">
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                        <% }}
+                                                    else { %>
+                                                            <span class="resta-name">
+                                                                <%=output.Message%>
+                                                            </span>
+                                                            <%} %>
+                                                </ul>
+                                                <input type="hidden" id="hfOrderDetail">
+                                            </div>
+                                        </article>
+                                    </section>
+                                    <div class="menu--shadow"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- select reason Popup -->
+                        <div data-pop="reason" class="fork-pop pay-pop">
+                            <div class="fork-pop-header">
+                                <h2 class="text-center">Select Reason</h2>
+                                <span class="close_model">X</span>
+                            </div>
+                            <span class="p-close p-res-close">x</span>
+                            <div class="pop-container">
+                                <div class="reasonwrap">
+                                    <h3>Select reason for cancellation</h3>
+                                    <label class="radiowrap"> I never choose to order
+                                        <input type="radio" checked="checked" name="radio" value="1">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="radiowrap"> I made this order by mistake
+                                        <input type="radio" checked="checked" name="radio" value="2">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="radiowrap"> My plans changed
+                                        <input type="radio" checked="checked" name="radio" value="3">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <div class="otherwrap">
+                                        <div class="otherreason">Other Reason
+                                            <div class="otherright">0/400</div>
+                                        </div>
+                                        <textarea placeholder="Type any other reason" id="txtCancelReason"></textarea>
+                                        <input class="btn btn-fork otherbt" value="DONE" onclick="cancelOrder()" type="button">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- select reason Popup -->
+                </section>
+            </div>
+            <div id="loader-sec" style="display:block">
+                <div class="loader-img">
+                    <img src="images/fork_new.gif" alt="loader image">
+                </div>
+            </div>
+
+            <script>
+
+                $(document).ready(function () {
+                    $(".dt-order").each(function (k, v) {
+                        var delayTime = $("#hfdelayTime").val();
+                        var current_dt = new Date(parseInt($(this).text()));
+                        var newOrerTime = new Date(current_dt);
+
+                        if (delayTime != "") {
+                            newOrerTime.setMinutes(
+                                newOrerTime.getMinutes() + parseInt(delayTime)
+                            );
+                        }
+                        $(this).text(new Date(newOrerTime).toLocaleString("en-IN", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }));
+                    });
+                });
+
+                function activeOrders() {
+                    window.location = "/orders";
+                }
+
+                function completedOrders() {
+                    window.location = "/completedOrder";
+                }
+
+                function trackOrder(id) {
+                    // window.location = "/trackOrder?orderId=" + id;
+                }
+
+                function getOrderDetail(id) {
+                    var listItem = $("ul").find("#itemRow" + id);
+                    var itemList = $(listItem).children().next().children();
+                    $("#hfOrderDetail").val(id);
+                    if ($(itemList).length < 2) {
+                        $.ajax({
+                            method: "GET",
+                            url: "/orderDetails?orderId=" + id,
+                            data: {},
+                            success: function (res) {
+                                if (res.Success == true) {
+                                    let result = res.Result;
+                                    var orderItems = result.items;
+                                    console.log(result);
+                                    var count = 0;
+                                    $.each(result.items, function (key, value) {
+                                        var itemName = $("<li/>").append("<span class=" + 'item-ord' + ">" + value.itemName + "</span>");
+                                        var itemPrice = $("<span/>").append("<span class=" + 'item-rate' + ">$" + value.itemPrice + "</span>");
+                                        $(itemName).append(itemPrice);
+                                        $(itemList).append(itemName);
+
+                                        if (result.items[key].reqItems.length > 0 && count == 0) {
+                                            var reqSubItems = $("<li/>").append("<span class='ord-subItem'>Show details</span>");
+                                            $(itemList).append(reqSubItems);
+                                            var expandDiv = $("<div style='display:none;' class='item-content'/>");
+                                            $(reqSubItems).append(expandDiv);
+
+                                            $.each(result.items[key].reqItems, function (key, value) {
+                                                console.log(value);
+                                                $(expandDiv).append("<h6 class='item-ord'>" + value.reqCatName + "</h6>");
+                                                $.each(value.reqItems, function (key, value) {
+                                                    $(expandDiv).append("<p class='item-ord'>" + value.reqItemName + ": $" + value.reqItemPrice + "</p>");
+                                                });
+                                            });
+                                            count++;
+                                        }
+                                    });
+
+                                    var orderRow = $(itemList).parent().append('<ul class="p-total-list mar_top_20"/>');
+                                    var itemRow = $(orderRow).children().next();
+
+                                    var subTotal = $("<li/>").append("<span class=" + 'item-ord' + ">Sub total</span>");
+                                    var subTotalPrice = $("<span/>").append("<span class=" + 'item-rate' + ">$" + result.subTotal + "</span>");
+                                    $(subTotal).append(subTotalPrice);
+                                    $(itemRow).append(subTotal);
+
+                                    var discount = $("<li/>").append("<span class=" + 'item-ord' + ">Discount</span>");
+                                    var discountPrice = $("<span/>").append("<span class=" + 'item-rate' + ">$" + result.discount + "</span>");
+                                    $(discount).append(discountPrice);
+                                    $(itemRow).append(discount);
+
+                                    var tax = $("<li/>").append("<span class=" + 'item-ord' + ">Tax</span>");
+                                    var taxPrice = $("<span/>").append("<span class=" + 'item-rate' + ">$" + result.tax + "</span>");
+                                    $(tax).append(taxPrice);
+                                    $(itemRow).append(tax);
+
+                                    var tip = $("<li/>").append("<span class=" + 'item-ord' + ">Tip</span>");
+                                    var tipPrice = $("<span/>").append("<span class=" + 'item-rate' + ">$" + result.tipAmount + "</span>");
+                                    $(tip).append(tipPrice);
+                                    $(itemRow).append(tip);
+
+                                    var total = $("<li/>").append("<span class=" + 'item-ord' + ">Total</span>");
+                                    var totalPrice = $("<span/>").append("<span class=" + 'item-rate' + ">$" + result.totalAmount + "</span>");
+                                    $(total).append(totalPrice);
+                                    $(itemRow).append(total);
+
+                                    var cancelOrder = $("<li/>").append("<input type='button' class=" + 're-ord2 ' + "data-attribute='reason'" + "onclick='cancelOrderPopup(" + result.orderId + ")' value='Cancel order'/>");
+                                    $(itemRow).append(cancelOrder);
+
+                                    $("#totalAmt" + result.orderId).addClass("order-total-amt");
+                                    $("#totalAmtPrice" + result.orderId).addClass("order-total-amt");
+                                }
+
+                            },
+                            error: function (err) {
+                                console.log(err);
+                            }
+                        })
+                    }
+                }
+
+                $(document).ajaxStart(function () {
+                    var id = $("#hfOrderDetail").val();
+                    $(".loader-img" + id).css("display", "block");
+                });
+                $(document).ajaxComplete(function () {
+                    var id = $("#hfOrderDetail").val();
+                    $(".loader-img" + id).css("display", "none");
+                    $("#hfOrderDetail").val('');
+                });
+
+                function getOrderHistory() {
+
+                    $.ajax({
+                        method: "GET",
+                        url: "/orderHistory",
+                        data: {},
+                        success: function (res) {
+                            if (res.Success == true) {
+                                let result = res.Result;
+                                console.log(result);
+                                var listItem = $("#item-2").children().children().next();
+                                var itemList = $(listItem).children().next().children();
+
+                                $.each(result.items, function (key, value) {
+                                    var itemName = $("<li/>").append("<span class=" + 'item-ord' + ">" + value.itemName + "</span>");
+                                    var itemPrice = $("<span/>").append("<span class=" + 'item-rate' + ">$" + value.itemPrice + "</span>");
+                                    $(itemName).append(itemPrice);
+                                    $(itemList).append(itemName);
+                                });
+                            }
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    })
+                }
+
+                function cancelOrderPopup(id) {
+                    $("#hfId").val(id);
+                    $("#txtCancelReason").val('');
+                    $(".error_order").each(function () {
+                        $(this).html('');
+                    });
+                }
+
+                function cancelOrder() {
+                    var orderId = $("#hfId").val();
+                    var otherReason = $("#txtCancelReason").val();
+                    var reason = "";
+                    var reasonId = $(":radio:checked").val();
+
+                    console.log("=====cancel order======");
+                    $.ajax({
+                        method: "POST",
+                        url: "/cancelOrder",
+                        data: { orderId: orderId, reason: reason, reasonId: reasonId, otherReason: otherReason },
+                        success: function (res) {
+                            var orderId = $("#hfId").val();
+                            if (res.Success == true) {
+                                $('#success_order' + orderId).html(res.Message);
+
+                                $(".pop-wrapper").removeClass("overlaypop");
+                                $(".fork-pop").removeClass("opend-pop");
+                                $(".fork-pop").fadeOut();
+                                $("html,body").css("overflow", "visible");
+
+                                $('#itemRow' + orderId).hide();
+                            }
+                            else {
+                                $('#error_order' + orderId).html(res.Message);
+
+                                $(".pop-wrapper").removeClass("overlaypop");
+                                $(".fork-pop").removeClass("opend-pop");
+                                $(".fork-pop").fadeOut();
+                                $("html,body").css("overflow", "visible");
+                            }
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    })
+                }
+
+                function filterOrders() {
+                    var filterBy = $("#ddlFilterOrder").val();
+                    var searchQuery = $("#txtSearch").val();
+                    window.location = "scheduledOrders?searchQuery=" + searchQuery + "&filterBy=" + filterBy;
+
+                }
+            </script>
+    </body>
+
+    </html>

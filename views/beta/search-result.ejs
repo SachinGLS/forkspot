@@ -1,0 +1,762 @@
+﻿<% include include/head.ejs %>
+
+    <body>
+        <div class="pop-wrapper">
+            <div class="main_warapper">
+                <% include include/header.ejs %>
+                    <section class="clearfix">
+                        <div class="p-filter-wrap">
+                            <div class="p-filter-txt">
+                                <p data-attribute="p-update-pop">316 Arden Ave Glendale, CA 91203</p>
+                                <div class="p-filter-btn p-filter-toggle">
+                                    <i class="icon-Filter"></i>
+                                    <span>Filters</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filters">
+                            <div class="p-filter-contain">
+                                <span class="p-filter-close p-res-close">x</span>
+                                <span class="p-filter-clear">Clear all</span>
+                                <h2 class="p-filter-head">Refine</h2>
+                                <div class="p-common-wrap">
+                                    <h4 class="p-want-head">I want</h4>
+                                    <div class="p-opt-label mar_bottom_10">
+                                        <input type="radio" id="rdDineIN" name="p-pick" id="p-pick-inp-1">
+                                        <label class="p-pick-label" for="p-pick-inp-1">Dine In</label>
+                                        <input type="radio" id="rdPickup" name="p-pick" id="p-pick-inp-2">
+                                        <label class="p-pick-label" for="p-pick-inp-2">Pick Up</label>
+                                    </div>
+                                    <div class="flex flex-middle">
+                                        <span class="p-sch-txt">Pick up my food</span>
+                                        <span class="p-dot-divide"></span>
+                                        <a href="#" class="p-sch-link">Today, ASAP</a>
+                                    </div>
+                                </div>
+                                <div class="p-common-wrap">
+                                    <h4>Rating</h4>
+                                    <div class="p-rating-wrap">
+                                        <input type="radio" name="p-rating" id="p-rating-inp-5" onclick="RatingClick(this)">
+                                        <label class="p-rating-label" for="p-rating-inp-5">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </label>
+                                        <input type="radio" name="p-rating" id="p-rating-inp-4" onclick="RatingClick(this)">
+                                        <label class="p-rating-label" for="p-rating-inp-4">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </label>
+                                        <input type="radio" name="p-rating" id="p-rating-inp-3" onclick="RatingClick(this)">
+                                        <label class="p-rating-label" for="p-rating-inp-3">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </label>
+                                        <input type="radio" name="p-rating" id="p-rating-inp-2" onclick="RatingClick(this)">
+                                        <label class="p-rating-label" for="p-rating-inp-2">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </label>
+                                        <input type="radio" name="p-rating" id="p-rating-inp-1" onclick="RatingClick(this)">
+                                        <label class="p-rating-label" for="p-rating-inp-1">
+                                            <i class="fa fa-star"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="p-common-wrap">
+                                    <h4>Price</h4>
+                                    <div class="p-price-wrap">
+                                        <input type="checkbox" name="p-price" id="p-price-inp-1" onclick="PriceClick(this)">
+                                        <label class="p-price-label" for="p-price-inp-1">$</label>
+                                        <input type="checkbox" name="p-price" id="p-price-inp-2" onclick="PriceClick(this)">
+                                        <label class="p-price-label" for="p-price-inp-2">$$</label>
+                                        <input type="checkbox" name="p-price" id="p-price-inp-3" onclick="PriceClick(this)">
+                                        <label class="p-price-label" for="p-price-inp-3">$$$</label>
+                                        <input type="checkbox" name="p-price" id="p-price-inp-4" onclick="PriceClick(this)">
+                                        <label class="p-price-label" for="p-price-inp-4">$$$$</label>
+                                        <input type="checkbox" name="p-price" id="p-price-inp-5" onclick="PriceClick(this)">
+                                        <label class="p-price-label" for="p-price-inp-5">$$$$$</label>
+                                    </div>
+                                </div>
+                                <div class="p-common-wrap">
+                                    <h4>Discount</h4>
+                                    <div class="p-disc-wrap">
+                                        <input type="radio" name="p-disc" id="p-disc-inp-1" onclick="DisClick(this)">
+                                        <label class="p-disc-label" for="p-disc-inp-1">5 - 10%</label>
+                                        <input type="radio" name="p-disc" id="p-disc-inp-2" onclick="DisClick(this)">
+                                        <label class="p-disc-label" for="p-disc-inp-2">10 - 15%</label>
+                                        <input type="radio" name="p-disc" id="p-disc-inp-3" onclick="DisClick(this)">
+                                        <label class="p-disc-label" for="p-disc-inp-3">20+%</label>
+                                    </div>
+                                </div>
+                                <div class="p-common-wrap">
+                                    <h4>Distance</h4>
+                                    <div class="p-slider-wrap">
+                                        <div id="p-range-slider"></div>
+                                    </div>
+                                </div>
+                                <div class="p-common-wrap">
+                                    <h4>Sort By</h4>
+                                    <div class="p-order-select">
+                                        <select>
+                                            <option>Alphabaticaly</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="p-common-wrap">
+                                    <h4 class="p-res-accord">Cuisines</h4>
+                                    <div>
+                                        <ul class="p-cuisine-list">
+                                            <li>
+                                                <img src="images/Burgers.png">
+                                                <span>Burgers</span>
+                                            </li>
+                                            <li>
+                                                <img src="images/chinese-alt.png">
+                                                <span>Chinese</span>
+                                            </li>
+                                            <li>
+                                                <img src="images/Pizza.png">
+                                                <span>Pizza</span>
+                                            </li>
+                                            <li>
+                                                <img src="images/Mexican.png">
+                                                <span>Mexican</span>
+                                            </li>
+                                            <li>
+                                                <img src="images/Italian.png">
+                                                <span>Italian</span>
+                                            </li>
+                                            <li>
+                                                <img src="images/Japanese.png">
+                                                <span>Japanese</span>
+                                            </li>
+                                            <li>
+                                                <img src="images/american.png">
+                                                <span>American</span>
+                                            </li>
+                                            <li>
+                                                <img src="images/Food-Icons.png">
+                                                <span>Breakfast</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="p-common-wrap">
+                                    <h4>Filter</h4>
+                                    <ul class="p-filter-list">
+                                        <li>
+                                            <input class="styled-checkbox" id="checkbox-1" type="checkbox">
+                                            <label for="checkbox-1">Open Now</label>
+                                        </li>
+                                        <li>
+                                            <input class="styled-checkbox" id="checkbox-2" type="checkbox">
+                                            <label for="checkbox-2">New</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="p-res-submit">
+                                    <input type="submit" value="Search Restaurants">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="search-results">
+                            <h1 class="p-result-head">Browse Food Near You</h1>
+                            <div class="p-fil-selected" id="Selcted_searchtag">
+                                <div class="p-fil-active">
+                                    <span>Open Now</span>
+                                    <i class="p-fil-cross"></i>
+                                </div>
+                                <div class="p-fil-active">
+                                    <span>$$$ &amp; Less</span>
+                                    <i class="p-fil-cross"></i>
+                                </div>
+                                <div class="p-fil-active">
+                                    <ul class="p-fil-star">
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                    </ul>
+                                    <span>&amp; over</span>
+                                    <i class="p-fil-cross"></i>
+                                </div>
+                                <div class="p-fil-active">
+                                    <span>Within 2 mi</span>
+                                    <i class="p-fil-cross"></i>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-middle flex-sp-btw mar_bottom_10">
+                                <span>15 Near You</span>
+                                <span class="p-map-hide">Hide Map</span>
+                            </div>
+                            <div class="location-pins mar_bottom_15">
+                                <!-- <iframe src="https://www.google.co.in/maps?hl=en&tab=wl" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+                                <div id="map" style="width: 100%; height: 100%;"></div>
+                            </div>
+                            <div class="p-saved-rest-wrap">
+                                <ul class="p-rest-list">
+
+                                    <% 
+                                for(var i=0;i<output.resList.restaurants.length;i++){
+                            %>
+                                        <li>
+                                            <div class="p-rest-img">
+                                                <img src="<%=output.resList.restaurants[i].imagepath%>">
+                                                <span class="p-res-label p-bg-megenta">
+                                                    <%=output.resList.restaurants[i].discount %>% OFF</span>
+                                            </div>
+                                            <div class="p-rest-mid">
+                                                <div class="p-rest-head">
+                                                    <span>
+                                                        <a href="/restaurant-profile?request=<%=output.resList.restaurants[i].restid%>" class="p-rest-link">
+                                                            <%=output.resList.restaurants[i].name%>
+                                                        </a>
+                                                    </span>
+                                                    <div class="p-address-wrap">
+                                                        <span class="p-info-card">
+                                                            <%=output.resList.restaurants[i].address%>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="p-info-list">
+                                                    <div class="p-rating-res">
+                                                        <ul>
+
+                                                            <li>
+                                                                <i class="fa fa-star"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fa fa-star"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fa fa-star"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fa fa-star"></i>
+                                                            </li>
+                                                            <li>
+                                                                <i class="fa fa-star-half"></i>
+                                                            </li>
+                                                        </ul>
+                                                        <span>
+                                                            <%=output.resList.restaurants[i].rating%> Ratings</span>
+                                                    </div>
+
+                                                    <ul class="p-price-rating">
+                                                        <% 
+                                                    for(var j=0;j<5;j++){ %>
+                                                            <li <% if(output.resList.restaurants[i].price> j){ %> class="active"
+                                                                <% } %> >$</li>
+                                                            <% } %>
+                                                    </ul>
+                                                    <div class="p-rest-loc">
+                                                        <i class="icon-Address-Icon p-megenta"></i>
+                                                        <p>
+                                                            <span>
+                                                                <%=output.resList.restaurants[i].distance%>
+                                                            </span>
+                                                        </p>
+                                                        <p>
+                                                            <span>10-20</span>
+                                                            <span>min</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-info-wrap p-bg-megenta">
+                                                <div class="p-star-rating">
+                                                    <ul>
+                                                        <% 
+                                                    for(let j=0;j<output.resList.restaurants[i].rating;j++){
+                                                    %>
+                                                            <li>
+                                                                <i class="fa fa-star"></i>
+                                                            </li>
+                                                            <% } %>
+                                                    </ul>
+                                                    <span>
+                                                        <%=output.resList.restaurants[i].ratingCount%> Ratings</span>
+                                                </div>
+                                                <div class="p-discount-per">
+                                                    <span>
+                                                        <%=output.resList.restaurants[i].discount%>% OFF</span>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <% } %>
+                                </ul>
+
+                                <!-- <div class="flex flex-middle flex-center mar_bottom_20 mar_top_50">
+                            <span class="p-lt"></span>
+                            <ul class="p-pagination">
+                                <li>1</li>
+                                <li>2</li>
+                                <li class="active">3</li>
+                                <li>4</li>
+                                <li>5</li>
+                            </ul>
+                            <span class="p-rt"></span>
+                        </div> -->
+                                <!-- <div class="container">
+                                
+                                    <% if (pages > 0) { %>
+                                        <ul class="pagination text-center ">
+                                            <% if (current == 1) { %>
+                                                <li class="disabled"><a>First</a></li>
+                                            <% } else { %>
+                                                <li><a href="/search-result?page=1">First</a></li>
+                                            <% } %>
+                                            <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                                            <% if (i !== 1) { %>
+                                                <li class="disabled"><a>...</a></li>
+                                            <% } %>
+                                            <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                                                <% if (i == current) { %>
+                                                    <li class="active"><a><%= i %></a></li>
+                                                <% } else { %>
+                                                    <li><a href="/search-result?page=1"><%= i %></a></li>
+                                                <% } %>
+                                                <% if (i == Number(current) + 4 && i < pages) { %>
+                                                    <li class="disabled"><a>...</a></li>
+                                                <% } %>
+                                            <% } %>
+                                            <% if (current == pages) { %>
+                                                <li class="disabled"><a>Last</a></li>
+                                            <% } else { %>
+                                                <li><a href="/products/<%= pages %>">Last</a></li>
+                                            <% } %>
+                                        </ul>
+                                    <% } %>
+                            </div> -->
+
+                            </div>
+                        </div>
+                    </section>
+                    <% include include/footer.ejs %>
+            </div>
+        </div>
+
+        <!-- Search Popup -->
+        <div data-pop="p-search-pop" class="fork-pop">
+            <span class="p-close p-res-close">x</span>
+            <div class="p-search-wrap">
+                <div class="p-search-inp-wrap mar_bottom_35">
+                    <div class="p-search-inp mar_bottom_15">
+                        <i class="icon-Address-Icon"></i>
+                        <input type="text" placeholder="Street address, city, state">
+                    </div>
+                    <div class="p-search-inp">
+                        <i class="icon-Search-Icon"></i>
+                        <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                    </div>
+                </div>
+                <div class="p-serch-btn pad_left_10 pad_right_10">
+                    <input type="submit" value="Search">
+                </div>
+            </div>
+        </div>
+        <!-- Search Popup -->
+
+        <!-- Update Address Popup -->
+        <div data-pop="p-update-pop" class="fork-pop">
+            <span class="p-close p-res-close">x</span>
+            <div class="p-search-wrap">
+                <h3 class="p-pop-head mar_bottom_20">Change Your Address</h3>
+                <div class="p-search-inp-wrap mar_bottom_35">
+                    <div class="p-search-inp">
+                        <i class="icon-Address-Icon"></i>
+                        <input type="text" placeholder="Street address, city, state">
+                    </div>
+                </div>
+                <div class="p-serch-btn pad_left_10 pad_right_10">
+                    <input type="submit" value="Update">
+                </div>
+            </div>
+        </div>
+        <!-- Update Address Popup -->
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4e_CV3NO300KmK1cuWFdsbF4le6nPjAw" type="text/javascript"></script>
+
+        <!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> -->
+        <script>
+            var searchparam = [];
+            $(document).ready(function () {
+
+                var searchparam = [];
+                var p_optionvalue = GetParameterValues('p-option');
+                console.log(p_optionvalue);
+                if (p_optionvalue == "Pickup") {
+                    $('#rdPickup').prop('checked', true);
+                    searchparam.push({ value: "Pickup", id: "1", tag: 1 })
+
+                }
+                if (p_optionvalue != "Pickup") {
+                    $('#rdDineIN').prop('checked', true);
+                    searchparam.push({ value: "Dine-in", id: "2", tag: 1 })
+                }
+
+
+                var tag = GetParameterValues('tag');
+
+
+
+                var customMiles = ['1/4', '1/2', '1', '2', '3', '4', '5', '10'];
+
+
+
+                //GetDataaccotrdingtosearch();
+
+                // $("#p-range-slider")
+                //     .slider({
+                //         min: 0,
+                //         max: customMiles.length - 1
+                //     })
+                //     .slider("pips", {
+                //         rest: "label",
+                //         suffix: "mi",
+                //         labels: customMiles
+                //     });
+            });
+
+            function DisClick(rddisc) {
+                for (var i = 0; i < searchparam.length; i++) {
+                    if (searchparam[i].tag == 4) {
+                        $('#disc' + searchparam[i].id).remove();
+                        searchparam.splice(i, 1);
+                        break;
+                    }
+                }
+
+                if (rddisc.id == "p-disc-inp-1") {
+                    searchparam.push({
+                        value: 1, id: rddisc.id, tag: 4
+                    }
+                    );
+                }
+                else if (rddisc.id == "p-disc-inp-2") {
+                    searchparam.push({
+                        value: 2, id: rddisc.id, tag: 4
+                    }
+                    );
+                }
+                else if (rddisc.id == "p-disc-inp-3") {
+                    searchparam.push({
+                        value: 3, id: rddisc.id, tag: 4
+                    }
+                    );
+                }
+
+                BindSearchTag(searchparam);
+            }
+
+            function PriceClick(rdprice) {
+                for (var i = 0; i < searchparam.length; i++) {
+                    if (searchparam[i].tag == 3) {
+                        $('#price' + searchparam[i].id).remove();
+                        searchparam.splice(i, 1);
+                        break;
+                    }
+                }
+
+                if (rdprice.id == "p-price-inp-1") {
+                    searchparam.push({
+                        value: 1, id: rdprice.id, tag: 3
+                    }
+                    );
+                }
+                else if (rdprice.id == "p-price-inp-2") {
+                    searchparam.push({
+                        value: 2, id: rdprice.id, tag: 3
+                    }
+                    );
+                }
+                else if (rdprice.id == "p-price-inp-3") {
+                    searchparam.push({
+                        value: 3, id: rdprice.id, tag: 3
+                    }
+                    );
+                }
+                else if (rdprice.id == "p-price-inp-4") {
+                    searchparam.push({
+                        value: 4, id: rdprice.id, tag: 3
+                    }
+                    );
+                }
+                else if (rdprice.id == "p-price-inp-5") {
+                    searchparam.push({
+                        value: 5, id: rdprice.id, tag: 3
+                    }
+                    );
+                }
+                BindSearchTag(searchparam);
+            }
+
+            function RatingClick(rdrating) {
+                //alert(rdrating.id);
+                for (var i = 0; i < searchparam.length; i++) {
+                    if (searchparam[i].tag == 2) {
+                        $('#cross' + searchparam[i].id).remove();
+                        searchparam.splice(i, 1);
+                        break;
+                    }
+                }
+                if (rdrating.id == "p-rating-inp-1") {
+                    searchparam.push({
+                        value: 1, id: rdrating.id, tag: 2
+                    }
+                    );
+                }
+                else if (rdrating.id == "p-rating-inp-2") {
+                    searchparam.push({
+                        value: 2, id: rdrating.id, tag: 2
+                    }
+                    );
+                }
+                else if (rdrating.id == "p-rating-inp-3") {
+                    searchparam.push({
+                        value: 3, id: rdrating.id, tag: 2
+                    }
+                    );
+                }
+                else if (rdrating.id == "p-rating-inp-4") {
+                    searchparam.push({
+                        value: 4, id: rdrating.id, tag: 2
+                    }
+                    );
+                }
+                else if (rdrating.id == "p-rating-inp-5") {
+                    searchparam.push({
+                        value: 5, id: rdrating.id, tag: 2
+                    }
+                    );
+                }
+                BindSearchTag(searchparam);
+            }
+
+
+            function BindSearchTag(searchparam) {
+
+                console.log(searchparam);
+                $('div#Selcted_searchtag').empty();
+                $.each(searchparam, function (index, val) {
+                    if (val.tag == 2) {
+                        if (val.value == 1) {
+                            var appendhtml1 = '<div class="p-fil-active" id=cross' + val.id + '>' +
+                                '<ul class="p-fil-star">' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '</ul>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+
+                        }
+                        else if (val.value == 2) {
+                            var appendhtml1 = '<div class="p-fil-active" id=cross' + val.id + '>' +
+                                '<ul class="p-fil-star">' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '</ul>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+                        }
+                        else if (val.value == 3) {
+                            var appendhtml1 = '<div class="p-fil-active" id=cross' + val.id + '>' +
+                                '<ul class="p-fil-star">' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '</ul>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+                        }
+                        else if (val.value == 4) {
+                            var appendhtml1 = '<div class="p-fil-active" id=cross' + val.id + '>' +
+                                '<ul class="p-fil-star">' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '</ul>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+
+                        }
+                        else if (val.value == 5) {
+                            var appendhtml1 = '<div class="p-fil-active" id=cross' + val.id + '>' +
+                                '<ul class="p-fil-star">' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '<li>' +
+                                '<i class="fa fa-star"></i>' +
+                                '</li>' +
+                                '</ul>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+                        }
+
+                    }
+                    else if (val.tag == 3) {
+                        if (val.value == 1) {
+                            var appendhtml1 = '<div class="p-fil-active" id=price' + val.id + '>' +
+                                '<span>$ &amp; Less</span>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+
+                        }
+                        else if (val.value == 2) {
+                            var appendhtml1 = '<div class="p-fil-active" id=price' + val.id + '>' +
+                                '<span>$$ &amp; Less</span>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+                        }
+                        else if (val.value == 3) {
+                            var appendhtml1 = '<div class="p-fil-active" id=price' + val.id + '>' +
+                                '<span>$$$ &amp; Less</span>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+                        }
+                        else if (val.value == 4) {
+                            var appendhtml1 = '<div class="p-fil-active" id=price' + val.id + '>' +
+                                '<span>$$$$ &amp; Less</span>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+
+                        }
+                        else if (val.value == 5) {
+                            var appendhtml1 = '<div class="p-fil-active" id=price' + val.id + '>' +
+                                '<span>$$$$$ &amp; Less</span>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+                        }
+                    }
+                    else if (val.tag == 4) {
+                        if (val.value == 1) {
+                            var appendhtml1 = '<div class="p-fil-active" id=disc' + val.id + '>' +
+                                '<span>5-10%</span>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+
+                        }
+                        else if (val.value == 2) {
+                            var appendhtml1 = '<div class="p-fil-active" id=disc' + val.id + '>' +
+                                '<span>10-15%</span>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+                        }
+                        else if (val.value == 3) {
+                            var appendhtml1 = '<div class="p-fil-active" id=disc' + val.id + '>' +
+                                '<span>20+%</span>' +
+                                '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                '</div>'
+                            $("#Selcted_searchtag").append(appendhtml1);
+                        }
+
+                    }
+
+
+                });
+
+
+            }
+
+            function RemoveFilter(id, tag) {
+                if (tag == 2) {
+
+                    for (var i = 0; i < searchparam.length; i++) {
+                        if (searchparam[i].id == id) {
+                            searchparam.splice(i, 1);
+                            break;
+                        }
+                    }
+                    $('#cross' + id).remove();
+                }
+                else if (tag == 3) {
+                    for (var i = 0; i < searchparam.length; i++) {
+                        if (searchparam[i].id == id) {
+                            searchparam.splice(i, 1);
+                            break;
+                        }
+                    }
+                    $('#price' + id).remove();
+                }
+                else if (tag == 4) {
+                    for (var i = 0; i < searchparam.length; i++) {
+                        if (searchparam[i].id == id) {
+                            searchparam.splice(i, 1);
+                            break;
+                        }
+                    }
+                    $('#disc' + id).remove();
+                }
+            }
+
+            function GetParameterValues(param) {
+                var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                for (var i = 0; i < url.length; i++) {
+                    var urlparam = url[i].split('=');
+                    if (urlparam[0] == param) {
+                        return urlparam[1];
+                    }
+                }
+            }
+
+        </script>
+        <style>
+            /* .p-pagination li{
+    background: #10a1ad;
+ }    */
+        </style>
+    </body>
+
+    </html>

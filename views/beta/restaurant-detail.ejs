@@ -1,0 +1,61 @@
+﻿<% include include/head.ejs %>
+
+    <body>
+        <div class="pop-wrapper">
+            <!-- <% include include/header.ejs %> -->
+            <header class="fixed_header">
+                <div class="container">
+                    <a class="logo" href="#">
+                        <img src="images/logo.png" alt="Fork Spot">
+                    </a>
+                    <!-- <div class="p-head-inp-wrap">
+                        <div class="p-head-inp">
+                            <i class="icon-Address-Icon"></i>
+                            <input type="text" id="txtcities" placeholder="Enter Location">
+                            <input type="hidden" id="hfCods" value="" />
+                        </div>
+                        <div class="p-head-inp">
+                            <i class="icon-Search-Icon"></i>
+                            <input type="text" id="txtSearchRest" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                        </div>
+                    </div> -->
+                    <div class="topbar-actions">
+                        <span class="my-Account">
+                            <i class="icon-Profile2-Icon"></i>
+                            <span class="p-hide-txt">My Account</span>
+                        </span>
+                        <span class="bag">
+                            <i class="icon-Shopping-Bag-Icon"></i>
+                        </span>
+                    </div>
+                    <div class="p-res-search" data-attribute="p-search-pop">
+                        <span class="icon-Search-Icon"></span>
+                    </div>
+                </div>
+            </header>
+            <section class="clearfix">
+
+                <% include include/menu.ejs %>
+
+                    <div class="rhs-main-content">
+                        <div class="restaurant-midsec">
+                            <% include include/restaurantprofile.ejs %>
+                        </div>
+                    </div>
+            </section>
+            <a href="#" id="back-to-top" title="Back to top">
+                <i class="icon-top_arrow"></i>
+            </a>
+            <!-- <div id="loader-sec" style="display:block">
+                    <div class="loader-img">
+                        <img src="images/fork_new.gif" alt="loader image">
+                    </div>
+                </div> -->
+        </div>
+
+        <script>
+
+        </script>
+    </body>
+
+    </html>

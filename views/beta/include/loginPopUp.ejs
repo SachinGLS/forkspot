@@ -1,0 +1,273 @@
+<div data-pop="fork-login" class="fork-pop log-pop">
+    <div class="fork-pop-header p-login-bar">
+        <img src="images/logo.png" />
+        <span class="close_model">X</span>
+    </div>
+    <span class="p-close p-res-close">x</span>
+    <div class="pop-container">
+        <h2 class="p-login-head text-center">Log In</h2>
+        <p class="error_messages error">
+        
+        </p>
+        
+
+                <div class="inp-log p-login-inp">
+                    <form method="POST" id="loginForm" action="/login">
+                        <div class="form-group">
+                            <span class="icon-Email-Icon"></span>
+                            <input type="text" placeholder="Email" id="fbEmail" name="email" />
+                            <input type="hidden" id="fb_Id" />
+                        </div>
+                        <div class="form-group">
+                            <span class="icon-Password-Icon"></span>
+                            <input type="password" placeholder="Password" name="password" />
+                        </div>
+
+                        <div class="clearfix p-forgot-wrap">
+                            <a href="" class="forgo-pass" data-attribute="fork-forgot-pass">Forgot Password ?</a>
+                        </div>
+                        <div class="p-login-btn">
+                            <input class="btn btn-fork p-login" type="submit" name="submit" value="Log In">
+                            <!-- <input class="btn btn-fork p-login" type="button" value="Log In" /> -->
+                    </form>
+                    <!-- <div class="p-login-fb">
+                        <i class="icon-facebook"></i>
+                        <input class="btn btn-fork fb" id="login_facebook" type="button" value="Continue with Facebook" />
+                    </div> -->
+                    </div>
+
+                    <p class="switch-to-pop">Don't have an account?
+                        <a data-attribute="fork-reg" href="javascript:void(0)" id="signupHeader">Create Your Account</a>
+                    </p>
+
+                </div>
+    </div>
+</div>
+<div data-pop="fork-forgot-pass" class="fork-pop log-pop p-forgot-pop reg-pop">
+    <div class="fork-pop-header p-login-bar">
+        <img src="images/logo.png" />
+        <span class="close_model">X</span>
+    </div>
+    <span class="p-close p-res-close">x</span>
+    <div class="pop-container">
+        <h2 class="p-login-head text-center">Forgot Password</h2>
+        
+                <span class="success_forgot success"></span>
+                <span class="error_forgot error"></span>
+
+                <div class="inp-log p-login-inp mar_bottom_35">
+                    <form method="POST" id="forgotPassForm" action="/forgotPassword">
+                        <div class="form-group">
+                            <span class="icon-Email-Icon"></span>
+                            <input type="text" placeholder="Email" name="email" id="forgotEmail" />
+                        </div>
+                        <div class="p-login-btn">
+                            <!-- <input class="btn btn-fork p-login" type="button" value="Reset Password" /> -->
+                            <input class="btn btn-fork p-login" type="submit" id="forgotBtn" name="submit" value="Reset Password">
+                        </div>
+                    </form>
+                </div>
+    </div>
+</div>
+<div data-pop="fork-reg" class="fork-pop reg-pop p-signup-pop">
+    <div class="fork-pop-header">
+        <img src="images/logo.png" />
+        <span class="close_model">X</span>
+    </div>
+    <span class="p-close p-res-close">x</span>
+    <div class="pop-container">
+        <h2 class="p-login-head text-center">Create Your Account</h2>
+        
+
+                <div class="p-signup-wrap">
+                    <div class="p-login-fb">
+                        <i class="icon-facebook"></i>
+                        <input class="btn btn-fork fb" type="button" id="signup_facebook" value="Sign up via Facebook">
+
+                    </div>
+                    <div class="p-login-fb p-login-gp">
+                        <i class="icon-google-plus"></i>
+                        <!-- <input class="btn btn-fork google-up" type="button" value="Sign up via Google"> -->
+                        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                    </div>
+                    <div class="text-center">
+                        <span class="p-or-span">OR</span>
+                    </div>
+                </div>
+
+                <div class="inp-log p-signup-form">
+                    <form method="POST" action="signUp" id="signUpForm">
+                        <div class="form-group half left">
+                            <input type="text" placeholder="First Name" id="firstName" name="firstName" />
+                            <input type="hidden" id="fbId" name="fbId" />
+                            <input type="hidden" id="googleId" name="googleId" />
+                        </div>
+                        <div class="form-group half right">
+                            <input type="text" placeholder="Last Name" id="lastName" name="lastName" />
+                        </div>
+                        <div class="form-group">
+                            <span class="icon-Email-Icon"></span>
+                            <input type="text" placeholder="Email" id="email" name="email" />
+                        </div>
+                        <div class="form-group">
+                            <span class="icon-Password-Icon"></span>
+                            <input type="password" placeholder="Password" name="password" />
+                        </div>
+                        <div class="form-group p-form-mar">
+                            <span class="icon-Zip-Code-Icon"></span>
+                            <input type="password" placeholder="zip code" name="zipcode" />
+                        </div>
+                        <div class="p-signup-btn">
+                            <input class="btn btn-fork" type="submit" name="submit" value="Create your Account" />
+                        </div>
+                    </form>
+                    <p class="p-pop-txt">By tapping 'CreateYour Account' You agree to the Forkspot
+                        <a href="javascript:void(0)">Term of services</a> &amp;
+                        <a href="javascript:void(0)">Privacy Policy</a>
+                    </p>
+                    <p class="p-pop-txt">Already a Forkspot member?
+                        <a data-attribute="fork-login" class="st-log" href="javascript:void(0)"> Sign In</a>
+                    </p>
+                </div>
+    </div>
+</div>
+
+<script src="js/validate.min.js"></script>
+
+<script>
+
+    function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        console.log("=== G+ signin successful ===");
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        $("#firstName").val(profile.getGivenName());
+        $("#lastName").val(profile.getFamilyName());
+        $("#email").val(profile.getEmail());
+        $("#googleId").val(profile.getId());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        //console.log("ID Token: " + id_token);
+    };
+
+    $("#signup_facebook").click(function () {
+        FB.login(function (response) {
+            if (response.authResponse) {
+                console.log('Welcome! Fetching your information.... ');
+                FB.api('/me?fields=picture,name,first_name,last_name,middle_name,email', function (response) {
+                    console.log(response);
+                    console.log('Good to see you, ' + response.name + '.');
+                    $("#firstName").val(response.first_name);
+                    $("#lastName").val(response.last_name);
+                    $("#email").val(response.email);
+                    $("#fbId").val(response.id);
+                });
+            } else {
+                console.log('User cancelled login or did not fully authorize.');
+            }
+        }, { scope: 'email' });
+    });
+
+    // $("#login_facebook").click(function () {
+    //     FB.login(function (response) {
+    //         if (response.authResponse) {
+    //             console.log('Welcome!  Fetching your information.... ');
+    //             FB.api('/me?fields=picture,name,first_name,last_name,middle_name,email', function (response) {
+    //                 console.log(response);
+    //                 console.log('Good to see you, ' + response.name + '.');
+    //                 $("#fbEmail").val(response.email);
+    //                 $("#fb_Id").val(response.id);
+    //             });
+    //         } else {
+    //             console.log('User cancelled login or did not fully authorize.');
+    //         }
+    //     }, { scope: 'email' });
+    // });
+
+
+    $("#forgotPassForm").validate(
+        {
+            rules: {
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                email: {
+                    email: "Your email address must be in the format of name@domain.com"
+                }
+            },
+            submitHandler: function (form) {
+                if ($('#forgotEmail').val() != '') {
+                    $.ajax({
+                        url: "/forgotPassword",
+                        method: "POST",
+                        data: { email: $('#forgotEmail').val() },
+                        success: function (response) {
+                            if (response.success == true) {
+                                $('.success_forgot').html(response.message);
+                            } else if (response.success == false) {
+                                $('.error_forgot').html(response.message);
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+    $("#loginForm").validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+                required: true
+            }
+        },
+        messages: {
+            email: {
+                required: "please provide email address",
+                email: "Your email address must be in the format of name@domain.com"
+            }, password: {
+                required: "This field is required"
+            }
+        }
+    });
+
+    $("#signUpForm").validate({
+        rules: {
+            firstName: {
+                required: true,
+            }, lastName: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+                required: true
+            },
+            zipcode: {
+                required: true,
+                min: 6,
+                //max:10
+            }
+        },
+        messages: {
+            email: {
+                email: "Your email address must be in the format of name@domain.com"
+            }
+        }
+    });
+
+</script>

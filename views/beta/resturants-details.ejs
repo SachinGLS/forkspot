@@ -1,0 +1,631 @@
+<% include include/head.ejs %>
+
+    <body>
+        <div class="pop-wrapper">
+            <div class="main_warapper">
+                <% include include/header.ejs %>
+                    <div class="restaurant-inner-content">
+                        <div class="rest-banner fork-pend p-res-top-sec">
+                            <img src="<%=output.detail.imagePath%>" />
+                            <div class="reto-pro loc-rate">
+                                <div class="discount left">
+                                    <span class="how-much">
+                                        <%=output.detail.discount%> % </span>
+                                    <span class="disc-off">OFF</span>
+                                </div>
+                                <div class="details-resta right">
+                                    <span class="brand-of  left">
+                                        <%=output.detail.name%>
+                                    </span>
+                                    <span class="rate-of full left">
+                                        <span class="start-rating left">
+                                            <% 
+                                    for(var j=0;j<output.detail.rating;j++){ 
+                                    %>
+                                                <span class="fa fa-star"></span>
+                                                <% } %>
+
+                                        </span>
+                                        <span class="acco-price right">
+                                            <% 
+                                    for(var j=0;j<output.detail.price;j++){ 
+                                    %>
+                                                <span>$</span>
+                                                <% } %>
+                                        </span>
+                                    </span>
+                                    <span class="rate-num full left p-rate">
+                                        <%=output.detail.ratingCount%> Ratings</span>
+                                    <span class="Adress-of full left">
+                                        <span class="addro">
+                                            <%=output.detail.addressForNavigation%>
+                                        </span>
+                                        <span class="loco right">
+
+                                            <span class="icon-Address-Icon"></span>
+                                            <span calss="est-time">
+                                                <span class="mi">
+                                                    <span class="val-mi">
+                                                        <%=output.detail.distance%>
+                                                    </span>
+                                                    <!-- <span class="dist-unit">ml</span> -->
+                                                </span>
+                                                <span class="min">
+                                                    <span class="val-min">10-20</span>
+                                                    <span class="dist-unit">min</span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rest-menu pos-rel">
+                            <div class="container">
+                                <ul class="p-menu">
+                                    <!-- <li><a href="#resta-menu">Menu</a></li> -->
+                                    <li>
+                                        <a href="#resta-loc" class="p-sec-scroll">About</a>
+                                    </li>
+                                    <li>
+                                        <a href="#resta-rev" class="p-sec-scroll">Reviews</a>
+                                    </li>
+                                </ul>
+                                <div class="p-share-wrap">
+                                    <a href="javascript:void(0)" onclick="saveFav('<%=output.detail.favorite%>','<%=output.detail.restId%>')">
+                                        <span id="saveFav">Save this restaurant</span>
+                                        <i class="icon-Save-Restaurant-Icon <% if(output.detail.favorite){ %> isFav <% }%>"></i>
+                                    </a>
+                                    <a href="#">
+                                        <i class="icon-Share-Restaurant-Icon"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-list-sec">
+                            <div class="container">
+                                <ul class="resta item-list clearfix p-menu-list">
+                                    <% for(var j=0;j<output.menuItems.length;j++){%>
+                                        <li class="setMenuDiv" id="<%=output.menuItems[j].menuTypeId%>">
+
+                                            <a class="full left" href="javascript:void(0)">
+                                                <p class="menu-slack">
+                                                    <i class="icon-regular"></i>
+                                                </p>
+                                                <p>
+                                                    <%=output.menuItems[j].menuTypeName%>
+                                                </p>
+                                            </a>
+                                        </li>
+                                        <% } %>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="acc-section">
+                            <div class="container">
+                                <%
+                    for(var k=0;k<output.menuItems.length;k++){
+                    for(var l=0;l<output.menuItems[k].items.length;l++){
+                    %>
+
+                                    <div class="data-acc showMenuListAll" data-attr="showMenuList<%=output.menuItems[k].menuTypeId%>">
+                                        <!-- id="resta-menu" -->
+
+
+                                        <h2 class="p-rest-accord active">
+                                            <%=output.menuItems[k].items[l].categoryName%>
+                                        </h2>
+                                        <ul class="clearfix p-default">
+
+                                            <%
+                                for(var m=0;m<output.menuItems[k].items[l].items.length;m++){
+                                %>
+                                                <li data-attribute="add-card">
+                                                    <p class="main-text clearfix">
+                                                        <span>
+                                                            <a href="#" </a>
+                                                                <%=output.menuItems[k].items[l].items[m].itemName%>
+                                                        </span>
+                                                        <span>
+                                                            <%=output.menuItems[k].items[l].items[m].price%>$+</span>
+                                                    </p>
+                                                    <p class="inner-txt">
+                                                        <%=output.menuItems[k].items[l].items[m].discription%>
+                                                    </p>
+                                                </li>
+                                                <% } %>
+                                        </ul>
+
+                                    </div>
+                                    <% }} %>
+                            </div>
+                        </div>
+                        <div class="rest-map-sec" id="resta-loc">
+                            <div class="container">
+                                <div class="map-address clearfix">
+                                    <div class="map-img">
+                                        <p>
+                                            <%=output.detail.address%>
+                                                <br />
+                                                <%=output.detail.address2%>
+                                                    <br />
+                                                    <%=output.detail.contactNo%>
+                                        </p>
+                                        <p class="adress-map">
+                                            <iframe src="https://www.google.com/maps/embed?pb=Eiffel+Tower,Paris+France" width="100%" height="100%" frameborder="0" style="border:0"
+                                                allowfullscreen></iframe>
+                                        </p>
+                                    </div>
+                                    <div class="map-txt">
+                                        <h2>About the
+                                            <%=output.detail.name%>
+                                        </h2>
+                                        <p class="mar_bottom_10">
+                                            <%=output.detail.aboutUsCustom%>
+                                        </p>
+                                        <div class="rest-time">
+                                            <p>Hours:</p>
+                                            <p>Today
+                                                <span>10 am to 7 pm</span>
+                                            </p>
+                                            <p>
+                                                <a href="#">Open Now</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-sec" id="resta-rev">
+                            <div class="rev-head clearfix">
+                                <div class="container clearfix">
+                                    <div class="heading-review left p-review-wrap">
+                                        <h2 class="p-mid-head">
+                                            <span>Review For
+                                                <span class="p-hidden-txt">:</span>
+                                            </span>
+                                            <span>
+                                                <%=output.detail.name%>
+                                            </span>
+                                        </h2>
+                                        <p>
+                                            <span class="d-block">
+                                                <span class="start-rating left">
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star-half"></span>
+                                                </span>
+                                            </span>
+                                            <span class="rate-num full left yellow-range">
+                                                <%=output.detail.ratingCount%> Ratings</span>
+                                        </p>
+                                    </div>
+                                    <div class="most-recrent right p-sort">
+                                        <label> Sort for:</label>
+                                        <div class="p-sort-select">
+                                            <select>
+                                                <option>Most Recent </option>
+                                                <option>xyz</option>
+                                                <option>xyz</option>
+                                                <option>xyz</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rev-body">
+                                <div class="container">
+                                    <ul class="reviw-list unstyle p-review-list clearfix">
+
+
+                                        <%
+                                    for(var i=0;i<output.detail.reviews.length;i++){
+                                    %>
+                                            <li>
+                                                <div class="rev-img">
+                                                    <img src="<%=output.detail.reviews[i].imageUrl%>" />
+                                                </div>
+                                                <div class="main-rev-detail">
+                                                    <div class="rev-name">
+                                                        <p class="ino-name">
+                                                            <%=output.detail.reviews[i].userName%>
+                                                        </p>
+                                                        <p>
+                                                            <span>
+                                                                <span class="start-rating left">
+                                                                    <% 
+                                                    for(var j=0;j<output.detail.reviews[i].rating;j++){ 
+                                                    %>
+                                                                        <span class="fa fa-star"></span>
+
+                                                                        <% 
+                                                    } %>
+
+                                                                </span>
+                                                            </span>
+                                                        </p>
+                                                    </div>
+                                                    <p class="rev-detail">
+                                                        <%=output.detail.reviews[i].comment%>
+                                                    </p>
+                                                    <p class="rev-detail2"> Review Posted
+                                                        <%=output.detail.reviews[i].createdOn%>
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <% } %>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <footer class="p-alt-footer">                
+                <div class="foot-nav-mobile">
+                   <div class="container">
+                        <div class="mob-foot">
+                           <h5>Sign Up For Special offers<span class=""></span></h5>
+                           <ul>
+                               <li>
+                                  <div><input type="text" placeholder="Email*" /></div>
+                                  <div><input type="text" placeholder="Zip code*" /></div>
+                                  <div><input type="button" class="btn btn-fork" value="Surprise Me" /></div>
+                                </li>
+                           </ul>
+
+                        </div>
+                        <div class="mob-foot">
+                           <h5>Contact Us <span class=""></span></h5>
+                           <ul>
+                               <li>
+
+                                </li>
+                           </ul>
+
+                        </div>
+                        <div class="mob-foot">
+                           <h5>Connect with us <span class=""></span></h5>
+                           <ul>
+                               <li><a class="facebook" href="https://www.facebook.com/forkspot" target="_blank">Facebook</a></li>
+                              <li><a class="twitter" href="https://twitter.com/forkspot" target="_blank">Twitter</a></li>
+                              <li><a class="instagram" href="https://www.instagram.com/forkspot/" target="_blank">Instagram</a></li>
+                              <li><a class="youtube" href="https://www.youtube.com/channel/UC_vJWIgDtSAa7j2BOGFgEzw" target="_blank">YouTube</a></li>
+                             <li><a class="product-hunt" href="https://www.producthunt.com/posts/forkspot" target="_blank">Product Hunt</a></li>
+                           </ul>
+
+                        </div>
+                        <div class="mob-foot">
+                           <h5>Partner with us <span class=""></span></h5>
+                           <ul>
+                                 <li><a href="https://biz.forkspot.com" target="_blank">For restaurants</a></li>
+                                <li><a href="https://biz.forkspot.com/login" target="_blank">Marchant login</a></li>
+                           </ul>
+
+                        </div>
+                      </div>
+                </div>
+                <div class="bot-strip">
+                    <div class="container relateive">
+                        <ul class="mobile-boot-tags clearfix">
+                            <li><a href="https://biz.forkspot.com/privacy_policy" target="_blank">Privacy Policy</a></li>
+                            <li><a href="https://biz.forkspot.com/terms" target="_blank">Terms of Service</a></li>
+                        </ul>
+                        <p>© 2017 Forkspot.  All Rights Reserved</p><p>Made with <span class="icon-heart"></span> in Los Angeles</p>
+                        <ul class="desktop-boot-tags">
+                            <li><a href="https://biz.forkspot.com/privacy_policy" target="_blank">Privacy Policy</a></li>
+                            <li><a href="https://biz.forkspot.com/terms" target="_blank">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#" id="back-to-top" title="Back to top"><i class="icon-top_arrow"></i></a>
+            </footer> -->
+
+                    <% include include/footer.ejs %>
+
+
+
+                        <!-- <div class="rhs-fixed-ord-deatail resto-profile-page">
+                    <span class="p-top-arrow active"></span>
+                    <div class="bill-view left"> 
+                        <a href="#" class="p-edit-link">Edit your order</a>                       
+                        <h4>Your Order</h4>
+                        <p class="theme-color no-margin"><%=output.detail.name%></p>
+                        <ul class="recipt-listing unstyle  left no-pad">
+                            <li class="left full">
+                                <span class="itm-count left">1</span>
+                                <span class="itm-disc left"><span class="left full"><strong>Caesar Salad</strong></span><span>Balsamic Dressing <br>Add Chicken</span></span>
+                                <span class="item-price right">$7.89</span>
+                            </li>
+                            <li class="left full">
+                                <span class="itm-count left">1</span>
+                                <span class="itm-disc left"><span class="left full"><strong>Caesar Salad</strong></span><span>Balsamic Dressing <br>Add Chicken</span></span>
+                                <span class="item-price right">$7.89</span>
+                            </li>
+                            <li class="left full">
+                                <span class="itm-count left">1</span>
+                                <span class="itm-disc left"><span class="left full"><strong>Caesar Salad</strong></span><span>Balsamic Dressing <br>Add Chicken</span></span>
+                                <span class="item-price right">$7.89</span>
+                            </li>
+
+                        </ul>
+                        <div class="remove-all right full">
+                            <span class="Delete-Icon"><i class="icon-Delete-Icon"></i><span class="right">Empty Bag</span></span>
+                        </div>
+                        <ul class="sub-total unstyle left full">
+                            <li class="left full"><span class="item-norm left">ItemSubtotal:</span><span class="itm-rate right">$15.00</span></li>
+                            <li class="left full"><span class="item-norm left">Sales Tax:</span><span class="itm-rate right">$2.66</span></li>
+                            <li class="left full"><span class="item-norm left">Discount-Applied-15</span><span class="itm-rate right">$5.66</span></li>
+                            <li class="left full"><span class="item-norm left">Tip-Amount-15</span><span class="itm-rate right">$3.66</span></li>
+                            <li class="left full sub-total-uts"><span class="item-norm left">Total</span><span class="itm-rate right">$25.66</span></li>
+                        </ul>
+                    </div>
+                     <span class="manage-order"><span><span class="mg-ord"></span> Manage you order</span></span> 
+                    
+                    <a class="btn btn-fork pro-to-pay">Proceed to checkout: $6.90</a>
+                </div>
+                
+            <!-- <div class="rhs-fixed-ord-deatail resto-profile-page" style="height: 883px;">
+                <div class="bill-view left">
+                    <h4>Your Order</h4>
+                    <p class="theme-color no-margin">Tavern On Brand</p>
+                    <ul class="recipt-listing unstyle  left">
+                        <li class="left full">
+                            <span class="cut-product"></span>
+                            <span class="itm-count left">1</span>
+                            <span class="itm-disc left"><span class="left full"><strong>Caesar Salad</strong></span><span>Balsamic Dressing <br>Add Chicken</span></span>
+                            <span class="item-price right">$7.89</span>
+                        </li>
+                        <li class="left full">
+                            <span class="cut-product"></span>
+                            <span class="itm-count left">1</span>
+                            <span class="itm-disc left"><span class="left full"><strong>Caesar Salad</strong></span><span>Balsamic Dressing <br>Add Chicken</span></span>
+                            <span class="item-price right">$7.89</span>
+                        </li>
+                        <li class="left full">
+                            <span class="cut-product"></span>
+                            <span class="itm-count left">1</span>
+                            <span class="itm-disc left"><span class="left full"><strong>Caesar Salad</strong></span><span>Balsamic Dressing <br>Add Chicken</span></span>
+                            <span class="item-price right">$7.89</span>
+                        </li>
+
+                    </ul>
+                    <div class="remove-all right full">
+                        <span class="Delete-Icon">Empty Bag</span>
+                    </div>
+                    <ul class="sub-total unstyle left full">
+                        <li class="left full"><span class="item-norm left">ItemSubtotal:</span><span class="itm-rate right">$15.00</span></li>
+                        <li class="left full"><span class="item-norm left">Sales Tax:</span><span class="itm-rate right">$2.66</span></li>
+                        <li class="left full"><span class="item-norm left">Discount-Applied-15</span><span class="itm-rate right">$5.66</span></li>
+                        <li class="left full"><span class="item-norm left">Tip-Amount-15</span><span class="itm-rate right">$3.66</span></li>
+                        <li class="left full sub-total-uts"><span class="item-norm left">Total</span><span class="itm-rate right">$25.66</span></li>
+                    </ul>
+                </div>
+                <a class="btn btn-fork pro-to-pay">Proceed to checkout: $6.90</a>
+            </div> -->
+
+            </div>
+            <!-- <div id="loader-sec" style="display:block">
+            <div class="loader-img"><img src="images/fork_new.gif" alt="loader image"></div>
+        </div> -->
+        </div>
+
+        <!-- Search Popup -->
+        <div data-pop="p-search-pop" class="fork-pop">
+            <span class="p-close p-res-close">x</span>
+            <div class="p-search-wrap">
+                <div class="p-search-inp-wrap mar_bottom_35">
+                    <div class="p-search-inp mar_bottom_15">
+                        <i class="icon-Address-Icon"></i>
+                        <input type="text" placeholder="Street address, city, state">
+                    </div>
+                    <div class="p-search-inp">
+                        <i class="icon-Search-Icon"></i>
+                        <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                    </div>
+                </div>
+                <div class="p-serch-btn pad_left_10 pad_right_10">
+                    <input type="submit" value="Search">
+                </div>
+            </div>
+        </div>
+        <!-- Search Popup -->
+
+        <div data-pop="add-card" class="fork-pop resturant-pop">
+            <div class="fork-pop-header">
+                <h2 class="text-center">Full Sheet SeaWeed Roll</h2>
+                <span class="close_model">X</span>
+            </div>
+            <span class="p-close p-res-close">x</span>
+            <div class="pad_top_5 pad_bottom_5">
+                <div class="p-pop-scroll">
+                    <div class="pop-container">
+                        <div class="inner-pop-content">
+                            <h2 class="p-pay-head">Full Sheet SeaWeed Roll</h2>
+                            <p class="p-pop-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                the industry's standard dummy text ever since the 1500s, when an unknown printer</p>
+                            <div class="pop-sect-1 clearfix">
+                                <p>Choice Of Fish
+                                    <br />
+                                    <span>Reqiured choose between 1 and 3</span>
+                                </p>
+                                <div class="reminder-sec">
+                                    <ul class="unstyle centered no-pad">
+                                        <li>
+                                            <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
+                                            <label for="styled-checkbox-1">Imitation Crab</label>
+                                        </li>
+                                        <li>
+                                            <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2">
+                                            <label for="styled-checkbox-2">Slamon</label>
+                                        </li>
+                                        <li>
+                                            <input class="styled-checkbox" id="styled-checkbox-3" type="checkbox" value="value3">
+                                            <label for="styled-checkbox-3">Spicy Slamon</label>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="pop-sect-1 clearfix">
+                                <p>Choice Of Fish
+                                    <br />
+                                    <span>Reqiured choose between 1 and 3</span>
+                                </p>
+                                <div class="reminder-sec">
+                                    <ul class="unstyle centered no-pad">
+                                        <li>
+                                            <input class="styled-checkbox" id="styled-checkbox-7" type="checkbox" value="value7">
+                                            <label for="styled-checkbox-7">Imitation Crab</label>
+                                        </li>
+                                        <li>
+                                            <input class="styled-checkbox" id="styled-checkbox-8" type="checkbox" value="value8">
+                                            <label for="styled-checkbox-8">Slamon</label>
+                                        </li>
+                                        <li>
+                                            <input class="styled-checkbox" id="styled-checkbox-9" type="checkbox" value="value9">
+                                            <label for="styled-checkbox-9">Spicy Slamon</label>
+                                        </li>
+                                        <li>
+                                            <input class="styled-checkbox" id="styled-checkbox-4" type="checkbox" value="value4">
+                                            <label for="styled-checkbox-4">Spicy Slamon</label>
+                                        </li>
+                                        <li>
+                                            <input class="styled-checkbox" id="styled-checkbox-5" type="checkbox" value="value5">
+                                            <label for="styled-checkbox-5">Spicy Slamon</label>
+                                        </li>
+                                        <li>
+                                            <input class="styled-checkbox" id="styled-checkbox-6" type="checkbox" value="value6">
+                                            <label for="styled-checkbox-6">Spicy Slamon</label>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="pop-sect-1 clearfix">
+                                <p>Choice Of Sauce
+                                    <br />
+                                    <span>Reqiured choose between 1 and 3</span>
+                                </p>
+                                <div class="filter-order">
+                                    <select>
+                                        <option value="Ceaser Dressing">Ceaser Dressing</option>
+                                        <option value="pqr">pqr</option>
+                                        <option value="Pending">Pending</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="pop-sect-1 clearfix">
+                                <p>Special Instructions </p>
+                                <div class="p-txt-area">
+                                    <textarea rows="3" placeholder="e.g. Extra ranch on the side? No onions? Let us know here."></textarea>
+
+                                </div>
+                            </div>
+                            <div class="p-counter-wrap">
+                                <div class="p-counter flex flex-middle flex-center">
+                                    <span class="p-count">-</span>
+                                    <input type="text" value="0">
+                                    <span class="p-count">+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:void(0)" class="btn btn-fork ad-new-adr p-bottom-btn d-block">Add to bag: $13.99</a>
+        </div>
+
+        <!-- Login Popups -->
+        <% include include/loginPopUp.ejs %>
+            <!-- Login Popups -->
+            <script type="text/javascript">
+
+                $(function () {
+                    // $('.p-pop-scroll').slimScroll({
+                    // });
+                });
+
+                $(document).ready(function () {
+                    $("#testimonial-slider").owlCarousel({
+                        items: 1,
+                        itemsDesktop: [1000, 1],
+                        itemsDesktopSmall: [979, 1],
+                        itemsTablet: [767, 1],
+                        pagination: false,
+                        transitionStyle: "fade",
+                        navigation: true,
+                        navigationText: ["", ""],
+                        autoPlay: true
+                    });
+
+                    $("#flexiselDemo3").flexisel({
+                        visibleItems: 3,
+                        itemsToScroll: 1,
+                        autoPlay: {
+                            enable: true,
+                            interval: 1000000,
+                            pauseOnHover: true
+                        }
+                    });
+                    $("#flexiselDemo4").flexisel({
+                        visibleItems: 3,
+                        itemsToScroll: 1,
+                        autoPlay: {
+                            enable: true,
+                            interval: 1000000,
+                            pauseOnHover: true
+                        }
+                    });
+                    $("#flexiselDemo5").flexisel({
+                        visibleItems: 2,
+                        itemsToScroll: 1,
+                        autoPlay: {
+                            enable: true,
+                            interval: 1000000,
+                            pauseOnHover: true
+                        }
+                    });
+
+                    // New instance of Wallop
+                    var slider = document.querySelector('.Wallop');
+                    new Wallop(slider, {
+                        carousel: false
+                    });
+
+
+                });
+
+
+                function saveFav(status, restId) {
+                    $.ajax({
+                        method: "POST",
+                        url: "/setUnsetFavRestaurant",
+                        data: { restId: restId, status: status },
+                        success: function (res) {
+                            res = JSON.parse(res);
+                            if (res.Success == true) {
+                                location.reload();
+                            }
+                        }
+                    });
+                }
+                $('.setMenuDiv').click(function () {
+                    $('.showMenuListAll').each(function () {
+                        let hideId = $(this).attr('data-attr');
+                        $(`[data-attr=${hideId}]`).hide();
+                    });
+                    let showMenuListObj = "showMenuList" + $(this).attr('id');
+                    $(`[data-attr=${showMenuListObj}]`).show();
+                });       
+            </script>
+    </body>
+
+    </html>
+    <style>
+        .isFav {
+            color: #f39225;
+        }
+    </style>

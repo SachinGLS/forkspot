@@ -1,0 +1,51 @@
+<header class="fixed_header">
+    <div class="container">
+        <a class="logo" href="#">
+            <img src="images/logo.png" alt="Fork Spot" data-attribute="welcome-screen">
+        </a>
+        <div class="searc-for-resta">
+            <span class="location-fill half">
+                <span class="icon-forkpoint icon-Address-Icon"></span>
+                <input type="text" placeholder="Enter Location">
+            </span>
+            <span class="location-fill half">
+                <span class="icon-forkpoint icon-Search-Icon"></span>
+                <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+            </span>
+        </div>
+        <div class="topbar-actions">
+                <span class="login-act act">
+                    <a data-attribute="fork-login" id="loginHeader" href="javascript:void(0)">Log In</a>
+                </span>
+
+                    <!-- <span class="my-Account">
+                        <i class="icon-Profile2-Icon"></i>
+                        <span class="p-hide-txt">My Account</span>
+                    </span> -->
+                        <span class="bag" onclick="placeorder()">
+                            <i class="icon-Shopping-Bag-Icon"></i>
+                        </span>
+        </div>
+        <div class="p-res-search" data-attribute="p-search-pop">
+            <span class="icon-Search-Icon"></span>
+        </div>
+    </div>
+    <script>
+        function placeorder() {
+            $.ajax({
+                method: "GET",
+                url: "/placeorder",
+                data: {},
+                success: function (res) {
+                    console.log(res);
+                    if (res.Success == true) {
+                        location.href = "/placeorder";
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+    </script>
+</header>

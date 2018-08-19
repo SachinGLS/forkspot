@@ -23,32 +23,34 @@
                 <div class="p-answer-sec">
                     <div class="p-container">
                         <div class="p-answer-wrap">
-                            <h2>Find Answers Fast</h2>
+                            <h2>Contact</h2>
+                            <div class="success-message" style="text-align: center;"><%= msg%></div>
                             <div class="p-ans-list-wrap">
-                                <ul class="p-answer-list">
-                                    <li>
-                                        <p class="p-ques">I have an issue with my order</p>
-                                        <p class="p-desc">Missing an item, incorrect items, etc.</p>
-                                        <div><button class="p-ans-btn">Let Us Know</button></div>
-                                    </li>
-                                    <li>
-                                        <p class="p-ques">I have a random comment</p>
-                                        <p class="p-desc">Suggestions, ideas,  etc.</p>
-                                        <div><button class="p-ans-btn">Drop Us a Line</button></div>
-                                    </li>
-                                </ul>
-                                <ul class="p-answer-list">
-                                    <li>
-                                        <p class="p-ques">I have question about charges</p>
-                                        <p class="p-desc">Multiple charges, $1 charge, etc.</p>
-                                        <div><button class="p-ans-btn">Get Answers</button></div>
-                                    </li>
-                                    <li>
-                                        <p class="p-ques">I care about something else</p>
-                                        <p class="p-desc">Suggestions, ideas,  etc.</p>
-                                        <div><button class="p-ans-btn">See All Topics</button></div>
-                                    </li>
-                                </ul>
+                                <form action="contact" method="post">
+                                <table cellpadding="5">
+                                    <tr>
+                                        <td>Name:</td>
+                                    </tr>
+                                    <tr>    
+                                        <td><input type="text" name="name"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email:</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" name="email"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Message:</td>
+                                    </tr>
+                                    <tr>
+                                        <td><textarea rows="5" cols="50" name="message" placeholder="Write your message"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="submit" name="submit" value="Send"></td>
+                                    </tr>
+                               </table>
+                               </form>
                             </div>
                         </div>
                     </div>

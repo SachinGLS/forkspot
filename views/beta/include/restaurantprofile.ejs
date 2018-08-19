@@ -1,0 +1,1495 @@
+<div class="restaurant-inner-content">
+
+    <div class="rest-banner fork-pend p-res-top-sec">
+        <img id="rest-image" src="images/header_image.png" />
+        <div class="reto-pro loc-rate">
+            <div class="discount left">
+                <span id="discount_key" class="how-much">
+                    <%=output.detail.discount%> % </span>
+                <span id="discount_key" class="disc-off">OFF</span>
+            </div>
+            <div class="details-resta right">
+                <input type="hidden" id="rest_id" value="<%=output.detail.restId%>">
+                <span id="rest_name" class="brand-of  left">
+                    <%=output.detail.name%>
+                </span>
+                <input type="hidden" id="hfCods" value="<%=output.detail.latitude%>, <%=output.detail.longitude%>" />
+                <span id="rest_rating_key" class="rate-of full left">
+                    <span class="start-rating left">
+                        <% 
+                            for(var j=0;j<output.detail.rating;j++){ 
+                            %>
+                            <span class="fa fa-star"></span>
+                            <% } %>
+                    </span>
+                    <span class="acco-price right">
+                        <% 
+                            for(var j=0;j<output.detail.price;j++){ 
+                            %>
+                            <span>$</span>
+                            <% } %>
+                    </span>
+                </span>
+                <span class="rate-num full left p-rate">
+                    <%=output.detail.ratingCount%> Ratings</span>
+                <span class="Adress-of full left">
+                    <span id="rest_address_key" class="addro">
+                        <%=output.detail.addressForNavigation%>
+                    </span>
+                    <span class="loco right">
+
+                        <span class="icon-Address-Icon"></span>
+                        <span calss="est-time">
+                            <span class="mi">
+                                <span id="rest_distance" class="val-mi">
+                                    <%=output.detail.distance%>
+                                </span>
+                                <span class="dist-unit"></span>
+                            </span>
+                            <!-- <span class="min">
+                                <span class="val-min">10-20</span>
+                                <span class="dist-unit">min</span>
+                            </span> -->
+                        </span>
+                    </span>
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <div class="rest-menu pos-rel">
+        <div class="container">
+            <ul class="p-menu">
+                <!-- <li><a href="#resta-menu">Menu</a></li> -->
+                <li>
+                    <a href="#resta-loc" class="p-sec-scroll">About</a>
+                </li>
+                <li>
+                    <a href="#resta-rev" class="p-sec-scroll">Reviews</a>
+                </li>
+            </ul>
+            <div class="p-share-wrap">
+                <input type="hidden" id="hfFavourite" value="<%=output.detail.favorite%>">
+                <a href="#" onclick="saveFav('<%=output.detail.restId%>')">
+                    <span>Save this restaurant</span>
+                    <i class="icon-Save-Restaurant-Icon <% if(output.detail.favorite){ %> isFav <% }%>"></i>
+                </a>
+                <a href="#">
+                    <i class="icon-Share-Restaurant-Icon"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="item-list-sec">
+        <div class="container">
+            <ul class="resta item-list clearfix p-menu-list">
+                <%
+                    function setDefaultMenu(menuList) {
+                        var menuId = 0, defaultMenuId=0;
+                        output.menuItems.forEach(element => {
+                            <!-- console.log("Start time: "+(new Date( element.startTime*1000)).getHours()+" End time: "+(new Date( element.endTime*1000)).getHours()); -->
+                            <!-- console.log("Server time: "+(new Date( element.serverCurrentTime*1000)).getHours()); -->
+                            if(element.serverCurrentTime > element.startTime && element.serverCurrentTime < element.endTime)
+                            {
+                               menuId = element.menuTypeId;
+                            }
+                            if(element.menuTypeName=="Regular Menu")
+                            defaultMenuId = element.menuTypeId;
+                        });
+                        if(menuId==0)
+                          menuId = defaultMenuId;
+                        return menuId;
+                    }%>
+                    <%
+                    var menuId = setDefaultMenu(output.menuItems);
+                    console.log(menuId);
+                        for(var j=0;j<output.menuItems.length;j++){%>
+                        <%if(menuId == output.menuItems[j].menuTypeId){%>
+                            <li onclick="filterMenu('<%=output.menuItems[j].menuTypeId%>')" class="setMenuDiv p-active" id="<%=output.menuItems[j].menuTypeId%>">
+                                <%}else{%>
+                                    <li onclick="filterMenu('<%=output.menuItems[j].menuTypeId%>')" class="setMenuDiv" id="<%=output.menuItems[j].menuTypeId%>">
+                                        <%}%>
+                                            <a class="full left" href="javascript:void(0)">
+                                                <p class="menu-slack">
+                                                    <%if(output.menuItems[j].menuTypeName=="Breakfast"){%>
+                                                        <i class="icon-breakfast_focus"></i>
+                                                        <%}else if(output.menuItems[j].menuTypeName=="Brunch"){%>
+                                                            <i class="icon-brunch_focus"></i>
+                                                            <%}else if(output.menuItems[j].menuTypeName=="Lunch"){%>
+                                                                <i class="icon-lunch"></i>
+                                                                <%}else if(output.menuItems[j].menuTypeName=="Dinner"){%>
+                                                                    <i class="icon-Dinner"></i>
+                                                                    <%}else if(output.menuItems[j].menuTypeName=="Regular Menu"){%>
+                                                                        <i class="icon-regular"></i>
+                                                                        <%}else {%>
+                                                                            <i class="icon-custom_menu"></i>
+                                                                            <%}%>
+                                                </p>
+                                                <p>
+                                                    <%=output.menuItems[j].menuTypeName%>
+                                                </p>
+                                            </a>
+                                    </li>
+                                    <% } %>
+            </ul>
+        </div>
+    </div>
+    <div class="acc-section">
+        <div class="container">
+            <%
+                for(var k=0;k<output.menuItems.length;k++){
+                  for(var l=0;l<output.menuItems[k].items.length;l++){
+                    %>
+                <%if(menuId == output.menuItems[k].menuTypeId){%>
+                    <div class="data-acc showMenuListAll" data-attr="showMenuList-<%=output.menuItems[k].menuTypeId%>" id="resta-menu">
+                        <%}else{%>
+                            <div class="data-acc showMenuListAll" style="display:none;" data-attr="showMenuList-<%=output.menuItems[k].menuTypeId%>"
+                                id="resta-menu">
+                                <%}%>
+                                    <h2 class="p-rest-accord active">
+                                        <%=output.menuItems[k].items[l].categoryName%>
+                                    </h2>
+                                    <ul class="clearfix p-default">
+                                        <%
+                            for(var m=0;m<output.menuItems[k].items[l].items.length;m++){
+                            %>
+                                            <%if(output.menuItems[k].items[l].items[m].isAvailable==true){%>
+                                                <li onclick="Clickitem(this)" data-attribute="add-card">
+                                                    <%}else{%>
+                                                        <li class="item-disable" onclick="Clickitem(this)" data-attribute="add-card">
+                                                            <%}%>
+                                                                <p class="main-text clearfix ">
+                                                                    <span>
+                                                                        <a class="clickmenuitem" id="<%=output.menuItems[k].items[l].items[m].itemId%>">
+                                                                            <%=output.menuItems[k].items[l].items[m].itemName%>
+                                                                        </a>
+                                                                    </span>
+                                                                    <span class="itm-price">
+                                                                        $
+                                                                        <%=output.menuItems[k].items[l].items[m].price%>+</span>
+                                                                </p>
+                                                                <p class="inner-txt">
+                                                                    <%=output.menuItems[k].items[l].items[m].discription%>
+                                                                </p>
+                                                                <input type="hidden" id="hfAvailable" value="<%=output.menuItems[k].items[l].items[m].isAvailable%>" />
+                                                                <input type="hidden" id="hfItemPrice" value="0" />
+                                                        </li>
+                                                        <% } %>
+                                    </ul>
+                            </div>
+                            <% }} %>
+                    </div>
+        </div>
+        <div class="rest-map-sec" id="resta-loc">
+            <div class="container">
+                <div class="map-address clearfix">
+                    <div class="map-img">
+                        <p>
+                            <%=output.detail.address%>
+                                <br />
+                                <%=output.detail.address2%>
+                                    <br />
+                                    <%=output.detail.contactNo%>
+                        </p>
+                        <div class="adress-map">
+                            <div id="map" style="width: 100%; height: 300px;"></div>
+                        </div>
+                    </div>
+                    <div class="map-txt">
+                        <h2>About the
+                            <%=output.detail.name%>
+                        </h2>
+                        <p class="mar_bottom_10">
+                            <%=output.detail.aboutUsCustom%>
+                        </p>
+                        <div class="rest-time">
+                            <p>Hours:</p>
+                            <p>Today
+                                <% for(i=0; i<output.detail.hoursOpen.length;i++){%>
+                                    <%if(output.detail.hoursOpen[i].day==
+                           ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"][(new Date()).getDay()]){%>
+                                        <span>
+                                            <%=output.detail.hoursOpen[i].hours[0].openTime%> to
+                                                <%=output.detail.hoursOpen[i].hours[0].closeTime%>
+                                        </span>
+                                        <%}}%>
+                            </p>
+                            <p>
+                                <span>Open Now</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="review-sec" id="resta-rev">
+            <div class="rev-head clearfix">
+                <div class="container clearfix">
+                    <div class="heading-review left p-review-wrap">
+                        <h2 class="p-mid-head">
+                            <span>Review For
+                                <span class="p-hidden-txt">:</span>
+                            </span>
+                            <span>
+                                <%=output.detail.name%>
+                            </span>
+                        </h2>
+                        <p>
+                            <span class="d-block">
+                                <span class="start-rating left">
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star-half"></span>
+                                </span>
+                            </span>
+                            <span class="rate-num full left yellow-range">
+                                <%=output.detail.ratingCount%> Ratings</span>
+                        </p>
+                    </div>
+                    <div class="most-recrent right p-sort">
+                        <label> Sort for:</label>
+                        <div class="p-sort-select">
+                            <select id="ddlSortRating" onChange="sortReviews()">
+                                <option value=1>Most Recent</option>
+                                <option value=2>Alphabetical</option>
+                                <option value=3>Ratings</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rev-body">
+                <div class="container">
+                    <ul class="reviw-list unstyle p-review-list clearfix">
+                        <%
+                            for(var i=0;i<output.detail.reviews.length;i++){
+                            %>
+                            <li>
+                                <div class="rev-img">
+                                    <img src="<%=output.detail.reviews[i].imageUrl%>" />
+                                </div>
+                                <div class="main-rev-detail">
+                                    <div class="rev-name">
+                                        <p class="ino-name">
+                                            <%=output.detail.reviews[i].userName%>
+                                        </p>
+                                        <p>
+                                            <span>
+                                                <span class="start-rating left">
+                                                    <% 
+                                                        for(var j=0;j<output.detail.reviews[i].rating;j++){ 
+                                                        %>
+                                                        <span class="fa fa-star"></span>
+                                                        <% 
+                                                        } %>
+                                                </span>
+                                        </p>
+                                    </div>
+                                    <p class="rev-detail">
+                                        <%=output.detail.reviews[i].comment%>
+                                    </p>
+                                    <p class="rev-detail2"> Review posted
+                                        <%=output.detail.reviews[i].createdOn%>
+                                    </p>
+                                </div>
+                                <input type="hidden" class="review-date" value="<%=output.detail.reviews[i].reviewId%>" />
+                                <input type="hidden" class="review-rating" value="<%=output.detail.reviews[i].rating%>" />
+                            </li>
+                            <% } %>
+                    </ul>
+                    <%if(output.detail.reviewCount>3){%>
+                        <div id="divLoadReview" style="margin: -2% 0 2% 20%;" onclick="getRestaurantReviews('<%=output.detail.restId%>')">
+                            <span style="cursor: pointer;">Load more</span>
+                        </div>
+                        <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rhs-fixed-ord-deatail resto-profile-page" id="divBag">
+        <span class="p-top-arrow active"></span>
+        <div class="bill-view left">
+            <%if(!(items === undefined) && !(items.Result.cartItems===undefined)){%>
+                <a href="#" class="p-edit-link">Edit your order</a>
+                <%}%>
+                    <h4>Your Order</h4>
+                    <p class="theme-color no-margin">
+                        <%=output.detail.name%>
+                    </p>
+                    <input type="hidden" id="hfCartItemId" value="">
+                    <ul class="recipt-listing unstyle left no-pad">
+                        <%
+                if(!(items.Result.cartItems===undefined)){ 
+                    for(var i=0;i< items.Result.cartItems[0].items.length;i++){
+                    %>
+                            <li class="left full" id="cartItem<%=items.Result.cartItems[0].items[i].cartItemid%>">
+                                <span class="itm-count left">
+                                    <%=items.Result.cartItems[0].items[i].itemQty%>
+                                </span>
+                                <span class="itm-disc left">
+                                    <span class="left full">
+                                        <strong>
+                                            <%=items.Result.cartItems[0].items[i].itemName%>
+                                        </strong>
+                                    </span>
+                                    <%if(items.Result.cartItems[0].items[i].specialInstruction){%>
+                                        <span>
+                                            Special Instrunction
+                                            <br>
+                                            <%=items.Result.cartItems[0].items[i].specialInstruction%>
+                                                <br>
+                                        </span>
+                                        <%} else{}%>
+                                            <!-- Required items -->
+                                            <% if(!(items.Result.cartItems[0].items[i].reqItems===undefined) && !(items.Result.cartItems[0].items[i].reqItems[0] ===undefined)){
+                                        for(var j=0;j< items.Result.cartItems[0].items[i].reqItems.length;j++){%>
+                                                <span class="bag-list-item">
+                                                    <%=items.Result.cartItems[0].items[i].reqItems[j].reqCatName%>
+                                                        <br>
+                                                </span>
+                                                <% if(!(items.Result.cartItems[0].items[i].reqItems[j].reqItems===undefined) && !(items.Result.cartItems[0].items[i].reqItems[j].reqItems[0] ===undefined)){
+                                            for(var k=0;k< items.Result.cartItems[0].items[i].reqItems[j].reqItems.length;k++){%>
+
+                                                    <span class="bag-sub-item">
+                                                        <%=items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].reqItemName%>
+                                                            <%if(parseFloat(items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].reqItemPrice)==0){%>
+                                                                <%} else {%>
+                                                                    : $
+                                                                    <%=items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].reqItemPrice%>
+                                                                        <%}%>
+                                                                            <br>
+                                                    </span>
+                                                    <% if(!(items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems===undefined) && !(items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[0] ===undefined)){
+                                                    for(var l=0;l< items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems.length;l++){%>
+                                                        <span class="bag-list-item">
+                                                            <%=items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dynCatName%>
+                                                                <br>
+                                                        </span>
+                                                        <% if(!(items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dItems===undefined) && !(items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dItems[0] ===undefined)){
+                                                    for(var m=0;m< items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dItems.length;m++){%>
+                                                            <span class="bag-sub-item">
+                                                                <%=items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dItems[m].dynItemName%>
+                                                                    <%if(parseFloat(items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dItems[m].dynItemPrice)==0){%>
+                                                                        <%} else {%>
+                                                                            : $
+                                                                            <%=items.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dItems[m].dynItemPrice%>
+                                                                                <%}%>
+                                                                                    <br>
+                                                            </span>
+                                                            <%}} else{ %>
+                                                                <br>
+                                                                <%}%>
+                                                                    <%}} else{ %>
+                                                                        <br>
+                                                                        <%}%>
+
+                                                                            <%}} else{ %>
+                                                                                <br>
+                                                                                <%}%>
+                                                                                    <%}} else{ %>
+                                                                                        <br>
+                                                                                        <%}%>
+                                                                                            <!-- Optional items -->
+                                                                                            <% if(!(items.Result.cartItems[0].items[i].optItems===undefined) && !(items.Result.cartItems[0].items[i].optItems[0] ===undefined)){
+                                                    for(var j=0;j< items.Result.cartItems[0].items[i].optItems.length;j++){%>
+                                                                                                <span class="bag-list-item">
+                                                                                                    <%=items.Result.cartItems[0].items[i].optItems[j].optCatName%>
+                                                                                                        <br>
+                                                                                                </span>
+                                                                                                <% if(!(items.Result.cartItems[0].items[i].optItems[j].optItems===undefined) && !(items.Result.cartItems[0].items[i].optItems[j].optItems[0] ===undefined)){
+                                                        for(var k=0;k< items.Result.cartItems[0].items[i].optItems[j].optItems.length;k++){%>
+                                                                                                    <span class="bag-sub-item">
+                                                                                                        <%=items.Result.cartItems[0].items[i].optItems[j].optItems[k].optItemsName%>
+                                                                                                            <%if(parseFloat(items.Result.cartItems[0].items[i].optItems[j].optItems[k].optItemsPrice)==0){%>
+                                                                                                                <%} else {%>
+                                                                                                                    : $
+                                                                                                                    <%=items.Result.cartItems[0].items[i].optItems[j].optItems[k].optItemsPrice%>
+                                                                                                                        <%}%>
+                                                                                                                            <br>
+                                                                                                    </span>
+                                                                                                    <%}} else{ %>
+                                                                                                        <br>
+                                                                                                        <%}%>
+                                                                                                            <%}} else{ %>
+                                                                                                                <br>
+                                                                                                                <%}%>
+                                </span>
+                                <span class="item-price right">$
+                                    <span class="item-total">
+                                        <%=items.Result.cartItems[0].items[i].itemTotalPrice%>
+                                    </span>
+                                    <br>
+                                    <!-- <span class="cartedit">
+                                <a href="#" class="edit">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a href="#" class="trash" onclick="deleteCartItem('<%=items.Result.cartItems[0].restId%>', '<%=items.Result.cartItems[0].cartId%>', '<%=items.Result.cartItems[0].items[i].cartItemid%>')">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </span> -->
+                                </span>
+                            </li>
+                            <input type="hidden" id="hfUserCredits" value="<%=items.Result.cartItems[0].userCredits%>" />
+                            <% }}
+                                else { %>
+                                <span class="resta-name">
+                                    <%=items.Message%>
+                                </span>
+                                <%} %>
+                                    <input type="hidden" id="hfDiscount" value="<%=items.Result.discount%>" />
+                                    <input type="hidden" id="hfTax" value="<%=items.Result.tax%>" />
+                    </ul>
+                    <%if(!(items.Result.cartItems===undefined)){%>
+                        <div class="remove-all right full">
+                            <span class="Delete-Icon" style="cursor:pointer;" onclick="clearBag('<%=items.Result.cartItems[0].restId%>')">
+                                <%}else{%>
+                                    <div class="remove-all right full" style="display:none;">
+                                        <span class="Delete-Icon" style="cursor:pointer;" onclick="clearBag(0)">
+                                            <%}%>
+                                                <i class="icon-Delete-Icon"></i>
+                                                <span class="right">Empty Bag</span>
+                                        </span>
+
+                                    </div>
+                                    <%if(!(items.Result.cartItems===undefined)){%>
+                                        <ul class="sub-total unstyle left full">
+                                            <%} else{%>
+                                                <ul class="sub-total unstyle left full" style="display: none;">
+                                                    <%}%>
+                                                        <li class="left full">
+                                                            <span class="item-norm left">Item Subtotal:</span>
+                                                            <span class="itm-rate right item-subtotal">$
+                                                            </span>
+                                                        </li>
+                                                        <li class="left full">
+                                                            <span class="item-norm left">Sales Tax:</span>
+                                                            <span class="itm-rate right" id="tax">$
+                                                            </span>
+                                                        </li>
+                                                        <li class="left full">
+                                                            <span class="item-norm left">Discount-Applied</span>
+                                                            <span id="dis-percent"></span>
+                                                            <span class="itm-rate right" id="discount">$
+                                                            </span>
+                                                        </li>
+                                                        <li class="left full">
+                                                            <span class="item-norm left">Tip-Amount</span>
+                                                            <span class="itm-rate right" id="tip">$
+                                                            </span>
+                                                        </li>
+                                                        <li class="left full sub-total-uts">
+                                                            <span class="item-norm left">Total</span>
+                                                            <span class="itm-rate right total-amt">$00.00</span>
+                                                        </li>
+                                                </ul>
+                        </div>
+                        <!-- <span class="manage-order"><span><span class="mg-ord"></span> Manage you order</span></span> -->
+
+                        <a class="btn btn-fork pro-to-pay">Proceed to checkout:
+                            <span id="divCheckout">0.00</span>
+                        </a>
+        </div>
+
+        <div data-pop="add-card" class="fork-pop resturant-pop">
+            <div class="fork-pop-header">
+                <h2 class="text-center" id="rest-pop-name"></h2>
+                <span class="close_model">X</span>
+            </div>
+            <span class="p-close p-res-close">x</span>
+            <div class="pad_top_5 pad_bottom_5">
+                <div class="p-pop-scroll">
+                    <div class="pop-container">
+                        <div class="inner-pop-content">
+                            <h2 class="p-pay-head">Full Sheet SeaWeed Roll</h2>
+                            <p class="p-pop-para" id="rest-pop-disc"></p>
+                            <div class="pop-sect-1 clearfix">
+                                <div class="reminder-sec">
+                                    <ul class="unstyle centered no-pad" id="rest-pop-li-requiredItems">
+                                        <!-- <li>
+                                        <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
+                                        <label for="styled-checkbox-1">Imitation Crab</label>
+                                    </li>
+                                    <li>
+                                        <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2">
+                                        <label for="styled-checkbox-2">Slamon</label>
+                                    </li>
+                                    <li>
+                                        <input class="styled-checkbox" id="styled-checkbox-3" type="checkbox" value="value3">
+                                        <label for="styled-checkbox-3">Spicy Slamon</label>
+                                    </li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="pop-sect-1 clearfix">
+                                <!-- <p>Choice Of Fish<br /><span>Reqiured choose between 1 and 3</span> </p> -->
+                                <div class="reminder-sec">
+                                    <ul class="unstyle centered no-pad" id="rest-pop-li-nonrequiredItems">
+                                        <!-- <li>
+                                        <input class="styled-checkbox" id="styled-checkbox-7" type="checkbox" value="value7">
+                                        <label for="styled-checkbox-7">Imitation Crab</label>
+                                    </li>
+                                    <li>
+                                        <input class="styled-checkbox" id="styled-checkbox-8" type="checkbox" value="value8">
+                                        <label for="styled-checkbox-8">Slamon</label>                                                                        
+                                    </li> -->
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <!-- <div class="pop-sect-1 clearfix">
+                            <p>Choice Of Sauce<br /><span>Reqiured choose between 1 and 3</span> </p>
+                            <div class="filter-order">
+                                <select>
+                                    <option value="Ceaser Dressing">Ceaser Dressing</option>
+                                    <option value="pqr">pqr</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
+                        </div> -->
+                            <div class="pop-sect-1 clearfix">
+                                <p>Special Instructions </p>
+                                <div class="p-txt-area">
+                                    <textarea rows="3" id="txtSpecialInstruction" placeholder="e.g. Extra ranch on the side? No onions? Let us know here."></textarea>
+                                </div>
+                            </div>
+                            <div class="p-counter-wrap">
+                                <div class="p-counter flex flex-middle flex-center">
+                                    <span class="p-count" onclick="removeItem()">-</span>
+                                    <input type="text" value="0" id="txtItemCount" maxlength="3">
+                                    <span class="p-count" onclick="addItem()">+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn btn-fork ad-new-adr p-bottom-btn d-block" onclick="addCartItems()">Add to bag: $
+                <span id="txtBagTotal">13.99</span>
+            </a>
+        </div>
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4e_CV3NO300KmK1cuWFdsbF4le6nPjAw" type="text/javascript"></script>
+        <script type="text/javascript">
+
+            $(function () {
+                $('.p-pop-scroll').slimScroll({
+                });
+            });
+            var selectedItems =
+                {
+                    menuItemId: 0,
+                    menuItemPrice: 0,
+                    reqItems: [],
+                    optItems: []
+                };
+            $(document).ready(function () {
+                //  GetDataForRestdetail();
+                var menuresponse;
+
+                showLocationOnMap();
+
+                calculateCartItems();
+            });
+
+            function Clickitem(element) {
+                $("#txtSpecialInstruction").val('');
+                var itemPrice = $(element).children().find(".itm-price").text();
+                itemPrice = itemPrice.trim().slice(1, -1).trim();
+                $("#hfItemPrice").val(itemPrice);
+                $("#txtBagTotal").text(itemPrice);
+                $("#txtItemCount").val(1);
+                var restid = $("#rest_id").val();
+                var item_id = $(element).children().find(".clickmenuitem").attr("id");
+                //Create list of all selected required and optional items
+                selectedItems =
+                    {
+                        menuItemId: item_id,
+                        menuItemPrice: itemPrice,
+                        reqItems: [],
+                        optItems: []
+                    };
+                $("#rest-pop-li-requiredItems").empty();
+                $("#rest-pop-li-nonrequiredItems").empty();
+                $.ajax({
+                    method: "GET",
+                    url: "/getMenuItem",
+                    data: { restId: restid, item_id: item_id },
+                    success: function (res) {
+                        menuresponse = res;
+                        console.log(res);
+                        selectedItems.itemCategoryId = res.Result.itemCategoryId;
+                        $("#rest-pop-name").html(res.Result.itemName);
+                        $("#rest-pop-choice").text(res.Result.itemName);
+                        $("#rest-pop-disc").text(res.Result.itemDesc);
+                        var itemReq = $("#rest-pop-li-requiredItems");
+                        for (var i = 0; i < res.Result.requiredItems.length; i++) {
+                            var maxCount = "", subItemMaxCount = "", subMenuItems = [];
+                            if (res.Result.requiredItems[i].multipleSelection == true)
+                                maxCount = "Maximum " + res.Result.requiredItems[i].maximumSelection;
+                            var subItem = "<div class='pop-sect-1 clearfix'><p>" + res.Result.requiredItems[i].categoryName + "<br><span>Required Choice " +
+                                maxCount + "</span></p><div class='reminder-sec'><ul class='unstyle centered no-pad'>";
+                            for (var j = 0; j < res.Result.requiredItems[i].items.length; j++) {
+                                if (res.Result.requiredItems[i].multipleSelection == true) {
+                                    subItem = subItem + "<li><input class=" + "styled-checkbox" + " id=" + res.Result.requiredItems[i].items[j].itemId + " onclick=clickreqCheckbox(this) type=" + "checkbox" + " value=" + res.Result.requiredItems[i].items[j].itemId + ">"
+                                        + "<label for=" + res.Result.requiredItems[i].items[j].itemId + ">" + res.Result.requiredItems[i].items[j].itemName + " </label><input type='hidden' id='itm" +
+                                        res.Result.requiredItems[i].items[j].itemId + "' value='" + res.Result.requiredItems[i].items[j].extCharge + "'/></li>";
+                                } else {
+                                    subItem = subItem + "<li><input class=" + "styled-checkbox" + " name='item" + i + "' id=" + res.Result.requiredItems[i].items[j].itemId + " onclick=clickreqCheckbox(this) type=" + "radio" + " value=" + res.Result.requiredItems[i].items[j].itemId + ">"
+                                        + "<label for=" + res.Result.requiredItems[i].items[j].itemId + ">" + res.Result.requiredItems[i].items[j].itemName + " </label><input type='hidden' id='itm" +
+                                        res.Result.requiredItems[i].items[j].itemId + "' value='" + res.Result.requiredItems[i].items[j].extCharge + "'/></li>";
+                                }
+                                for (var k = 0; k < res.Result.requiredItems[i].items[j].dCat.length; k++) {
+                                    if (res.Result.requiredItems[i].items[j].dCat[k].dMultipleSelection == true && res.Result.requiredItems[i].items[j].dCat[k].dMaxSelection != '0')
+                                        subItemMaxCount = "Maximum " + res.Result.requiredItems[i].items[j].dCat[k].dMaxSelection;
+                                    var subItem1 = "<div class='pop-sect-1 clearfix sub-itm' style='display:none;' id='subItm_" + j + "'><p>" + res.Result.requiredItems[i].items[j].dCat[k].dCatName + "<br><span>Required Choice " +
+                                        subItemMaxCount + "</span></p><div class='reminder-sec'><ul class='unstyle centered no-pad'>";
+                                    for (var l = 0; l < res.Result.requiredItems[i].items[j].dCat[k].dItems.length; l++) {
+                                        if (res.Result.requiredItems[i].items[j].dCat[0].dMultipleSelection == true) {
+                                            subItem1 = subItem1 + "<li><input class=" + "styled-checkbox" + " id=" + res.Result.requiredItems[i].items[j].dCat[k].dItems[l].dynamicItemId + " onclick=clickreqSubItem(this) type=" + "checkbox" + " value=" + res.Result.requiredItems[i].items[j].dCat[k].dItems[l].dynamicItemId + ">"
+                                                + "<label for=" + res.Result.requiredItems[i].items[j].dCat[k].dItems[l].dynamicItemId + ">" + res.Result.requiredItems[i].items[j].dCat[k].dItems[l].dynamicItemName + " </label><input type='hidden' id='itm" +
+                                                res.Result.requiredItems[i].items[j].dCat[k].dItems[l].dynamicItemId + "' value='" + res.Result.requiredItems[i].items[j].dCat[k].dItems[l].dynamicItemprice + "'/></li>";
+                                        } else {
+                                            subItem1 = subItem1 + "<li><input class=" + "styled-checkbox" + " name='item" + i + "' id=" + res.Result.requiredItems[i].items[j].dCat[k].dItems[l].dynamicItemId + " onclick=clickreqSubItem(this) type=" + "radio" + " value=" + res.Result.requiredItems[i].items[j].dCat[k].dItems[l].dynamicItemId + ">"
+                                                + "<label for=" + res.Result.requiredItems[i].items[j].dCat[k].dItems[l].dynamicItemId + ">" + res.Result.requiredItems[i].items[j].dCat[k].dItems[l].dynamicItemName + " </label><input type='hidden' id='itm" +
+                                                res.Result.requiredItems[i].items[j].dCat[k].dItems[l].dynamicItemId + "' value='" + res.Result.requiredItems[i].items[j].dCat[k].dItems[l].dynamicItemPrice + "'/></li>";
+                                        }
+                                    }
+                                    subItem1 = subItem1 + "</ul></div></div>";
+                                    subMenuItems.push(subItem1);
+                                    subItemMaxCount = "";
+                                }
+                            }
+                            subItem = subItem + "</ul></div></div>";
+                            itemReq.append(subItem);
+                            subMenuItems.forEach(element => {
+                                itemReq.append(element);
+                            });
+                            subMenuItems = [];
+                        }
+                        var itemOpt = $("#rest-pop-li-nonrequiredItems");
+                        for (var i = 0; i < res.Result.optionalItems.length; i++) {
+                            var maxCount = "", subItemMaxCount = "", subMenuItems = [];
+                            if (res.Result.optionalItems[i].multipleSelection == true && res.Result.optionalItems[i].maximumSelection != '0')
+                                maxCount = "Maximum " + res.Result.optionalItems[i].maximumSelection;
+                            var subItem = "<div class='pop-sect-1 clearfix'><p>" + res.Result.optionalItems[i].categoryName + "<br><span>Optional Choice " + maxCount + "</span></p><div class='reminder-sec'><ul class='unstyle centered no-pad'>";
+                            for (var j = 0; j < res.Result.optionalItems[i].items.length; j++) {
+                                if (res.Result.optionalItems[i].multipleSelection == true) {
+                                    subItem = subItem + "<li><input class='styled-checkbox' id=" + res.Result.optionalItems[i].items[j].itemId + " onclick='clickunreqCheckbox(this)' type='checkbox' value=" + res.Result.optionalItems[i].items[j].itemId + ">"
+                                        + "<label for=" + res.Result.optionalItems[i].items[j].itemId + ">" + res.Result.optionalItems[i].items[j].itemName + " </label><input type='hidden' id='itm" +
+                                        res.Result.optionalItems[i].items[j].itemId + "' value='" + res.Result.optionalItems[i].items[j].extCharge + "'/></li>";
+                                } else {
+                                    subItem = subItem + "<li><input class='styled-checkbox' name='ritem" + i + "' id=" + res.Result.optionalItems[i].items[j].itemId + " onclick='clickunreqCheckbox(this)' type='radio' value=" + res.Result.optionalItems[i].items[j].itemId + ">"
+                                        + "<label for=" + res.Result.optionalItems[i].items[j].itemId + ">" + res.Result.optionalItems[i].items[j].itemName + " </label><input type='hidden' id='itm" +
+                                        res.Result.optionalItems[i].items[j].itemId + "' value='" + res.Result.optionalItems[i].items[j].extCharge + "'/></li>";
+                                }
+                                for (var k = 0; k < res.Result.optionalItems[i].items[j].dCat.length; k++) {
+                                    if (res.Result.optionalItems[i].items[j].dCat[k].dMultipleSelection == true && res.Result.optionalItems[i].items[j].dCat[k].dMaxSelection != '0')
+                                        subItemMaxCount = "Maximum " + res.Result.optionalItems[i].items[j].dCat[k].dMaxSelection;
+                                    var subItem1 = "<div class='pop-sect-1 clearfix sub-itm' style='display:none;' id='subItm_" + j + "'><p>" + res.Result.requiredItems[i].items[j].dCat[k].dCatName + "<br><span>Required Choice " +
+                                        subItemMaxCount + "</span></p><div class='reminder-sec'><ul class='unstyle centered no-pad'>";
+                                    for (var l = 0; l < res.Result.optionalItems[i].items[j].dCat[k].dItems.length; l++) {
+                                        if (res.Result.optionalItems[i].items[j].dCat[k].dMultipleSelection == true) {
+                                            subItem = subItem + "<li><input class='styled-checkbox' id=" + res.Result.optionalItems[i].items[j].itemId + " onclick='clickoptSubItem(this)' type='checkbox' value=" + res.Result.optionalItems[i].items[j].itemId + ">"
+                                                + "<label for=" + res.Result.optionalItems[i].items[j].itemId + ">" + res.Result.optionalItems[i].items[j].itemName + " </label><input type='hidden' id='itm" +
+                                                res.Result.optionalItems[i].items[j].itemId + "' value='" + res.Result.optionalItems[i].items[j].extCharge + "'/></li>";
+                                        } else {
+                                            subItem = subItem + "<li><input class='styled-checkbox' name='item" + i + "' id=" + res.Result.optionalItems[i].items[j].itemId + " onclick='clickoptSubItem(this)' type='checkbox' value=" + res.Result.optionalItems[i].items[j].itemId + ">"
+                                                + "<label for=" + res.Result.optionalItems[i].items[j].itemId + ">" + res.Result.optionalItems[i].items[j].itemName + " </label><input type='hidden' id='itm" +
+                                                res.Result.optionalItems[i].items[j].itemId + "' value='" + res.Result.optionalItems[i].items[j].extCharge + "'/></li>";
+                                        }
+                                    }
+                                    subItem1 = subItem1 + "</ul></div></div>";
+                                    subMenuItems.push(subItem1);
+                                    subItemMaxCount = "";
+                                }
+                            }
+                            subItem = subItem + "</ul></div></div>";
+                            itemReq.append(subItem);
+                            subMenuItems.forEach(element => {
+                                itemReq.append(element);
+                            });
+                            subMenuItems = [];
+                        }
+                    }
+                });
+            }
+
+            // Check/uncheck required items
+            function clickreqCheckbox(item) {
+                var item_id = $(item).attr("id");
+                var isChecked = $(item).is(":checked");
+                checkSubmenuItems(item);
+                for (var i = 0; i < menuresponse.Result.requiredItems.length; i++) {
+                    for (var j = 0; j < menuresponse.Result.requiredItems[i].items.length; j++) {
+                        if (menuresponse.Result.requiredItems[i].items[j].itemId == item_id) {
+                            console.log(menuresponse.Result.requiredItems[i].items[j]);
+
+                            if (isChecked) {
+                                if ($(item).attr("type") == "radio") {
+                                    var itemIndex = -1;
+                                    selectedItems.reqItems.forEach(element => {
+                                        if (element.categoryId == menuresponse.Result.requiredItems[i].items[j].categoryId) {
+                                            itemIndex = selectedItems.reqItems.indexOf(element);
+                                        }
+                                    });
+                                    if (itemIndex >= 0)
+                                        selectedItems.reqItems.splice(itemIndex, 1);
+                                }
+
+                                selectedItems.reqItems.push(menuresponse.Result.requiredItems[i].items[j]);
+
+                                selectedItems.reqItems.forEach(element => {
+                                    element.dCat.forEach(subItem => {
+                                        subItem.dItems.forEach(item => {
+                                            item.isSelected = false;
+                                        });
+                                    });
+                                });
+
+
+                                var index = $(item).parent().index();
+                                var subDivs = $(item).closest(".pop-sect-1").siblings("div:hidden");
+                                subDivs.each(function () {
+                                    if ($(this).attr("id").split('_')[1] == index)
+                                        $(this).show();
+                                    else
+                                        $(this).hide();
+                                });
+                            }
+                            else {
+                                var itemIndex = selectedItems.reqItems.indexOf(menuresponse.Result.requiredItems[i].items[j]);
+                                if (itemIndex >= 0)
+                                    selectedItems.reqItems.splice(itemIndex, 1);
+                                if ($(item).closest(".pop-sect-1").is(':first-child'))
+                                    $(item).closest(".pop-sect-1").siblings("div").hide();
+                            }
+
+                            // Calculate new price
+                            var quantity = parseInt($("#txtItemCount").val());
+                            var reqItemsTotal = 0, optItemsTotal = 0, totalPrice = 0;
+                            selectedItems.reqItems.forEach(element => {
+                                reqItemsTotal = reqItemsTotal + parseFloat(element.extCharge);
+                            });
+                            selectedItems.optItems.forEach(element => {
+                                optItemsTotal = optItemsTotal + parseFloat(element.extCharge);
+                            });
+
+                            // If priceType=1 then add the amount, if priceType=2 then replace the amount
+                            var priceType = menuresponse.Result.requiredItems[i].items[j].priceType;
+
+                            if (priceType == 1)
+                                totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal) + parseFloat(selectedItems.menuItemPrice)) * quantity).toFixed(2);
+                            else {
+                                if (parseFloat(reqItemsTotal) == 0)
+                                    totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal) + parseFloat(selectedItems.menuItemPrice)) * quantity).toFixed(2);
+                                else
+                                    totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal)) * quantity).toFixed(2);
+                                if (parseFloat(totalPrice) == 0)
+                                    totalPrice = (parseFloat(selectedItems.menuItemPrice) * quantity).toFixed(2);
+                            }
+
+                            $("#txtBagTotal").text(totalPrice);
+                        }
+                    }
+                }
+            }
+
+            // Check/uncheck optional items
+            function clickunreqCheckbox(item) {
+                var selectedCount = checkItemLimit(item);
+                var item_id = $(item).attr("id");
+                var isChecked = $(item).is(":checked");
+                var reqPriceType = 0;
+                if (selectedItems.reqItems.length > 0)
+                    reqPriceType = menuresponse.Result.requiredItems[0].items[0].priceType;
+
+                for (var i = 0; i < menuresponse.Result.optionalItems.length; i++) {
+                    for (var j = 0; j < menuresponse.Result.optionalItems[i].items.length; j++) {
+                        if (menuresponse.Result.optionalItems[i].items[j].itemId == item_id) {
+                            console.log(menuresponse.Result.optionalItems[i].items[j]);
+                            // Add/remove item from list 
+                            if (isChecked) {
+                                if ($(item).attr("type") == "radio") {
+                                    var itemIndex = -1;
+                                    selectedItems.optItems.forEach(element => {
+                                        if (element.categoryId == menuresponse.Result.optionalItems[i].items[j].categoryId) {
+                                            itemIndex = selectedItems.optItems.indexOf(element);
+                                        }
+                                    });
+                                    if (itemIndex >= 0)
+                                        selectedItems.optItems.splice(itemIndex, 1);
+                                }
+                                selectedItems.optItems.push(menuresponse.Result.optionalItems[i].items[j]);
+                                // selectedItems.optItems.forEach(element => {
+                                //     element.dCat.forEach(subItem => {
+                                //         subItem.dItems = [];
+                                //     });
+                                // });
+
+                                selectedItems.optItems.forEach(element => {
+                                    element.dCat.forEach(subItem => {
+                                        subItem.dItems.forEach(item => {
+                                            item.isSelected = false;
+                                        });
+                                    });
+                                });
+                            }
+                            else {
+                                var itemIndex = selectedItems.optItems.indexOf(menuresponse.Result.optionalItems[i].items[j]);
+                                if (itemIndex >= 0)
+                                    selectedItems.optItems.splice(itemIndex, 1);
+                            }
+
+                            if (isChecked || selectedCount < 2) {
+                                // Calculate new price
+                                var quantity = parseInt($("#txtItemCount").val());
+                                var reqItemsTotal = 0, optItemsTotal = 0, totalPrice = 0;
+                                // selectedItems.reqItems.forEach(element => {
+                                //     reqItemsTotal = reqItemsTotal + parseFloat(element.extCharge);
+                                // });
+                                // selectedItems.optItems.forEach(element => {
+                                //     optItemsTotal = optItemsTotal + parseFloat(element.extCharge);
+                                // });
+                                selectedItems.reqItems.forEach(element => {
+                                    reqItemsTotal = reqItemsTotal + parseFloat(element.extCharge);
+                                    element.dCat.forEach(subItem => {
+                                        subItem.dItems.forEach(item => {
+                                            if (item.isSelected == true)
+                                                reqItemsTotal = reqItemsTotal + parseFloat(item.dynamicItemPrice);
+                                        });
+                                    });
+                                });
+                                selectedItems.optItems.forEach(element => {
+                                    optItemsTotal = optItemsTotal + parseFloat(element.extCharge);
+                                    element.dCat.forEach(subItem => {
+                                        subItem.dItems.forEach(item => {
+                                            if (item.isSelected == true)
+                                                optItemsTotal = optItemsTotal + parseFloat(item.dynamicItemPrice);
+                                        });
+                                    });
+                                });
+
+                                // If priceType=1 then add the amount, if priceType=2 then replace the amount
+                                var priceType = menuresponse.Result.optionalItems[i].items[j].priceType;
+
+                                if (priceType == 1) {
+                                    if (reqPriceType == 0)
+                                        totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal) + parseFloat(selectedItems.menuItemPrice)) * quantity).toFixed(2);
+                                    else if (reqPriceType == 1)
+                                        totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal) + parseFloat(selectedItems.menuItemPrice)) * quantity).toFixed(2);
+                                    else if (reqItemsTotal == 0)
+                                        totalPrice = ((parseFloat(optItemsTotal) + parseFloat(selectedItems.menuItemPrice)) * quantity).toFixed(2);
+                                    else
+                                        totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal)) * quantity).toFixed(2);
+                                }
+                                else {
+                                    if (parseFloat(reqItemsTotal) == 0)
+                                        totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal) + parseFloat(selectedItems.menuItemPrice)) * quantity).toFixed(2);
+                                    else
+                                        totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal)) * quantity).toFixed(2);
+                                    if (parseFloat(totalPrice) == 0)
+                                        totalPrice = (parseFloat(selectedItems.menuItemPrice) * quantity).toFixed(2);
+                                }
+
+                                $("#txtBagTotal").text(totalPrice);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Set/unset favourite Restaurant
+            function saveFav(restId) {
+                var isFavourite = $("#hfFavourite").val();
+                $.ajax({
+                    method: "POST",
+                    url: "/setUnsetFavRestaurant",
+                    data: { restId: restId, status: isFavourite },
+                    success: function (res) {
+                        res = JSON.parse(res);
+                        if (res.Success == true) {
+                            if ($("#hfFavourite").val() == "true")
+                                $("#hfFavourite").val(false);
+                            else
+                                $("#hfFavourite").val(true)
+                        }
+                    }
+                });
+            }
+
+            var marker, map;
+            function showLocationOnMap() {
+                var defaultLat = 32.594888, defaultLng = -115.607507;
+
+                var coordinates = $("#hfCods").val();
+                if (!(coordinates === undefined) && coordinates != "") {
+                    defaultLat = parseFloat(coordinates.split(',')[0]);
+                    defaultLng = parseFloat(coordinates.split(',')[1]);
+                }
+                var restName = $("#rest_name").text();
+                var location = [restName, defaultLat, defaultLng];
+
+                if (map === undefined) {
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 14,
+                        center: new google.maps.LatLng(defaultLat, defaultLng),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    });
+                }
+                else {
+                    var center = new google.maps.LatLng(defaultLat, defaultLng);
+                    map.panTo(center);
+                }
+
+                var infowindow = new google.maps.InfoWindow();
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(location[1], location[2]),
+                    map: map
+                });
+
+                google.maps.event.addListener(marker, 'click', (function (marker) {
+                    return function () {
+                        infowindow.setContent(location[0]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker));
+            }
+
+            function sortReviews() {
+                var sortBy = $("#ddlSortRating").val();
+
+                var $elem = $('.reviw-list');
+                var $li = $elem.find('li'),
+                    $listLi = $($li, $elem).get();
+
+                if (sortBy == "1")
+                    $listLi = $($li, $elem).find(".review-date");
+                else if (sortBy == "2")
+                    $listLi = $($li, $elem).children().next().children().children();
+                else if (sortBy == "3")
+                    $listLi = $($li, $elem).find(".review-rating");
+                $listLi.sort(function (a, b) {
+                    var keyA = $(a).text().toUpperCase();
+                    var keyB = $(b).text().toUpperCase();
+                    if (sortBy == "1") {
+                        var keyA = $(a).val();
+                        var keyB = $(b).val();
+                        keyA = parseInt(keyA);
+                        keyB = parseInt(keyB);
+
+                        return (keyA < keyB) ? -1 : 1;
+                    }
+                    else if (sortBy == "3") {
+                        var keyA = $(a).val();
+                        var keyB = $(b).val();
+                        keyA = parseFloat(keyA);
+                        keyB = parseFloat(keyB);
+                        return (keyA > keyB) ? -1 : 1;
+                    }
+
+                    //uncomment below and comment above if you want descending order
+                    //return (keyA > keyB) ? -1 : 1;
+                });
+                $.each($listLi, function (index, row) {
+                    if (sortBy == "1" || sortBy == "3")
+                        $elem.append($(row).parent());
+                    else
+                        $elem.append($(row).closest("li"));
+                });
+            }
+
+            function getRestaurantReviews(restId) {
+                $.ajax({
+                    method: "GET",
+                    url: "/getRestaurantReviews",
+                    data: { restId: restId },
+                    success: function (res) {
+                        res = JSON.parse(res);
+                        if (res.Success == true) {
+                            var placeholder = "images/avatar.png";
+                            var reviewList = $(".reviw-list");
+                            $.each(res.Result, function (key, value) {
+                                var ratings = "";
+                                for (var i = 1; i <= 5; i++) {
+                                    if (value.rating >= i)
+                                        ratings = ratings + "<span><span class='fa fa-star'></span><span>";
+                                    else if (!isInteger(value.rating) && Math.trunc(value.rating) == i - 1) {
+                                        ratings = ratings + "<span><span class='fa fa-star-half'></span><span>";
+                                    }
+                                }
+                                var liItem = $("<li/>");
+                                var profileImg = "<div class='rev-img'><img src='" + value.imageUrl + "'></div>";
+                                if (value.imageUrl.trim() == "")
+                                    profileImg = "<div class='rev-img'><img src='" + placeholder + "'></div>";
+                                var liReview = $("<div class='main-rev-detail'>").append("<div class='rev-name'><p class='ino-name'>" +
+                                    value.userName + "</p><p><span class='start-rating left'>" + ratings + "</span></p></div>");
+                                $(liReview).append("<p class='rev-detail'>" + value.comment + "</p>");
+                                $(liReview).append("<p class='rev-detail2'>Review posted " + value.createdOn + "</p>");
+                                var hiddenItem = "<input type='hidden' class='review-date' value='" + value.reviewId + "' />" +
+                                    "<input type='hidden' class='review-rating' value='" + value.ratings + "' />";
+
+                                liItem.append(profileImg);
+                                liItem.append(liReview);
+                                liItem.append(hiddenItem);
+                                reviewList.append(liItem);
+                            });
+
+                            $("#divLoadReview").hide();
+                        }
+                    },
+                    error: function (err) { console.log(err); }
+                });
+            }
+
+            function isInteger(x) {
+                return Math.round(x) === x;
+            }
+
+            function filterMenu(menuId) {
+                $(".setMenuDiv").each(function () {
+                    var id = $(this).attr("id");
+                    if (parseInt(id) == parseInt(menuId))
+                        $(this).addClass("p-active");
+                    else
+                        $(this).removeClass("p-active");
+                });
+                $(".showMenuListAll").each(function () {
+                    var name = $(this).attr("data-attr");
+                    var id = name.split('-')[1];
+                    if (parseInt(id) == parseInt(menuId))
+                        $(this).show();
+                    else
+                        $(this).hide();
+                });
+            }
+
+            function addItem() {
+                var price = calculateItemPrice();
+                var quantity = parseInt($("#txtItemCount").val());
+                $("#txtBagTotal").text((parseFloat(price) * (quantity + 1)).toFixed(2));
+            }
+
+            function removeItem() {
+                var price = calculateItemPrice();
+                var quantity = parseInt($("#txtItemCount").val());
+                if (quantity - 1 >= 0)
+                    $("#txtBagTotal").text((parseFloat(price) * (quantity - 1)).toFixed(2));
+            }
+
+            function calculateItemPrice() {
+                //Calculate required and optional items price                    
+                var reqItemsTotal = 0, optItemsTotal = 0, totalPrice = 0, priceType = 0, reqPriceType = 0;
+
+                selectedItems.reqItems.forEach(element => {
+                    reqItemsTotal = reqItemsTotal + parseFloat(element.extCharge);
+                    element.dCat.forEach(subItem => {
+                        subItem.dItems.forEach(item => {
+                            if (item.isSelected == true)
+                                reqItemsTotal = reqItemsTotal + parseFloat(item.dynamicItemPrice);
+                        });
+                    });
+                });
+                selectedItems.optItems.forEach(element => {
+                    optItemsTotal = optItemsTotal + parseFloat(element.extCharge);
+                    element.dCat.forEach(subItem => {
+                        subItem.dItems.forEach(item => {
+                            if (item.isSelected == true)
+                                optItemsTotal = optItemsTotal + parseFloat(item.dynamicItemPrice);
+                        });
+                    });
+                });
+
+                // If priceType=1 then add the amount, if priceType=2 then replace the amount           
+                if (selectedItems.reqItems.length > 0)
+                    reqPriceType = selectedItems.reqItems[0].priceType;
+                if (selectedItems.optItems.length > 0)
+                    priceType = selectedItems.optItems[0].priceType;
+
+                // if (priceType == 1)
+                //     totalPrice = (parseFloat(optItemsTotal) + parseFloat(reqItemsTotal) + parseFloat(selectedItems.menuItemPrice)).toFixed(2);
+                // else
+                //     totalPrice = (parseFloat(optItemsTotal) + parseFloat(reqItemsTotal)).toFixed(2);
+
+                if (priceType == 1) {
+                    if (reqPriceType == 0 || reqPriceType == 1)
+                        totalPrice = (parseFloat(optItemsTotal) + parseFloat(reqItemsTotal) + parseFloat(selectedItems.menuItemPrice)).toFixed(2);
+                    else if (reqItemsTotal == 0)
+                        totalPrice = (parseFloat(optItemsTotal) + parseFloat(selectedItems.menuItemPrice)).toFixed(2);
+                    else
+                        totalPrice = (parseFloat(optItemsTotal) + parseFloat(reqItemsTotal)).toFixed(2);
+                }
+                else {
+                    if (parseFloat(reqItemsTotal) == 0)
+                        totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal) + parseFloat(selectedItems.menuItemPrice)) * quantity).toFixed(2);
+                    else
+                        totalPrice = (parseFloat(optItemsTotal) + parseFloat(reqItemsTotal)).toFixed(2);
+                    if (parseFloat(totalPrice) == 0)
+                        totalPrice = parseFloat(selectedItems.menuItemPrice).toFixed(2);
+                }
+
+                return totalPrice;
+            }
+
+            function checkItemLimit(item) {
+                var checkboxes = $(item).parent().parent().find('li');
+                var item_id = $(item).attr('id');
+                var maxCount = 0;
+                for (var i = 0; i < menuresponse.Result.optionalItems.length; i++) {
+                    for (var j = 0; j < menuresponse.Result.optionalItems[i].items.length; j++) {
+                        if (menuresponse.Result.optionalItems[i].items[j].itemId == item_id) {
+                            if (menuresponse.Result.requiredItems[i].maximumSelection == "0")
+                                maxCount = 1;
+                            else
+                                maxCount = parseInt(menuresponse.Result.requiredItems[i].maximumSelection);
+
+                            if ($(checkboxes).find(":checkbox:checked").length > maxCount)
+                                $(item).prop('checked', false);
+                            return $(checkboxes).find(":checkbox:checked").length;
+                        }
+                    }
+                }
+            }
+
+            function manageReqItemCount(item) {
+                var checkboxes = $(item).parent().parent().find('li');
+                var maxCount = 0;
+                var item_id = $(item).attr('id');
+                for (var i = 0; i < menuresponse.Result.requiredItems.length; i++) {
+                    for (var j = 0; j < menuresponse.Result.requiredItems[i].items.length; j++) {
+                        if (menuresponse.Result.requiredItems[i].items[j].itemId == item_id) {
+                            if (menuresponse.Result.requiredItems[i].maximumSelection == "0")
+                                maxCount = 1;
+                            else
+                                maxCount = parseInt(menuresponse.Result.requiredItems[i].maximumSelection);
+                        }
+                    }
+                }
+
+                if ($(checkboxes).find(":checkbox:checked").length > maxCount)
+                    $(item).prop('checked', false);
+            }
+
+            function addCartItems() {
+                var menuItems = JSON.stringify({
+                    reqItems: selectedItems.reqItems,
+                    optItems: selectedItems.optItems
+                });
+                var extraChargesTotal = 0;
+                selectedItems.reqItems.forEach(element => {
+                    element.dCat.forEach(subItem => {
+                        subItem.dItems.forEach(item => {
+                            if (item.isSelected == true)
+                                extraChargesTotal = extraChargesTotal + parseFloat(item.dynamicItemPrice);
+                        });
+                    });
+                });
+                selectedItems.optItems.forEach(element => {
+                    element.dCat.forEach(subItem => {
+                        subItem.dItems.forEach(item => {
+                            if (item.isSelected == true)
+                                extraChargesTotal = extraChargesTotal + parseFloat(item.dynamicItemPrice);
+                        });
+                    });
+                });
+                $.ajax({
+                    method: "POST",
+                    url: "/addCartItems",
+                    data: {
+                        userId: 0,
+                        restId: $("#rest_id").val(),
+                        itemId: selectedItems.menuItemId,
+                        itemPrice: $("#hfItemPrice").val(),
+                        specialInstruction: $("#txtSpecialInstruction").val(),
+                        itemTotalPrice: $("#txtBagTotal").text(),
+                        itemQty: parseInt($("#txtItemCount").val()),
+                        items: menuItems,
+                        itemCatId: selectedItems.itemCategoryId,
+                        extraChargesTotal: extraChargesTotal
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        if (response.Success == true) {
+                            //location.href = "/placeorder";
+                            addItemsToCart();
+
+                            calculateCartItems();
+                            $(".resta-name").hide();
+                        }
+                        else {
+                            alert(response.Message);
+                            window.location = "/";
+                        }
+                    },
+                    error: function (err) { console.log(err); }
+                });
+            }
+
+            function hideSubItems(item) {
+                var checkboxes = $(item).parent().parent().find('li');
+                if ($(checkboxes).find(":checkbox:checked").length > 2)
+                    $(item).prop('checked', false);
+                return $(checkboxes).find(":checkbox:checked").length;
+            }
+
+            function checkSubmenuItems(item) {
+                var isChecked = $(item).is(":checked");
+                if (isChecked) {
+                    if (!$(item).closest(".pop-sect-1").hasClass('sub-itm')) {
+                        var index = $(item).parent().index();
+                        var subDivs = $(item).closest(".pop-sect-1").siblings("div .sub-itm");
+                        subDivs.each(function () {
+                            $(this).hide();
+                        });
+                    }
+                }
+            }
+
+            // Check/uncheck required sub items
+            function clickreqSubItem(item) {
+                var item_id = $(item).attr("id");
+                var isChecked = $(item).is(":checked");
+                var reqItems = menuresponse.Result.requiredItems;
+                for (var i = 0; i < reqItems.length; i++) {
+                    for (var j = 0; j < reqItems[i].items.length; j++) {
+                        for (var k = 0; k < reqItems[i].items[j].dCat.length; k++) {
+                            for (var l = 0; l < reqItems[i].items[j].dCat[k].dItems.length; l++) {
+                                if (reqItems[i].items[j].dCat[k].dItems[l].dynamicItemId == item_id) {
+                                    var subItemData = reqItems[i].items[j].dCat[k].dItems[l];
+
+                                    // If checked then add item else remove item
+                                    if (isChecked) {
+                                        selectedItems.reqItems.forEach(element => {
+                                            element.dCat.forEach(subItem => {
+                                                // subItem.dItems.push(subItemData);  
+                                                subItem.dItems.forEach(item => {
+                                                    if (item.dynamicItemId == subItemData.dynamicItemId)
+                                                        item.isSelected = true;
+                                                });
+                                            });
+                                        });
+                                    }
+                                    else {
+                                        selectedItems.reqItems.forEach(element => {
+                                            element.dCat.forEach(subItem => {
+                                                // var itemDetail = subItem.dItems.find(x => x.dynamicItemId == subItemData.dynamicItemId);
+                                                // if (!(itemDetail === undefined))
+                                                //     subItem.dItems.splice(subItem.dItems.indexOf(itemDetail), 1);
+                                                subItem.dItems.forEach(item => {
+                                                    if (item.dynamicItemId == subItemData.dynamicItemId)
+                                                        item.isSelected = false;
+                                                });
+                                            });
+                                        });
+                                    }
+
+                                    // Calculate new price
+                                    var quantity = parseInt($("#txtItemCount").val());
+                                    var reqItemsTotal = 0, optItemsTotal = 0, totalPrice = 0;
+
+                                    reqItemsTotal = calculateReqItemsTotal();
+                                    optItemsTotal = calculateOptItemsTotal();
+
+                                    // If priceType=1 then add the amount, if priceType=2 then replace the amount
+                                    var priceType = reqItems[i].items[j].priceType;
+
+                                    if (priceType == 1)
+                                        totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal) + parseFloat(selectedItems.menuItemPrice)) * quantity).toFixed(2);
+                                    else {
+                                        totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal)) * quantity).toFixed(2);
+                                        if (parseFloat(totalPrice) == 0)
+                                            totalPrice = (parseFloat(selectedItems.menuItemPrice) * quantity).toFixed(2);
+                                    }
+
+                                    $("#txtBagTotal").text(totalPrice);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Check/uncheck required sub items
+            function clickoptSubItem(item) {
+                var item_id = $(item).attr("id");
+                var isChecked = $(item).is(":checked");
+                var optionalItems = menuresponse.Result.optionalItems;
+                for (var i = 0; i < optionalItems.length; i++) {
+                    for (var j = 0; j < optionalItems[i].items.length; j++) {
+                        for (var k = 0; k < optionalItems[i].items[j].dCat.length; k++) {
+                            for (var l = 0; l < optionalItems[i].items[j].dCat[k].dItems.length; l++) {
+                                if (optionalItems[i].items[j].dCat[k].dItems[l].dynamicItemId == item_id) {
+                                    var subItemData = optionalItems[i].items[j].dCat[k].dItems[l];
+
+                                    // If checked then add item else remove item
+                                    if (isChecked) {
+                                        selectedItems.optItems.forEach(element => {
+                                            element.dCat.forEach(subItem => {
+                                                // subItem.dItems.push(subItemData);  
+                                                subItem.dItems.forEach(item => {
+                                                    if (item.dynamicItemId == subItemData.dynamicItemId)
+                                                        item.isSelected = true;
+                                                });
+                                            });
+                                        });
+                                    }
+                                    else {
+                                        selectedItems.optItems.forEach(element => {
+                                            element.dCat.forEach(subItem => {
+                                                // var itemDetail = subItem.dItems.find(x => x.dynamicItemId == subItemData.dynamicItemId);
+                                                // if (!(itemDetail === undefined))
+                                                //     subItem.dItems.splice(subItem.dItems.indexOf(itemDetail), 1);
+                                                subItem.dItems.forEach(item => {
+                                                    if (item.dynamicItemId == subItemData.dynamicItemId)
+                                                        item.isSelected = false;
+                                                });
+                                            });
+                                        });
+                                    }
+
+                                    // Calculate new price
+                                    var quantity = parseInt($("#txtItemCount").val());
+                                    var reqItemsTotal = 0, optItemsTotal = 0, totalPrice = 0;
+
+                                    reqItemsTotal = calculateReqItemsTotal();
+                                    optItemsTotal = calculateOptItemsTotal();
+
+                                    // If priceType=1 then add the amount, if priceType=2 then replace the amount
+                                    var priceType = optionalItems[i].items[j].priceType;
+
+                                    if (priceType == 1)
+                                        totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal) + parseFloat(selectedItems.menuItemPrice)) * quantity).toFixed(2);
+                                    else {
+                                        totalPrice = ((parseFloat(optItemsTotal) + parseFloat(reqItemsTotal)) * quantity).toFixed(2);
+                                        if (parseFloat(totalPrice) == 0)
+                                            totalPrice = (parseFloat(selectedItems.menuItemPrice) * quantity).toFixed(2);
+                                    }
+
+                                    $("#txtBagTotal").text(totalPrice);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            function calculateReqItemsTotal() {
+                var reqItemsTotal = 0
+                selectedItems.reqItems.forEach(element => {
+                    reqItemsTotal = reqItemsTotal + parseFloat(element.extCharge);
+                    element.dCat.forEach(subItem => {
+                        subItem.dItems.forEach(item => {
+                            if (item.isSelected == true)
+                                reqItemsTotal = reqItemsTotal + parseFloat(item.dynamicItemPrice);
+                        });
+                    });
+                });
+                return reqItemsTotal;
+            }
+
+            function calculateOptItemsTotal() {
+                var optItemsTotal = 0
+                selectedItems.optItems.forEach(element => {
+                    optItemsTotal = optItemsTotal + parseFloat(element.extCharge);
+                    element.dCat.forEach(subItem => {
+                        subItem.dItems.forEach(item => {
+                            if (item.isSelected == true)
+                                optItemsTotal = optItemsTotal + parseFloat(item.dynamicItemPrice);
+                        });
+                    });
+                });
+                return optItemsTotal;
+            }
+
+            function calculateCartItems() {
+                var total = 0, subTotal = 0;
+                $(".item-total").each(function (k, v) {
+                    var itemTotal = $(this).text();
+                    subTotal = subTotal + parseFloat(itemTotal);
+                });
+                $(".item-subtotal").text("$" + subTotal.toFixed(2));
+
+                var discountPercent = $("#hfDiscount").val();
+                var taxPercent = $("#hfTax").val();
+
+                if (discountPercent == "")
+                    discountPercent = "0";
+                if (taxPercent == "")
+                    taxPercent = "0";
+                var discount = ((subTotal * parseFloat(discountPercent)) / 100).toFixed(2);
+                var newSubtotal = subTotal - discount;
+                var tax = ((newSubtotal * parseFloat(taxPercent)) / 100).toFixed(2);
+
+                var userCredits = parseFloat($("#hfUserCredits").val());
+                if (isNaN(userCredits))
+                    userCredits = "0";
+
+                $("#dis-percent").text(": " + discountPercent + "%");
+                $("#tax").text("$" + tax);
+                $("#discount").text("$" + discount);
+
+                var total = (newSubtotal + parseFloat(tax)).toFixed(2);
+
+                if (userCredits >= total)
+                    total = 0;
+                else
+                    total = (total - userCredits).toFixed(2);
+                if (!isNaN(total)) {
+                    $(".total-amt").text("$" + total);
+                    $("#divCheckout").text("$" + total);
+                }
+            }
+
+            function clearBag(id) {
+                if (id == "0")
+                    id = $("#rest_id").val();
+                $.ajax({
+                    method: "GET",
+                    url: "/clearCart",
+                    data: { restId: id },
+                    success: function (res) {
+                        console.log(res);
+                        if (res.Success == true) {
+                            $(".recipt-listing").html('');
+                            $(".item-subtotal").text("$0.00");
+                            $("#divCheckout").text("$0.00");
+                            $(".remove-all").hide();
+                            $(".sub-total").hide();
+                            $(".p-edit-link").hide();
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
+
+            function addItemsToCart() {
+                var bag = $(".recipt-listing");
+                var subItems = "";
+                if ($("#txtSpecialInstruction").val().trim().length > 0)
+                    subItems = subItems + "Special Instrunction <br>" + $("#txtSpecialInstruction").val();
+
+                var list = "<li class='left full'><span class='itm-count left'>" + parseInt($("#txtItemCount").val()) + "</span>" +
+                    "<span class='itm-disc left'><span class='left full'><strong>" + $("#rest-pop-name").text() + "</strong></span>" +
+                    "<span>" + subItems + "</span></span><span class='item-price right'>$<span class='item-total'> " + $("#txtBagTotal").text() + "</span></span></li>";
+                bag.append(list);
+
+                if ($(".sub-total").is(":visible") == false) {
+                    $(".sub-total").show();
+                    $(".remove-all").show();
+                }
+
+                var subTotal = parseFloat($("#txtBagTotal").text()) + parseFloat($(".item-subtotal").text().slice(1));
+                $(".item-subtotal").text("$" + subTotal.toFixed(2));
+            }
+
+        </script>
+        <style>
+            .item-disable {
+                pointer-events: none;
+                opacity: 0.6;
+            }
+        </style>

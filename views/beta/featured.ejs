@@ -1,0 +1,1077 @@
+﻿<% include include/head.ejs %>
+
+    <body>
+        <div class="pop-wrapper">
+            <!-- <% include include/header.ejs %> -->
+            <header class="fixed_header">
+                <div class="container">
+                    <a class="logo" href="#">
+                        <img src="images/logo.png" alt="Fork Spot">
+                    </a>
+                    <!-- <div class="searc-for-resta">
+                        <span class="location-fill half">
+                            <span class="icon-forkpoint icon-Address-Icon"></span>
+                            <input type="text" placeholder="Enter Location">
+                        </span>
+                        <span class="location-fill half">
+                            <span class="icon-forkpoint icon-Search-Icon"></span>
+                            <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                        </span>
+                    </div> -->
+                    <div class="p-head-inp-wrap">
+                        <div class="p-head-inp">
+                            <i class="icon-Address-Icon"></i>
+                            <input type="text" id="txtcities" placeholder="Enter Location">
+                            <input type="hidden" id="hfCods" value="" />
+                        </div>
+                        <div class="p-head-inp">
+                            <i class="icon-Search-Icon"></i>
+                            <input type="text" id="txtSearchRest" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                        </div>
+                    </div>
+                    <div class="topbar-actions">
+                        <span class="my-Account">
+                            <i class="icon-Profile2-Icon"></i>
+                            <span class="p-hide-txt">My Account</span>
+                        </span>
+                        <span class="bag">
+                            <i class="icon-Shopping-Bag-Icon"></i>
+                        </span>
+                    </div>
+                    <div class="p-res-search" data-attribute="p-search-pop">
+                        <span class="icon-Search-Icon"></span>
+                    </div>
+                </div>
+            </header>
+            <section class="clearfix">
+
+                <% include include/menu.ejs %>
+
+                    <div>
+                        <div>
+                            <section class="clearfix">
+                                <div class="p-filter-wrap">
+                                    <div class="p-filter-txt">
+                                        <p data-attribute="p-update-pop">316 Arden Ave Glendale, CA 91203</p>
+                                        <div class="p-filter-btn p-filter-toggle">
+                                            <i class="icon-Filter"></i>
+                                            <span>Filters</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filters filterright">
+                                    <div class="p-filter-contain">
+                                        <span class="p-filter-close p-res-close">x</span>
+                                        <span class="p-filter-clear">Clear all</span>
+                                        <h2 class="p-filter-head">Refine</h2>
+                                        <!-- <div class="p-common-wrap">
+                                            <h4 class="p-want-head">I want</h4>
+                                            <div class="p-opt-label mar_bottom_10">
+                                                <input type="radio" id="rdDineIN" name="p-pick" id="p-pick-inp-1">
+                                                <label class="p-pick-label" for="p-pick-inp-1">Dine In</label>
+                                                <input type="radio" id="rdPickup" name="p-pick" id="p-pick-inp-2">
+                                                <label class="p-pick-label" for="p-pick-inp-2">Pick Up</label>
+                                            </div>
+                                            <div class="flex flex-middle">
+                                                <span class="p-sch-txt">Pick up my food</span>
+                                                <span class="p-dot-divide"></span>
+                                                <a href="#" class="p-sch-link">Today, ASAP</a>
+                                            </div>
+                                        </div> -->
+                                        <div class="p-common-wrap">
+                                            <h4>Rating</h4>
+                                            <div class="p-rating-wrap">
+                                                <input type="radio" name="p-rating" id="p-rating-inp-5" onclick="RatingClick(this)">
+                                                <label class="p-rating-label" for="p-rating-inp-5">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </label>
+                                                <input type="radio" name="p-rating" id="p-rating-inp-4" onclick="RatingClick(this)">
+                                                <label class="p-rating-label" for="p-rating-inp-4">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </label>
+                                                <input type="radio" name="p-rating" id="p-rating-inp-3" onclick="RatingClick(this)">
+                                                <label class="p-rating-label" for="p-rating-inp-3">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </label>
+                                                <input type="radio" name="p-rating" id="p-rating-inp-2" onclick="RatingClick(this)">
+                                                <label class="p-rating-label" for="p-rating-inp-2">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </label>
+                                                <input type="radio" name="p-rating" id="p-rating-inp-1" onclick="RatingClick(this)">
+                                                <label class="p-rating-label" for="p-rating-inp-1">
+                                                    <i class="fa fa-star"></i>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="p-common-wrap">
+                                            <h4>Price</h4>
+                                            <div class="p-price-wrap">
+                                                <input type="checkbox" name="p-price" id="p-price-inp-1" onclick="PriceClick(this)">
+                                                <label class="p-price-label" for="p-price-inp-1">$</label>
+                                                <input type="checkbox" name="p-price" id="p-price-inp-2" onclick="PriceClick(this)">
+                                                <label class="p-price-label" for="p-price-inp-2">$$</label>
+                                                <input type="checkbox" name="p-price" id="p-price-inp-3" onclick="PriceClick(this)">
+                                                <label class="p-price-label" for="p-price-inp-3">$$$</label>
+                                                <input type="checkbox" name="p-price" id="p-price-inp-4" onclick="PriceClick(this)">
+                                                <label class="p-price-label" for="p-price-inp-4">$$$$</label>
+                                                <input type="checkbox" name="p-price" id="p-price-inp-5" onclick="PriceClick(this)">
+                                                <label class="p-price-label" for="p-price-inp-5">$$$$$</label>
+                                            </div>
+                                        </div>
+                                        <div class="p-common-wrap">
+                                            <h4>Discount</h4>
+                                            <div class="p-disc-wrap">
+                                                <input type="radio" name="p-disc" id="p-disc-inp-1" onclick="DisClick(this)">
+                                                <label class="p-disc-label" for="p-disc-inp-1">5 - 10%</label>
+                                                <input type="radio" name="p-disc" id="p-disc-inp-2" onclick="DisClick(this)">
+                                                <label class="p-disc-label" for="p-disc-inp-2">10 - 15%</label>
+                                                <input type="radio" name="p-disc" id="p-disc-inp-3" onclick="DisClick(this)">
+                                                <label class="p-disc-label" for="p-disc-inp-3">20+%</label>
+                                            </div>
+                                        </div>
+                                        <div class="p-common-wrap">
+                                            <h4>Distance</h4>
+                                            <div class="p-slider-wrap">
+                                                <div id="p-range-slider"></div>
+                                            </div>
+                                        </div>
+                                        <div class="p-common-wrap">
+                                            <h4>Sort By</h4>
+                                            <div class="p-order-select">
+                                                <select>
+                                                    <option>Alphabaticaly</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="p-common-wrap">
+                                            <h4 class="p-res-accord">Cuisines</h4>
+                                            <div>
+                                                <ul class="p-cuisine-list">
+                                                    <li>
+                                                        <img src="images/Burgers.png">
+                                                        <span>Burgers</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/chinese-alt.png">
+                                                        <span>Chinese</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/Pizza.png">
+                                                        <span>Pizza</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/Mexican.png">
+                                                        <span>Mexican</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/Italian.png">
+                                                        <span>Italian</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/Japanese.png">
+                                                        <span>Japanese</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/american.png">
+                                                        <span>American</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/Food-Icons.png">
+                                                        <span>Breakfast</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/sandwhich.png">
+                                                        <span>Sandwich</span>
+                                                    </li>
+                                                    <li>
+                                                        <img src="images/seafood.png">
+                                                        <span>Seafood</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="p-common-wrap">
+                                            <h4>Filter</h4>
+                                            <ul class="p-filter-list">
+                                                <li>
+                                                    <input class="styled-checkbox" id="checkbox-1" type="checkbox">
+                                                    <label for="checkbox-1">Open Now</label>
+                                                </li>
+                                                <li>
+                                                    <input class="styled-checkbox" id="checkbox-2" type="checkbox">
+                                                    <label for="checkbox-2">New</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="">
+                                            <input type="submit" value="Search" onclick="searchRestaurants()">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="search-results aflogin-sresult">
+                                    <h1 class="p-result-head">Browse Food Near You
+                                        <div class="p-filter-btn p-filter-toggle">
+                                            <i class="icon-Filter"></i>
+                                            <span>Filters</span>
+                                        </div>
+                                    </h1>
+                                    <div class="p-fil-selected" id="Selcted_searchtag">
+                                        <!-- <div class="p-fil-active">
+                                            <span>Open Now</span>
+                                            <i class="p-fil-cross"></i>
+                                        </div>
+                                        <div class="p-fil-active">
+                                            <span>$$$ &amp; Less</span>
+                                            <i class="p-fil-cross"></i>
+                                        </div>
+                                        <div class="p-fil-active">
+                                            <ul class="p-fil-star">
+                                                <li>
+                                                    <i class="fa fa-star"></i>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-star"></i>
+                                                </li>
+                                            </ul>
+                                            <span>&amp; over</span>
+                                            <i class="p-fil-cross"></i>
+                                        </div>
+                                        <div class="p-fil-active">
+                                            <span>Within 2 mi</span>
+                                            <i class="p-fil-cross"></i>
+                                        </div> -->
+                                    </div>
+
+                                    <div class="flex flex-middle flex-sp-btw mar_bottom_10">
+                                        <%if(!(output.resList===undefined) && !(output.resList.restaurants===undefined)){%>
+                                            <span id="txtRestaurantCount">
+                                                <%=output.resList.restaurants.length%> Near You</span>
+                                            <%}%>
+                                                <span class="p-map-hide">Hide Map</span>
+                                    </div>
+                                    <div class="location-pins mar_bottom_15">
+                                        <!-- <iframe src="https://www.google.com/maps/embed/v1/place?q=noida&key=AIzaSyB4e_CV3NO300KmK1cuWFdsbF4le6nPjAw" width="100%"
+                                            height="100%" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+                                        <div id="map" style="width: 100%; height: 100%;"></div>
+                                    </div>
+                                    <div class="p-saved-rest-wrap">
+                                        <ul class="p-rest-list">
+                                            <%if(!(output.resList===undefined) && !(output.resList.restaurants===undefined)){%>
+                                            <% 
+                                            for(var i=0;i<output.resList.restaurants.length;i++){
+                                        %>
+                                                <li>
+                                                    <input type="hidden" class="rest-cods" value="<%=output.resList.restaurants[i].latitude%>,<%=output.resList.restaurants[i].longitude%>"
+                                                    />
+                                                    <input type="hidden" class="rest-name" value="<%=output.resList.restaurants[i].name%>" />
+                                                    <div class="p-rest-img">
+                                                        <img src="<%=output.resList.restaurants[i].imagePath%>">
+                                                        <span class="p-res-label p-bg-megenta">
+                                                            <%=output.resList.restaurants[i].discount %>% OFF</span>
+                                                    </div>
+                                                    <div class="p-rest-mid">
+                                                        <div class="p-rest-head">
+                                                            <span>
+                                                                <a href="/restaurant-detail?request=<%=output.resList.restaurants[i].restId%>" class="p-rest-link">
+                                                                    <%=output.resList.restaurants[i].name%>
+                                                                </a>
+                                                            </span>
+                                                            <div class="p-address-wrap">
+                                                                <span class="p-info-card">
+                                                                    <%=output.resList.restaurants[i].address%>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="p-info-list">
+                                                            <div class="p-rating-res">
+                                                                <ul>
+                                                                    <li>
+                                                                        <i class="fa fa-star"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i class="fa fa-star"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i class="fa fa-star"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i class="fa fa-star"></i>
+                                                                    </li>
+                                                                    <li>
+                                                                        <i class="fa fa-star-half"></i>
+                                                                    </li>
+                                                                </ul>
+                                                                <span>
+                                                                    <%=output.resList.restaurants[i].rating%> Ratings</span>
+                                                            </div>
+
+                                                            <ul class="p-price-rating">
+                                                                <% 
+                                                                for(var j=0;j<5;j++){ %>
+                                                                    <li <% if(output.resList.restaurants[i].price> j){ %> class="active"
+                                                                        <% } %> >$</li>
+                                                                    <% } %>
+                                                            </ul>
+                                                            <div class="p-rest-loc">
+                                                                <%if (output.resList.restaurants[i].discount == 5){%>
+                                                                    <i class="icon-Address-Icon p-blue"></i>
+                                                                    <% } else if(output.resList.restaurants[i].discount == 10){ %>
+                                                                        <i class="icon-Address-Icon p-yellow"></i>
+                                                                        <% } else{%>
+                                                                            <i class="icon-Address-Icon p-megenta"></i>
+                                                                            <% } %>
+                                                                                <p>
+                                                                                    <span>
+                                                                                        <%=output.resList.restaurants[i].distance%>
+                                                                                    </span>
+                                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <%if (output.resList.restaurants[i].discount == 5){%>
+                                                        <div class="p-info-wrap p-bg-blue">
+                                                            <% } else if(output.resList.restaurants[i].discount == 10){ %>
+                                                                <div class="p-info-wrap p-bg-yellow">
+                                                                    <% } else{%>
+                                                                        <div class="p-info-wrap p-bg-megenta">
+                                                                            <% } %>
+                                                                                <div class="p-star-rating">
+                                                                                    <ul>
+                                                                                        <% 
+                                                                for(let j=0;j<output.resList.restaurants[i].rating;j++){
+                                                                %>
+                                                                                            <li>
+                                                                                                <i class="fa fa-star"></i>
+                                                                                            </li>
+                                                                                            <% } %>
+                                                                                    </ul>
+                                                                                    <span>
+                                                                                        <%=output.resList.restaurants[i].ratingCount%> Ratings</span>
+                                                                                </div>
+                                                                                <div class="p-discount-per">
+                                                                                    <span>
+                                                                                        <%=output.resList.restaurants[i].discount%>% OFF</span>
+                                                                                </div>
+                                                                        </div>
+                                                </li>
+
+                                                <% } %>
+                                                <% } %>
+                                        </ul>
+
+                                        <!-- <div class="flex flex-middle flex-center mar_bottom_20 mar_top_50">
+                                        <span class="p-lt"></span>
+                                        <ul class="p-pagination">
+                                            <li>1</li>
+                                            <li>2</li>
+                                            <li class="active">3</li>
+                                            <li>4</li>
+                                            <li>5</li>
+                                        </ul>
+                                        <span class="p-rt"></span>
+                                    </div> -->
+                                        <!-- <div class="container">
+                                            
+                                                <% if (pages > 0) { %>
+                                                    <ul class="pagination text-center ">
+                                                        <% if (current == 1) { %>
+                                                            <li class="disabled"><a>First</a></li>
+                                                        <% } else { %>
+                                                            <li><a href="/search-result?page=1">First</a></li>
+                                                        <% } %>
+                                                        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                                                        <% if (i !== 1) { %>
+                                                            <li class="disabled"><a>...</a></li>
+                                                        <% } %>
+                                                        <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                                                            <% if (i == current) { %>
+                                                                <li class="active"><a><%= i %></a></li>
+                                                            <% } else { %>
+                                                                <li><a href="/search-result?page=1"><%= i %></a></li>
+                                                            <% } %>
+                                                            <% if (i == Number(current) + 4 && i < pages) { %>
+                                                                <li class="disabled"><a>...</a></li>
+                                                            <% } %>
+                                                        <% } %>
+                                                        <% if (current == pages) { %>
+                                                            <li class="disabled"><a>Last</a></li>
+                                                        <% } else { %>
+                                                            <li><a href="/products/<%= pages %>">Last</a></li>
+                                                        <% } %>
+                                                    </ul>
+                                                <% } %>
+                                        </div> -->
+
+                                        </div>
+                                        </div>
+                            </section>
+                            </div>
+                            </div>
+            </section>
+            <a href="#" id="back-to-top" title="Back to top">
+                <i class="icon-top_arrow"></i>
+            </a>
+            <!-- <div id="loader-sec" style="display:block">
+                    <div class="loader-img">
+                        <img src="images/fork_new.gif" alt="loader image">
+                    </div>
+                </div> -->
+            </div>
+
+            <!-- <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+            <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4e_CV3NO300KmK1cuWFdsbF4le6nPjAw" type="text/javascript"></script>
+
+            <script>
+                var searchparam = [], availableTags = [], isMapUpdated = false;
+                $(document).ready(function () {
+                    var searchparam = [];
+                    var p_optionvalue = GetParameterValues('p-option');
+                    console.log(p_optionvalue);
+                    if (p_optionvalue == "Pickup") {
+                        $('#rdPickup').prop('checked', true);
+                        searchparam.push({ value: "Pickup", id: "1", tag: 1 })
+                    }
+                    if (p_optionvalue != "Pickup") {
+                        $('#rdDineIN').prop('checked', true);
+                        searchparam.push({ value: "Dine-in", id: "2", tag: 1 })
+                    }
+
+                    var tag = GetParameterValues('tag');
+
+                    var customMiles = ['1/4', '1/2', '1', '2', '3', '4', '5', '10'];
+
+                    //GetDataaccotrdingtosearch();                   
+
+                    getCities();
+                    showLocationOnMap();
+
+                    $("#p-range-slider")
+                        .slider({
+                            min: 0,
+                            max: customMiles.length - 1
+                        })
+                        .slider("pips", {
+                            rest: "label",
+                            suffix: "mi",
+                            labels: customMiles
+                        });
+                });
+
+                function DisClick(rddisc) {
+                    for (var i = 0; i < searchparam.length; i++) {
+                        if (searchparam[i].tag == 4) {
+                            $('#disc' + searchparam[i].id).remove();
+                            searchparam.splice(i, 1);
+                            break;
+                        }
+                    }
+
+                    if (rddisc.id == "p-disc-inp-1") {
+                        searchparam.push({
+                            value: 1, id: rddisc.id, tag: 4
+                        }
+                        );
+                    }
+                    else if (rddisc.id == "p-disc-inp-2") {
+                        searchparam.push({
+                            value: 2, id: rddisc.id, tag: 4
+                        }
+                        );
+                    }
+                    else if (rddisc.id == "p-disc-inp-3") {
+                        searchparam.push({
+                            value: 3, id: rddisc.id, tag: 4
+                        }
+                        );
+                    }
+
+                    BindSearchTag(searchparam);
+                }
+
+                function PriceClick(rdprice) {
+                    for (var i = 0; i < searchparam.length; i++) {
+                        if (searchparam[i].tag == 3) {
+                            $('#price' + searchparam[i].id).remove();
+                            searchparam.splice(i, 1);
+                            break;
+                        }
+                    }
+
+                    if (rdprice.id == "p-price-inp-1") {
+                        searchparam.push({
+                            value: 1, id: rdprice.id, tag: 3
+                        }
+                        );
+                    }
+                    else if (rdprice.id == "p-price-inp-2") {
+                        searchparam.push({
+                            value: 2, id: rdprice.id, tag: 3
+                        }
+                        );
+                    }
+                    else if (rdprice.id == "p-price-inp-3") {
+                        searchparam.push({
+                            value: 3, id: rdprice.id, tag: 3
+                        }
+                        );
+                    }
+                    else if (rdprice.id == "p-price-inp-4") {
+                        searchparam.push({
+                            value: 4, id: rdprice.id, tag: 3
+                        }
+                        );
+                    }
+                    else if (rdprice.id == "p-price-inp-5") {
+                        searchparam.push({
+                            value: 5, id: rdprice.id, tag: 3
+                        }
+                        );
+                    }
+                    BindSearchTag(searchparam);
+                }
+
+                function RatingClick(rdrating) {
+                    //alert(rdrating.id);
+                    for (var i = 0; i < searchparam.length; i++) {
+                        if (searchparam[i].tag == 2) {
+                            $('#cross' + searchparam[i].id).remove();
+                            searchparam.splice(i, 1);
+                            break;
+                        }
+                    }
+                    if (rdrating.id == "p-rating-inp-1") {
+                        searchparam.push({
+                            value: 1, id: rdrating.id, tag: 2
+                        }
+                        );
+                    }
+                    else if (rdrating.id == "p-rating-inp-2") {
+                        searchparam.push({
+                            value: 2, id: rdrating.id, tag: 2
+                        }
+                        );
+                    }
+                    else if (rdrating.id == "p-rating-inp-3") {
+                        searchparam.push({
+                            value: 3, id: rdrating.id, tag: 2
+                        }
+                        );
+                    }
+                    else if (rdrating.id == "p-rating-inp-4") {
+                        searchparam.push({
+                            value: 4, id: rdrating.id, tag: 2
+                        }
+                        );
+                    }
+                    else if (rdrating.id == "p-rating-inp-5") {
+                        searchparam.push({
+                            value: 5, id: rdrating.id, tag: 2
+                        }
+                        );
+                    }
+                    BindSearchTag(searchparam);
+                }
+
+                function BindSearchTag(searchparam) {
+
+                    console.log(searchparam);
+                    $('div#Selcted_searchtag').empty();
+                    $.each(searchparam, function (index, val) {
+                        if (val.tag == 2) {
+                            if (val.value == 1) {
+                                var appendhtml1 = '<div class="p-fil-active" id=cross' + val.id + '>' +
+                                    '<ul class="p-fil-star">' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '</ul>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+
+                            }
+                            else if (val.value == 2) {
+                                var appendhtml1 = '<div class="p-fil-active" id=cross' + val.id + '>' +
+                                    '<ul class="p-fil-star">' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '</ul>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+                            }
+                            else if (val.value == 3) {
+                                var appendhtml1 = '<div class="p-fil-active" id=cross' + val.id + '>' +
+                                    '<ul class="p-fil-star">' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '</ul>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+                            }
+                            else if (val.value == 4) {
+                                var appendhtml1 = '<div class="p-fil-active" id=cross' + val.id + '>' +
+                                    '<ul class="p-fil-star">' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '</ul>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+
+                            }
+                            else if (val.value == 5) {
+                                var appendhtml1 = '<div class="p-fil-active" id=cross' + val.id + '>' +
+                                    '<ul class="p-fil-star">' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '<li>' +
+                                    '<i class="fa fa-star"></i>' +
+                                    '</li>' +
+                                    '</ul>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+                            }
+
+                        }
+                        else if (val.tag == 3) {
+                            if (val.value == 1) {
+                                var appendhtml1 = '<div class="p-fil-active" id=price' + val.id + '>' +
+                                    '<span>$ &amp; Less</span>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+
+                            }
+                            else if (val.value == 2) {
+                                var appendhtml1 = '<div class="p-fil-active" id=price' + val.id + '>' +
+                                    '<span>$$ &amp; Less</span>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+                            }
+                            else if (val.value == 3) {
+                                var appendhtml1 = '<div class="p-fil-active" id=price' + val.id + '>' +
+                                    '<span>$$$ &amp; Less</span>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+                            }
+                            else if (val.value == 4) {
+                                var appendhtml1 = '<div class="p-fil-active" id=price' + val.id + '>' +
+                                    '<span>$$$$ &amp; Less</span>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+
+                            }
+                            else if (val.value == 5) {
+                                var appendhtml1 = '<div class="p-fil-active" id=price' + val.id + '>' +
+                                    '<span>$$$$$ &amp; Less</span>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+                            }
+                        }
+                        else if (val.tag == 4) {
+                            if (val.value == 1) {
+                                var appendhtml1 = '<div class="p-fil-active" id=disc' + val.id + '>' +
+                                    '<span>5-10%</span>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+
+                            }
+                            else if (val.value == 2) {
+                                var appendhtml1 = '<div class="p-fil-active" id=disc' + val.id + '>' +
+                                    '<span>10-15%</span>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+                            }
+                            else if (val.value == 3) {
+                                var appendhtml1 = '<div class="p-fil-active" id=disc' + val.id + '>' +
+                                    '<span>20+%</span>' +
+                                    '<i class="p-fil-cross" onclick=RemoveFilter("' + val.id + '","' + val.tag + '")></i>' +
+                                    '</div>'
+                                $("#Selcted_searchtag").append(appendhtml1);
+                            }
+
+                        }
+
+
+                    });
+
+
+                }
+
+                function RemoveFilter(id, tag) {
+                    if (tag == 2) {
+
+                        for (var i = 0; i < searchparam.length; i++) {
+                            if (searchparam[i].id == id) {
+                                searchparam.splice(i, 1);
+                                break;
+                            }
+                        }
+                        $('#cross' + id).remove();
+                    }
+                    else if (tag == 3) {
+                        for (var i = 0; i < searchparam.length; i++) {
+                            if (searchparam[i].id == id) {
+                                searchparam.splice(i, 1);
+                                break;
+                            }
+                        }
+                        $('#price' + id).remove();
+                    }
+                    else if (tag == 4) {
+                        for (var i = 0; i < searchparam.length; i++) {
+                            if (searchparam[i].id == id) {
+                                searchparam.splice(i, 1);
+                                break;
+                            }
+                        }
+                        $('#disc' + id).remove();
+                    }
+                }
+
+                function GetParameterValues(param) {
+                    var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                    for (var i = 0; i < url.length; i++) {
+                        var urlparam = url[i].split('=');
+                        if (urlparam[0] == param) {
+                            return urlparam[1];
+                        }
+                    }
+                }
+
+                function getCities() {
+                    $.ajax({
+                        method: "POST",
+                        url: "/getCities",
+                        data: {},
+                        success: function (res) {
+                            console.log(res);
+                            var resp = res; // JSON.parse(res);
+                            var locations = [], cods = [];
+                            $.each(resp.Result, function (index, item) {
+                                availableTags.push({ name: item.name, cods: item.lat + "," + item.lng });
+                                locations.push(item.name);
+                                cods.push(item.lat, item.lng);
+                            });
+                            var options = {
+                                data: availableTags,
+                                getValue: "name",
+                                // list: { match: { enabled: true } },
+                                list: {
+                                    maxNumberOfElements: 15,
+                                    onChooseEvent: function () {
+                                        var value = $("#txtcities").getSelectedItemData().cods;
+                                        $("#hfCods").val(value);
+                                        console.log(value);
+                                        filterRestaurants($('#txtcities').val());
+                                    },
+                                    // onClickEvent: function () {
+                                    //     var value = $("#txtcities").getSelectedItemData().cods;
+                                    //     $("#hfCods").val(value);
+                                    //     console.log(value);
+                                    //     filterRestaurants($('#txtcities').val());
+                                    // }
+                                    //onSelectItemEvent
+                                }
+                                //theme: "square"
+                            };
+                            $("#txtcities").easyAutocomplete(options);
+                            // availableTags = {
+                            //     locations: locations,
+                            //     cods: cods
+                            // };
+                            console.log(availableTags);
+                            // $("#txtcities").autocomplete({
+                            //     source: availableTags,
+                            //     //lookup: availableTags,
+                            //     onSelect: function (data) {
+                            //         alert('You selected: ' + data.locations + ', ' + data.cods);
+                            //     }
+                            // });
+                        },
+                        error: function (err) {
+                            console.log('error');
+                            console.log(err);
+                        }
+                    });
+                }
+
+                $('#txtcities').on("keypress", function (e) {
+                    if (e.keyCode == 13) {
+                        filterRestaurants($('#txtcities').val());
+                    }
+                });
+
+                $('.p-cuisine-list li').on("click", function (e) {
+                    searchRestaurants($(this).children().next().text());
+                });
+
+                function searchRestaurants(cuisine) {
+                    var location = $("#hfCods").val();
+                    $.ajax({
+                        method: "GET",
+                        url: "/cuisine-search?tag=" + cuisine + "&location=" + location,
+                        data: {},
+                        success: function (res) {
+                            console.log(res);
+                            var restaurants = $(".p-rest-list");
+                            restaurants.html('');
+                            var locations = [];
+                            $.each(res.result.restaurants, function (key, value) {
+                                var priceIcons = "", ratings = "", discountClass = "p-info-wrap p-bg-megenta", distanceClass = "icon-Address-Icon p-megenta";
+                                for (var i = 1; i <= 5; i++) {
+                                    if (value.price >= i)
+                                        priceIcons = priceIcons + "<li class='active'>$</li>";
+                                    else
+                                        priceIcons = priceIcons + "<li>$</li>";
+
+                                    if (value.rating >= i)
+                                        ratings = ratings + "<li><i class='fa fa-star'/></li><li>";
+                                    else if (!isInteger(value.rating) && Math.trunc(value.rating) == i - 1) {
+                                        ratings = ratings + "<li><i class='fa fa-star-half'/></li><li>";
+                                    }
+                                }
+                                if (value.discount == 5) {
+                                    discountClass = "p-info-wrap p-bg-blue";
+                                    distanceClass = "icon-Address-Icon p-blue";
+                                }
+                                else if (value.discount == 10) {
+                                    discountClass = "p-info-wrap p-bg-yellow";
+                                    distanceClass = "icon-Address-Icon p-yellow";
+                                }
+
+                                var item1 = $("<li/>").append("<div class='p-rest-img'><img src='" + value.imagepath + "'></div>");
+                                var item2 = $("<div class='p-rest-mid'/>").
+                                    append("<div class='p-rest-head'><span><a class='p-rest-link' href='restaurant-profile?request=" + value.restid + "'>" + value.name + "</a></span>" +
+                                        "<div class='p-address-wrap'/><span class='p-info-card'>" + value.address + "</span></div>").
+                                    append("<div class='p-info-list'><ul class='p-price-rating'>" + priceIcons + "</ul>" +
+                                        "<div class='p-rest-loc'><i class='icon-Address-Icon p-megenta'/><p/><span>" + value.distance + "</span></div></div>");
+                                var item3 = $("<div class='" + discountClass + "'/>").
+                                    append("<div class='p-star-rating'><ul class='p-price-rating'>" + ratings + "</ul>" +
+                                        "<span>Ratings</span></div>").
+                                    append("<div class='p-discount-per'><span>" + value.priceRange + "% OFF</span></div>");
+
+                                $(item1).append(item2);
+                                $(item1).append(item3);
+                                $(restaurants).append(item1);
+
+                                var location = [value.name, parseFloat(value.latitude), parseFloat(value.longitude)];
+                                locations.push(location);
+                            });
+                            $("#txtRestaurantCount").html(res.result.restaurants.length + " Near You");
+                            closeFilterPopup();
+                            showLocationOnMap(locations);
+                        },
+                        error: function (err) {
+                            console.log('error');
+                            console.log(err);
+                        }
+                    });
+                }
+
+                function closeFilterPopup() {
+                    $(".filters").removeClass("active");
+                    $("body").removeClass("scroll-stop-alt p-overlay-alt");
+                }
+
+                $('#txtSearchRest').on("keypress", function (e) {
+                    if (e.keyCode == 13) {
+                        searchRestaurants($('#txtSearchRest').val());
+                    }
+                });
+
+                function filterRestaurants(searchText) {
+                    var location = $("#hfCods").val();
+                    $.ajax({
+                        method: "GET",
+                        url: "/featured-search",
+                        data: { tag: searchText, location: location },
+                        success: function (res) {
+                            console.log(res);
+                            var restaurants = $(".p-rest-list");
+                            restaurants.html('');
+                            var locations = [];
+                            $.each(res.result, function (key, value) {
+                                var priceIcons = "", ratings = "", discountClass = "p-info-wrap p-bg-megenta", distanceClass = "icon-Address-Icon p-megenta";
+                                for (var i = 1; i <= 5; i++) {
+                                    if (value.price >= i)
+                                        priceIcons = priceIcons + "<li class='active'>$</li>";
+                                    else
+                                        priceIcons = priceIcons + "<li>$</li>";
+
+                                    if (value.rating >= i)
+                                        ratings = ratings + "<li><i class='fa fa-star'/></li><li>";
+                                    else if (!isInteger(value.rating) && Math.trunc(value.rating) == i - 1) {
+                                        ratings = ratings + "<li><i class='fa fa-star-half'/></li><li>";
+                                    }
+                                }
+
+                                if (value.discount == 5) {
+                                    discountClass = "p-info-wrap p-bg-blue";
+                                    distanceClass = "icon-Address-Icon p-blue";
+                                }
+                                else if (value.discount == 10) {
+                                    discountClass = "p-info-wrap p-bg-yellow";
+                                    distanceClass = "icon-Address-Icon p-yellow";
+                                }
+
+                                var item1 = $("<li/>").append("<div class='p-rest-img'><img src='" + value.imagePath + "'></div>");
+                                var item2 = $("<div class='p-rest-mid'/>").
+                                    append("<div class='p-rest-head'><span><a class='p-rest-link' href='restaurant-profile?request=" + value.restId + "'>" + value.name + "</a></span>" +
+                                        "<div class='p-address-wrap'/><span class='p-info-card'>" + value.address + "</span></div>").
+                                    append("<div class='p-info-list'><ul class='p-price-rating'>" + priceIcons + "</ul>" +
+                                        "<div class='p-rest-loc'><i class='icon-Address-Icon p-megenta'/><p/><span>" + value.distance + "</span></div></div>");
+                                var item3 = $("<div class='" + discountClass + "'/>").
+                                    append("<div class='p-star-rating'><ul class='p-price-rating'>" + ratings + "</ul>" +
+                                        "<span>Ratings</span></div>").
+                                    append("<div class='p-discount-per'><span>" + value.discount + "% OFF</span></div>");
+
+                                $(item1).append(item2);
+                                $(item1).append(item3);
+                                $(restaurants).append(item1);
+
+                                var location = [value.name, parseFloat(value.latitude), parseFloat(value.longitude)];
+                                locations.push(location);
+                            });
+                            $("#txtRestaurantCount").html(res.result.length + " Near You");
+                            showLocationOnMap(locations);
+                        },
+                        error: function (err) {
+                            console.log(err);
+                        }
+                    });
+                }
+
+                function isInteger(x) {
+                    return Math.round(x) === x;
+                }
+
+                var marker, map, markerList = [];
+                function showLocationOnMap(locList) {
+                    var locations = [];
+                    var defaultLat = 32.594888, defaultLng = -115.607507;
+
+                    var location = $("#hfCods").val();
+                    if (!(location === undefined) && location != "") {
+                        defaultLat = parseFloat(location.split(',')[0]);
+                        defaultLng = parseFloat(location.split(',')[1]);
+                    }
+                    if ((locList === undefined) || locList == "") {
+                        $(".rest-cods").each(function (k, v) {
+                            var coordinates = ($(this).val()).split(',');
+                            var restName = $(this).next().val();
+                            var location = [restName, parseFloat(coordinates[0]), parseFloat(coordinates[1])];
+                            locations.push(location);
+                            if (!(location === undefined) && location != "") {
+                                defaultLat = parseFloat(coordinates[0]);
+                                defaultLng = parseFloat(coordinates[1]);
+                            }
+                        });
+                    }
+                    else
+                        locations = locList;
+
+                    if (map === undefined) {
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 10,
+                            center: new google.maps.LatLng(defaultLat, defaultLng),
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+
+                        map.addListener("dragend", function () {
+                            //map.panTo(marker.getPosition());                            
+                            var newLocation = (map.center.lat()).toFixed(6) + "," + (map.center.lng()).toFixed(6);
+                            updateMapLocation(newLocation);
+                            console.log("new location: " + newLocation);
+                        });
+                    }
+                    else {
+                        var center = new google.maps.LatLng(defaultLat, defaultLng);
+                        map.panTo(center);
+                    }
+
+                    var infowindow = new google.maps.InfoWindow();
+                    var i;
+                    clearMarkers();
+                    for (i = 0; i < locations.length; i++) {
+                        marker = new google.maps.Marker({
+                            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                            map: map
+                        });
+
+                        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                            return function () {
+                                infowindow.setContent(locations[i][0]);
+                                infowindow.open(map, marker);
+                            }
+                        })(marker, i));
+                        markerList.push(marker);
+                    }
+                }
+
+                function clearMarkers() {
+                    for (var i = 0; i < markerList.length; i++) {
+                        markerList[i].setMap(null);
+                    }
+                }
+
+                function updateMapLocation(location) {
+                    $("#hfCods").val(location);
+                    filterRestaurants($('#txtcities').val());
+                }
+
+            </script>
+    </body>
+
+    </html>

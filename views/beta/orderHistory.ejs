@@ -1,0 +1,155 @@
+<% include include/head.ejs %>
+<body>
+    <div class="pop-wrapper">
+            <header class="fixed_header">
+                <div class="container">
+                    <a class="logo" href="#"><img src="images/logo.png" alt="Fork Spot"></a>
+                    <div class="searc-for-resta">
+                        <span class="location-fill half">
+                            <span class="icon-forkpoint icon-Address-Icon"></span>
+                            <input type="text" placeholder="Enter Location">
+                        </span>
+                        <span class="location-fill half">
+                            <span class="icon-forkpoint icon-Search-Icon"></span>
+                            <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                        </span>
+                    </div>
+                    <div class="p-head-inp-wrap">
+                        <div class="p-head-inp">
+                            <i class="icon-Address-Icon"></i>
+                            <input type="text" placeholder="Enter Location">
+                        </div>
+                        <div class="p-head-inp">
+                            <i class="icon-Search-Icon"></i>
+                            <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                        </div>
+                    </div>   
+                    <div class="topbar-actions">
+                        <span class="my-Account"><i class="icon-Profile2-Icon"></i><span class="p-hide-txt">My Account</span></span>
+                        <span class="bag">
+                            <i class="icon-Shopping-Bag-Icon"></i>
+                        </span>
+                    </div>
+                    <div class="p-res-search" data-attribute="p-search-pop">
+                        <span class="icon-Search-Icon"></span>
+                    </div>
+                </div>
+            </header>
+        <section class="dash-main-wrapper">
+                <% include include/menu.ejs %>
+            <div class="rhs-main-content profile-dec pad_bottom_50 p-pad-right">
+                <div class="p-order-txt">
+                    <span>Orders</span>
+                </div>
+                <div class="p-detail-head">
+                    <h1>Order Details</h1>
+                    <p>September 21st 2014, 1:35 pm  Takeout  Order #961997</p>
+                    <span class="p-print-txt">Print receipt</span>
+                </div>
+
+                <div class="p-detail-sec">
+                    <div class="p-main-detail">
+                        <div class="p-detail-top">
+                            <div class="p-detail-img">
+                                <img src="images/636007074473328840-1022745645_Singapore-Restaurant-Week-2012-Visual.jpg">
+                            </div>
+                            <div class="p-detail-card">
+                                <h3>Tavern On Brand</h3>
+                                <p class="p-num">(818) 555-5555</p>
+                                <p class="p-address">208 N Brand Blvd,<br> Glendale, CA 91203</p>
+                            </div>
+                        </div>
+
+                        <div class="p-order-list-wrap">
+                            <ul class="p-mainorder-list">
+                                <li>
+                                    <span class="p-num-label">1</span>
+                                    <div class="p-detail-dish">
+                                        <span class="p-dish-name">Ceaser Salad</span>
+                                        <span class="p-dish-extra">Balsamic Dressing</span>
+                                        <span class="p-dish-extra">Add Chicken</span>
+                                    </div>
+                                    <span class="p-detail-amount">$7.30</span>
+                                </li>
+                                <li>
+                                    <span class="p-num-label">1</span>
+                                    <div class="p-detail-dish">
+                                        <span class="p-dish-name">Ceaser Salad</span>
+                                        <span class="p-dish-extra">Balsamic Dressing</span>
+                                        <span class="p-dish-extra">Add Chicken</span>
+                                    </div>
+                                    <span class="p-detail-amount">$7.30</span>
+                                </li>
+                            </ul>
+                            <ul class="p-detail-total-list">
+                                <li>
+                                    <span>ItemSubtotal:</span>
+                                    <span>$7.30</span>
+                                </li>
+                                <li>
+                                    <span>Sales Tax:</span>
+                                    <span>$0.90</span>
+                                </li>
+                                <li>
+                                    <span>Discount Applied: 15%</span>
+                                    <span>-$1.30</span>
+                                </li>
+                                <li>
+                                    <span>Tip Amount: 15%</span>
+                                    <span>$2.30</span>
+                                </li>
+                                <li>
+                                    <span>Total:</span>
+                                    <span>$6.90</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="p-pay-wrap">
+                            <h6>Payment Method</h6>
+                            <div class="p-card-wrap flex flex-middle">
+                                <i class="icon-Credit-Card-Icon"></i>
+                                <span class="p-card-info">xxx-xxx-xxx-8888</span>
+                                <span>Exp. 11/20</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-detail-btn">
+                        <button>Add to bag</button>
+                        <button>Express Reorder</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <div id="loader-sec" style="display:block">
+            <div class="loader-img"><img src="images/fork_new.gif" alt="loader image"></div>
+        </div>
+        
+        <!-- Search Popup -->
+        <div data-pop="p-search-pop" class="fork-pop">
+            <span class="p-close p-res-close">x</span>
+            <div class="p-search-wrap">
+                <div class="p-search-inp-wrap mar_bottom_35">
+                    <div class="p-search-inp mar_bottom_15">
+                        <i class="icon-Address-Icon"></i>
+                        <input type="text" placeholder="Street address, city, state">
+                    </div>
+                    <div class="p-search-inp">
+                        <i class="icon-Search-Icon"></i>
+                        <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                    </div>
+                </div>
+                <div class="p-serch-btn pad_left_10 pad_right_10">
+                    <input type="submit" value="Search">
+                </div>
+            </div>
+        </div>
+        <!-- Search Popup -->
+    </div>
+    
+
+</body>
+</html>

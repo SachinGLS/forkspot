@@ -1,0 +1,816 @@
+﻿<% include ../include/head.ejs %>
+
+    <body>
+        <!-- <p>Click the button to get your coordinates.</p>
+        <button onclick="getLocation()" id="getLocationCord">Try It</button>
+        <p id="demo"></p> -->
+        <div class="pop-wrapper">
+            <div class="main_warapper">
+                <% include ../include/header.ejs %>
+                    <section class="banner-sec top flex p-banner-sec">
+                        <img class="banner-img" src="images/banner.jpg" />
+                        <div class="absolute-method">
+                            <div class="container-inner flex flex-middle">
+                                <div class="banner-area p-banner">
+                                    <div class="banner-content main-banner">
+                                        <div class="fork-inner-cont">
+                                            <h1 class="fork-caption p-banner-heading">Who offers pickup near you?
+                                                
+                                            </h1>
+                                            <form method="get" action="/beta/search-result">
+                                                <div class="p-switch-wrap mar_bottom_15">
+                                                    <label class="p-switch">
+                                                        <input type="radio" name="p-option" value="Pickup" checked />
+                                                        <span>Pickup</span>
+                                                    </label>
+                                                    <label class="p-switch">
+                                                        <input type="radio" name="p-option" value="Dine-in" />
+                                                        <span>Dine-in</span>
+                                                    </label>
+                                                </div>
+
+                                                <!--<label>Enter your address below</label>-->
+
+                                                <div class="location-inp mar_bottom_20 p-hide-bar">
+                                                    <span class="loc-icon loc-line p-select-wrap p-asap-toggle">
+                                                        <i class="icon-Expiration-Date-Icon"></i>
+                                                        <select class="p-address-select">
+                                                            <option>ASAP</option>
+                                                        </select>
+                                                        <label class="p-asap-label">ASAP</label>
+                                                        <div class="p-asap-wrap">
+                                                            <h5>Date &amp; Time</h5>
+                                                            <h6>Schedule an order</h6>
+                                                            <div class="p-asap-select-wrap">
+                                                                <div class="p-asap-select">
+                                                                    <select>
+                                                                        <option>Today</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="p-asap-select">
+                                                                    <select>
+                                                                        <option value="12:00">12:00</option>
+                                                                        <option value="12:30">12:30</option>
+                                                                        <option value="01:00">01:00</option>
+                                                                        <option value="01:30">01:30</option>
+                                                                        <option value="02:00">02:00</option>
+                                                                        <option value="02:30">02:30</option>
+                                                                        <option value="03:00">03:00</option>
+                                                                        <option value="03:30">03:30</option>
+                                                                        <option value="04:00">04:00</option>
+                                                                        <option value="04:30">04:30</option>
+                                                                        <option value="05:00">05:00</option>
+                                                                        <option value="05:30">05:30</option>
+                                                                        <option value="06:00">06:00</option>
+                                                                        <option value="06:30">06:30</option>
+                                                                        <option value="07:00">07:00</option>
+                                                                        <option value="07:30">07:30</option>
+                                                                        <option value="08:00">08:00</option>
+                                                                        <option value="08:30">08:30</option>
+                                                                        <option value="09:00">09:00</option>
+                                                                        <option value="09:30">09:30</option>
+                                                                        <option value="10:00">10:00</option>
+                                                                        <option value="10:30">10:30</option>
+                                                                        <option value="11:00">11:00</option>
+                                                                        <option value="11:30">11:30</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="p-asap-select">
+                                                                    <select>
+                                                                        <option>AM</option>
+                                                                        <option>PM</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="p-apply">
+                                                                    <input type="button" value="Apply">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </span>
+                                                    <span class="loc-icon loc-line icon-loc">
+                                                        <i class="icon-Address-Icon p-address-icon"></i>
+                                                    </span>
+                                                    <span class="loc-icon loc-line search-bar">
+                                                        <input type="text" id="txtcities" placeholder="where are you? (Required)" name="tag" />
+                                                    </span>
+                                                    <span class="loc-icon loc-line s-acto">
+                                                        <input type="submit" name="submit" class="btn" value="Find Food" />
+                                                    </span>
+                                                </div>
+                                            </form>
+
+                                            <p class="p-bottom-text">Share Forkspot with a friend, get $5</p>
+                                            
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="resta-right-clif">
+                            <span>Tavern On Brand, Los Angeles </span>
+                        </span>
+                    </section>
+                    <!--<section class="get-app">
+                <div class="container-inner">
+                   <div class="fork-app-txt half left">
+                       <h2>Get The forkspot App</h2>
+                       <p>Order food on the go, whereever you are</p>
+                       <div class="input-stag">
+                           <input class="left" type="text" placeholder="555-555-5555" />
+                           <input class="left" type="button" value="Text me the app"/>
+                       </div>
+                   </div>
+                    <div class="fork-app-img half right">
+                        sdad
+                    </div>
+                </div>
+            </section>-->
+                    <section class="p-app-sec pad_top_100">
+                        <div class="container-inner clearfix">
+                            <div class="app-store-links flex flex-middle p-sec-wrapper">
+                                <div class="p-left-sec p-home-left">
+                                    <h2 class="p-head mar_bottom_20">Get the Forkspot app</h2>
+                                    <h3 class="p-sub-head mar_bottom_20">Order food on the go, wherever you are.</h3>
+                                    <div class="p-inp-wrap celarfix mar_bottom_20 p-hide-1k">
+                                        <input type="text" class="p-txt-inp" placeholder="555-555-5555" />
+                                        <input type="button" class="p-btn-inp" value="Text me the app" />
+                                    </div>
+                                    <p class="p-para mar_bottom_35 p-hide-1k">By entering your mobile phone number you agree to receive a download link, which may
+                                        be sent by an autodialer. Text and data rates may apply.</p>
+                                    <div class="p-get-app flex">
+                                        <a href="javascript:void(0)" class="p-store-wrap p-top-btn flex flex-middle">
+                                            <i class="icon-appstore"></i>
+                                            <div class="p-store-txt mar_left_25">
+                                                <span>Available on the</span>
+                                                <span>App Store</span>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)" class="p-store-wrap p-top-btn flex flex-middle mar_left_30">
+                                            <i class="icon-play"></i>
+                                            <div class="p-store-txt mar_left_25">
+                                                <span>GET IT ON</span>
+                                                <span>Google Play</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="p-right-sec p-home-right">
+                                    <img src="images/mobile.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="top-pics">
+                        <div class="container-inner">
+                            <h1 class="text-center">Top Picks in Los Angeles</h1>
+                            <p class="text-center">People near you order most frequently from these restaurants.</p>
+                        </div>
+                    </section>
+
+                    <!--<section class="how-to-fork">
+                <div class="outer bordered-container">
+                    <div class="animate-element title text-center">
+                        <h2 class="title-fork">How To Forkspot</h2>
+                        <p class="title-disc">Ordering from your favorite restaurant is even easier than eating.</p>
+                    </div>
+                    <div class="fork-steps">
+                        <ul class="disc-tag-list">
+                            <li class="animate-element step-list">
+                                <span class="stepo-img discov">
+                                    <img src="images/discover.png" />
+                                </span>
+                                <h2>Discover</h2>
+                                <p>We will help you find hidden gems in your neighborhood.</p>
+                            </li>
+                            <li class="animate-element step-list">
+                                <span class="stepo-img order">
+                                    <img src="images/order.png" />
+                                </span>
+                                <h2>Order</h2>
+                                <p>The more you use Forkspot the better we are at making recommnedations just for you.</p>
+                            </li>
+                            <li class="animate-element step-list">
+                                <span class="stepo-img plate">
+                                    <img class="knife" src="images/knife.png" />
+                                    <img src="images/plate.png" />
+                                    <img class="fork-form" src="images/fork.png" />
+                                </span>
+                                <h2>Enjoy</h2>
+                                <p>Enjoy each bite all the more knowing your order supports local businesses.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <span class="ground-element"></span>
+            </section>-->
+                    <section class="most-popular">
+                        <div class="fork-nearby">
+                            <ul class="nearby-spots" id="flexiselDemo3">
+                                <li class="spots">
+                                    <div class="inner-haxo">
+                                        <div class="resto-img">
+                                            <img src="images/resto-sample.jpg" />
+                                        </div>
+                                        <div class="resto-cont fork-pend">
+                                            <div class="offer loc-rate">15% OFF</div>
+                                            <div class="resto-rate">
+                                                <span class="rasto-name">Tavern On Brand</span>
+                                            </div>
+                                            <div class="rate-o-rate">
+                                                <span class="start-rating left">
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star-half"></span>
+                                                </span>
+                                                <span class="ratings left">125 Ratings</span>
+                                            </div>
+                                            <span class="loco right">
+                                                <span class="icon-Address-Icon"></span>
+                                                <span calss="est-time">
+                                                    <span class="mi">
+                                                        <span class="val-mi">0.04</span>
+                                                        <span class="dist-unit">ml</span>
+                                                    </span>
+                                                    <span class="min">
+                                                        <span class="val-min">10-20</span>
+                                                        <span class="dist-unit">min</span>
+                                                    </span>
+                                                </span>
+                                            </span>
+                                            <span class="acco-price right">
+                                                <span>$</span>
+                                                <span>$</span>
+                                                <span>$</span>
+                                                <span class="active">$</span>
+                                                <span>$</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="spots">
+                                    <div class="inner-haxo">
+                                        <div class="resto-img">
+                                            <img src="images/resto-sample.jpg" />
+                                        </div>
+                                        <div class="resto-cont fork-success">
+                                            <div class="offer loc-rate">15% OFF</div>
+                                            <div class="resto-rate">
+                                                <span class="rasto-name">Tavern On Brand</span>
+                                            </div>
+                                            <div class="rate-o-rate">
+                                                <span class="start-rating left">
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star-half"></span>
+                                                </span>
+                                                <span class="ratings left">125 Ratings</span>
+                                            </div>
+                                            <span class="loco right">
+                                                <span class="icon-Address-Icon"></span>
+                                                <span calss="est-time">
+                                                    <span class="mi">
+                                                        <span class="val-mi">0.04</span>mi</span>
+                                                    <span class="min">
+                                                        <span class="val-min">10-20</span>min</span>
+                                                </span>
+                                            </span>
+                                            <span class="acco-price right">
+                                                <span>$</span>
+                                                <span>$</span>
+                                                <span>$</span>
+                                                <span class="active">$</span>
+                                                <span>$</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="spots">
+                                    <div class="inner-haxo">
+                                        <div class="resto-img">
+                                            <img src="images/resto-sample.jpg" />
+                                        </div>
+                                        <div class="resto-cont fork-warn">
+                                            <div class="offer loc-rate">15% OFF</div>
+                                            <div class="resto-rate">
+                                                <span class="rasto-name">Tavern On Brand</span>
+                                            </div>
+                                            <div class="rate-o-rate">
+                                                <span class="start-rating left">
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star-half"></span>
+                                                </span>
+                                                <span class="ratings left">125 Ratings</span>
+                                            </div>
+                                            <span class="loco right">
+                                                <span class="icon-Address-Icon"></span>
+                                                <span calss="est-time">
+                                                    <span class="mi">
+                                                        <span class="val-mi">0.04</span>mi</span>
+                                                    <span class="min">
+                                                        <span class="val-min">10-20</span>min</span>
+                                                </span>
+                                            </span>
+                                            <span class="acco-price right">
+                                                <span>$</span>
+                                                <span>$</span>
+                                                <span>$</span>
+                                                <span class="active">$</span>
+                                                <span>$</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="spots">
+                                    <div class="inner-haxo">
+                                        <div class="resto-img">
+                                            <img src="images/resto-sample.jpg" />
+                                        </div>
+                                        <div class="resto-cont fork-pend">
+                                            <div class="offer loc-rate">15% OFF</div>
+                                            <div class="resto-rate">
+                                                <span class="rasto-name">Tavern On Brand</span>
+                                            </div>
+                                            <div class="rate-o-rate">
+                                                <span class="start-rating left">
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star"></span>
+                                                    <span class="fa fa-star-half"></span>
+                                                </span>
+                                                <span class="ratings left">125 Ratings</span>
+                                            </div>
+                                            <span class="loco right">
+                                                <span class="icon-Address-Icon"></span>
+                                                <span calss="est-time">
+                                                    <span class="mi">
+                                                        <span class="val-mi">0.04</span>mi</span>
+                                                    <span class="min">
+                                                        <span class="val-min">10-20</span>min</span>
+                                                </span>
+                                            </span>
+                                            <span class="acco-price right">
+                                                <span>$</span>
+                                                <span>$</span>
+                                                <span>$</span>
+                                                <span class="active">$</span>
+                                                <span>$</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section class="how-it-work mt60 p-desk-sec">
+                        <div class="work-sequence container-inner">
+                            <h1 class="text-center">How it Works</h1>
+                            <div class="fork-steps">
+                                <ul class="disc-tag-list">
+                                    <li class="animate-element step-list">
+                                        <h2>Discover</h2>
+                                        <span class="stepo-img discov">
+                                            <img src="images/discover.png" />
+                                        </span>
+                                        <p>Download Forkspot and we will help you find popular hotspots, hidden gems, and everything
+                                            else in between. </p>
+                                    </li>
+                                    <li class="animate-element step-list">
+                                        <h2>Order</h2>
+                                        <span class="stepo-img order">
+                                            <img src="images/explore.png" />
+                                        </span>
+                                        <p>Let restaurants know what your taste buds are craving. As you continue to use Forkspot,
+                                            we will adapt our recommendations and suggest restaurants that will satisfy your
+                                            palate.
+                                        </p>
+                                    </li>
+                                    <li class="animate-element step-list">
+                                        <h2>Enjoy</h2>
+                                        <span class="stepo-img plate">
+                                            <img src="images/enjoy.png" />
+                                        </span>
+                                        <p>Enjoy each bite of your meal knowing that you are saving money and supporting local
+                                            businesses. A win-win!
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="p-res-slider">
+                        <h2 class="p-slide-main-head">How It Works</h2>
+                        <div class="flexslider p-flex-slider">
+                            <ul class="slides">
+                                <li>
+                                    <h3 class="p-slide-heading">Discover</h3>
+                                    <div class="p-slide-img">
+                                        <img src="images/discover.png" />
+                                    </div>
+                                    <p class="p-slide-txt">Download Forkspot and we will help you find popular hotspots, hidden gems, and everything
+                                        else in between.</p>
+                                </li>
+                                <li>
+                                    <h3 class="p-slide-heading">Order</h3>
+                                    <div class="p-slide-img">
+                                        <img src="images/explore.png" />
+                                    </div>
+                                    <p class="p-slide-txt">Let restaurants know what your taste buds are craving. As you continue to use Forkspot,
+                                        we will adapt our recommendations and suggest restaurants that will satisfy your
+                                        palate.
+                                    </p>
+                                </li>
+                                <li>
+                                    <h3 class="p-slide-heading">Enjoy</h3>
+                                    <div class="p-slide-img">
+                                        <img src="images/enjoy.png" />
+                                    </div>
+                                    <p class="p-slide-txt">Enjoy each bite of your meal knowing that you are saving money and supporting local businesses.
+                                        A win-win!</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+
+                    <section class="cities">
+                        <img src="images/buildings.png" />
+                        <div class="p-res-city">
+                            <h3>Cities We Serve</h3>
+                            <div class="p-city">
+                                <div>
+                                    <span>Los Angeles</span>
+                                </div>
+                                <div>
+                                    <span>San Diego</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-inner">
+                            <div class="city-scape-content pad_left_100">
+                                <h2 class="p-desk-city">Cities We Serve</h2>
+                                <p class="cities p-desk-city">Los Angeles
+                                    <span class="sep">|</span> San Diego</p>
+                                <p class="para-content">Restaurants in Los Angeles and San Diego are falling in love with Forkspot, and quite honestly,
+                                    we are falling in love with them too. More and more restaurants are signing up every
+                                    day. If we don’t have restaurants in your area, subscribe to our email list! We will
+                                    let you know when Forkspot comes to your city. </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="fork-web">
+                        <ul class="unstyle web-list-grid desktop-list clearfix">
+                            <li class="refer-friend text-center">
+                                <h1>
+                                    <span class="opta-white">Get $5</span> for every friend you refer</h1>
+                                <p>Your friends get $5 off their first-time Forkspot order of $15+ and you get $5 off after
+                                    their first order!</p>
+                                <a hrefd="javascript:void(0)" class="btn btn-default">Refer a Fried</a>
+                            </li>
+                            <li class="our-blog text-center">
+                                <div class="blog-on-fork">
+                                    <div class="area-blog-logo">
+                                        <img src="images/thespot.png">
+                                    </div>
+                                    <p class="text-center">Visit our blog and get the latest in discounts, app updates, and humorous subject lines!</p>
+                                    <a class="btn btn-fork vis-blog">Visit our Blog</a>
+                                </div>
+                            </li>
+                            <li class="app-stores">
+                                <div class="left-cont-area">
+                                    <h2 class="p-head mar_bottom_20">Get the
+                                        <br /> Forkspot app</h2>
+                                    <h3 class="p-sub-head mar_bottom_20">Order food on the go, wherever you are.</h3>
+                                    <div class="p-bottom-store flex flex-wrap">
+                                        <a href="javascript:void(0)" class="p-store-wrap flex flex-middle">
+                                            <i class="icon-appstore"></i>
+                                            <div class="p-store-txt mar_left_25">
+                                                <span>Available on the</span>
+                                                <span>App Store</span>
+                                            </div>
+                                        </a>
+                                        <a href="javascript:void(0)" class="p-store-wrap flex flex-middle mar_left_10">
+                                            <i class="icon-play"></i>
+                                            <div class="p-store-txt mar_left_25">
+                                                <span>GET IT ON</span>
+                                                <span>Google Play</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="right-cont-area">
+                                    <img src="images/phone.png" alt="">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="flexslider mobile-list">
+                            <ul class="unstyle web-list-grid  clearfix slides">
+                                <li class="refer-friend text-center">
+                                    <h1 class="p-first-head">
+                                        <span class="opta-white">Get $5</span> for every friend you refer</h1>
+                                    <p class="p-first-para">Your friends get $5 off their first-time Forkspot order of $15+ and you get $5 off after
+                                        their first order!</p>
+                                    <a hrefd="javascript:void(0)" class="btn btn-default">Refer a Fried</a>
+                                </li>
+                                <li class="our-blog text-center">
+                                    <div class="blog-on-fork">
+                                        <div class="area-blog-logo">
+                                            <img src="images/thespot.png">
+                                        </div>
+                                        <p class="text-center pad_left_20 pad_right_20">Visit our blog and get the latest in discounts, app updates, and humorous subject
+                                            lines!
+                                        </p>
+                                        <a class="btn btn-fork vis-blog">Visit our Blog</a>
+                                    </div>
+                                </li>
+                                <li class="app-stores">
+                                    <div class="left-cont-area">
+                                        <h2 class="p-head mar_bottom_20">Get the
+                                            <br /> Forkspot app</h2>
+                                        <h3 class="p-sub-head mar_bottom_20">Order food on the go, wherever you are.</h3>
+                                        <div class="p-bottom-store flex flex-wrap">
+                                            <a href="javascript:void(0)" class="p-store-wrap flex flex-middle">
+                                                <i class="icon-appstore"></i>
+                                                <div class="p-store-txt mar_left_25">
+                                                    <span>Available on the</span>
+                                                    <span>App Store</span>
+                                                </div>
+                                            </a>
+                                            <a href="javascript:void(0)" class="p-store-wrap flex flex-middle mar_left_30">
+                                                <i class="icon-play"></i>
+                                                <div class="p-store-txt mar_left_25">
+                                                    <span>GET IT ON</span>
+                                                    <span>Google Play</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="right-cont-area">
+                                        <img src="images/phone.png" alt="">
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </section>
+                    <% include ../include/footer.ejs %>
+            </div>
+        </div>
+        <!-- Login Popups -->
+        <% include ../include/loginPopUp.ejs %>
+            <!-- Login Popups -->
+
+            <div data-pop="welcome-screen" class="fork-pop log-pop">
+                <div class="fork-pop-header p-login-bar">
+                    <img src="images/logo.png" />
+                    <span class="close_model">X</span>
+                </div>
+                <span class="p-close p-res-close">x</span>
+                <div class="pop-container">
+                    <h2 class="p-login-head text-center">Welcome to Forkspot</h2>
+                    <div class="rhs blog-n-refer p-pop-form">
+                        <div class="p-pop-inp">
+                            <input type="button" value="Start Browsing">
+                        </div>
+                        <h1>
+                            <span class="red">Get $5</span> for every
+                            <br> friend you refer</h1>
+                        <p>Your friends get $5 off their first-time Forkspot order of $15+ and you get $5 off after their first
+                            order!
+                        </p>
+                        <ul class="social-share unstyle left full mar_bottom_20">
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <span class="icon-Email-Icon"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <span class="icon-Phone-Icon"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0)">
+                                    <span class="icon-facebook"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="inp-log">
+                            <div class="form-group left full">
+                                <span class="icon-Email-Icon"></span>
+                                <input type="text" placeholder="To">
+                            </div>
+                            <div class="form-group left full">
+                                <span class="icon-Email-Icon"></span>
+                                <input type="text" placeholder="From">
+                            </div>
+                            <input class="btn btn-fork referal-btn" type="button" value="Send" data-attribute="off-pop">
+                            <div class="referallink clearfix">
+                                <p class="text-center left full">And share your link wherever:</p>
+                                <p class="text-center left full switch-to-pop">
+                                    <a class="st-log" href="https://www.forkspot.com/ahfoyea.ahde">https://www.forkspot.com/ahfoyea.ahde</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Search Popup -->
+            <div data-pop="p-search-pop" class="fork-pop">
+                <span class="p-close p-res-close">x</span>
+                <div class="p-search-wrap">
+                    <div class="p-search-inp-wrap mar_bottom_35">
+                        <div class="p-search-inp mar_bottom_15">
+                            <i class="icon-Address-Icon"></i>
+                            <input type="text" placeholder="Street address, city, state">
+                        </div>
+                        <div class="p-search-inp">
+                            <i class="icon-Search-Icon"></i>
+                            <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                        </div>
+                    </div>
+                    <div class="p-serch-btn pad_left_10 pad_right_10">
+                        <input type="submit" value="Search">
+                    </div>
+                </div>
+            </div>
+            <!-- Search Popup -->
+
+            <!-- 5$ Popup -->
+            <div data-pop="off-pop" class="fork-pop p-off-pop">
+                <span class="p-off-cross p-close">x</span>
+                <img src="images/p-pop-fork.png" class="p-fork-img">
+                <div class="p-pop-main-wrap">
+                    <div class="p-off-form">
+                        <p class="p-off-head">
+                            <span>Get $5 OFF</span>
+                            <span>your first order*</span>
+                        </p>
+                        <div class="p-off-inp">
+                            <i class="icon-Email-Icon"></i>
+                            <input type="text" placeholder="Email address">
+                        </div>
+                        <div class="p-off-inp">
+                            <i class="icon-Address-Icon"></i>
+                            <input type="text" placeholder="Zip Code">
+                        </div>
+                        <div class="p-off-btn">
+                            <input type="button" value="Save $5 on your first order" data-attribute="off-pop-alt">
+                        </div>
+                        <p class="p-off-note">*Valid on first order only, for one-time use, subject to Forkspot’s verification. Can not be combined
+                            with other discounts. to redeem, enter code at checkout on forkspot.com or Forkspot’s/Android
+                            apps, with a valid credit card or PayPal, and $5 will be taken off of minimum order of $15, before
+                            tax, tip and delivery fee. Offer expires one (1) week from receipt. Cannot be combined with cash.
+                            Only valid on personal accounts. By sigining up, you agree to receive marketing and promotional
+                            emails and communications from Forkspot.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div data-pop="off-pop-alt" class="fork-pop p-off-pop p-off-pop-alt">
+                <span class="p-off-cross p-close">x</span>
+                <img src="images/p-pop-fork.png" class="p-fork-img">
+                <div class="p-pop-main-wrap">
+                    <div class="p-off-form">
+                        <p class="p-off-head">
+                            <span>Get $5 OFF</span>
+                            <span>your first order*</span>
+                        </p>
+                        <div class="p-off-inp">
+                            <i class="icon-Email-Icon"></i>
+                            <input type="text" placeholder="Email address">
+                        </div>
+                        <div class="p-off-inp">
+                            <i class="icon-Address-Icon"></i>
+                            <input type="text" placeholder="Zip Code">
+                        </div>
+                        <div class="p-off-btn">
+                            <input type="button" value="Save $5 on your first order">
+                        </div>
+                        <p class="p-off-note">*Valid on first order only, for one-time use, subject to Forkspot’s verification. Can not be combined
+                            with other discounts. to redeem, enter code at checkout on forkspot.com or Forkspot’s/Android
+                            apps, with a valid credit card or PayPal, and $5 will be taken off of minimum order of $15, before
+                            tax, tip and delivery fee. Offer expires one (1) week from receipt. Cannot be combined with cash.
+                            Only valid on personal accounts. By sigining up, you agree to receive marketing and promotional
+                            emails and communications from Forkspot.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- 5$ Popup -->
+
+
+            <% include ../include/script.ejs %>
+    </body>
+
+    </html>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        var availableTags = [];
+        $(document).ready(function () {
+            // GetListofcity();
+            getCities();
+            // showPosition();
+            getLocation();
+        });
+
+        var x = document.getElementById("demo");
+        function getLocation() {
+            console.log('geo location called');
+            console.log(navigator);
+            console.log(navigator.geolocation);
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, fetchLocationError);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            //alert('show position called');
+            console.log('show position called');
+            console.log(position.coords);
+            //x.innerHTML = "Latitude: " + position.coords.latitude + 
+            //"<br>Longitude: " + position.coords.longitude;
+            $.ajax({
+                method: "POST",
+                url: "/setLatLong",
+                data: { latitude: position.coords.latitude, longitude: position.coords.longitude },
+                //data: { latitude: "", longitude: "" },
+                success: function (res) {
+                    console.log('complete');
+                    console.log(res);
+                },
+                error: function (err) {
+                    console.log('error');
+                    console.log(err);
+                }
+            });
+        }
+
+        function fetchLocationError(err) {
+            console.log(err.message);
+        }
+
+        function GetListofcity() {
+            $.ajax({
+                method: "GET",
+                url: "/getCities",
+                data: {},
+                success: function (res) {
+                    var resp = JSON.parse(res);
+
+                    $.each(resp.Result, function (index, item) {
+                        availableTags.push(item.name);
+                    });
+                    console.log(availableTags);
+                    $("#txtcities").autocomplete({
+                        source: availableTags
+                    });
+                },
+
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function getCities() {
+            $.ajax({
+                method: "POST",
+                url: "/getCities",
+                data: {},
+                success: function (res) {
+                    console.log(res);
+                    var resp = res; // JSON.parse(res);
+
+                    $.each(resp.Result, function (index, item) {
+                        availableTags.push(item.name);
+                    });
+                    console.log(availableTags);
+                    $("#txtcities").autocomplete({
+                        source: availableTags
+                    });
+                },
+                error: function (err) {
+                    console.log('error');
+                    console.log(err);
+                }
+            });
+
+        }
+
+    </script>

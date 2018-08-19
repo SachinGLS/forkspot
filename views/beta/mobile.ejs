@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Forkspot</title>
+    <style>
+        .mob-container {
+            max-width: 768px;
+            width: 100%;
+            margin: 0 auto;
+            background: #3D6679;
+            display: table;
+        }
+
+        .logo {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .img-pik {
+            width: 150px;
+            height: 150px;
+            display: block;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+            .img-pik img {
+                width: 100%;
+            }
+
+        p.credit-span {
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .input-actions {
+            width: 80%;
+            margin: 20px auto;
+            display: table;
+        }
+
+
+        p.credit-span {
+            text-align: center;
+            font-size: 24px;
+            color: #fff;
+            padding: 10px;
+            margin: 0px;
+            font-weight: bold;
+        }
+
+        p.line-hit {
+            margin: 0px;
+            padding: 0 43px;
+            text-align: center;
+            font-size: 19px;
+            color: #fff;
+        }
+
+        .half {
+            width: 47%;
+            float: left;
+            margin: 1%;
+            text-align: center;
+        }
+
+        .input-actions input[type="button"] {
+            background: #009eab;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .half input {
+            width: 96%;
+            height: 55px;
+        }
+
+        .input-actions input[type="text"] {
+            border-radius: 8px;
+            border: none;
+            padding: 0 10px;
+        }
+        p.text-center.bottom-line {
+    text-align: center;
+    width: 89%;
+    margin: 70px auto 47px;
+    font-size: 19px;
+    color: #fff;
+}
+        .img-pik {
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: 0 auto 33px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+    </style>
+</head>
+<body>
+    <div class="mob-container">
+        <div class="inner-cont">
+            <div class="logo"><img src="images/logo.png" /></div>
+            <div class="img-pik">
+                <img src="images/discount_image.png" />
+            </div>
+            <p class="credit-span"><span class="creditor-name">Grigori</span> gave you $5.00 in forkspot credit towards your First Order</p>
+            <p class="line-hit">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+            <div class="input-actions">
+                <span class="half">
+                    <input type="text" />
+                </span>
+                <span class="half">
+                    <input type="button" value="Download and claim" />
+                </span>
+            </div>
+            <p class="text-center bottom-line">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        (function (b, r, a, n, c, h, _, s, d, k) { if (!b[n] || !b[n]._q) { for (; s < _.length;) c(h, _[s++]); d = r.createElement(a); d.async = 1; d.src = "https://cdn.branch.io/branch-latest.min.js"; k = r.getElementsByTagName(a)[0]; k.parentNode.insertBefore(d, k); b[n] = h } })(window, document, "script", "branch", function (b, r) { b[r] = function () { b._q.push([r, arguments]) } }, { _q: [], _v: 1 }, "addListener applyCode banner closeBanner creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode".split(" "), 0);
+        branch.init('YOUR-BRANCH-KEY');
+        function sendSMS(form) {
+            var phone = form.phone.value;
+            var linkData = {
+                tags: [],
+                channel: 'Website',
+                feature: 'TextMeTheApp',
+                data: {
+                    'foo': 'bar'
+                }
+            };
+            var options = {};
+            var callback = function (err, result) {
+                if (err) {
+                    alert("Sorry, something went wrong.");
+                }
+                else {
+                    alert("SMS sent!");
+                }
+            };
+            branch.sendSMS(phone, linkData, options, callback);
+            form.phone.value = "";
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+﻿<% include include/head.ejs %>
+
+    <body>
+        <div class="main_warapper">
+            <header class="fixed_header">
+                <div class="container">
+                    <a class="logo" href="#">
+                        <img src="images/logo.png" alt="Fork Spot">
+                    </a>
+                    <div class="searc-for-resta">
+                        <span class="location-fill half">
+                            <span class="icon-forkpoint icon-Address-Icon"></span>
+                            <input type="text" placeholder="Enter Location">
+                        </span>
+                        <span class="location-fill half">
+                            <span class="icon-forkpoint icon-Search-Icon"></span>
+                            <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                        </span>
+                    </div>
+                    <div class="topbar-actions">
+                        <span class="my-Account">
+                            <i class="icon-Profile2-Icon"></i>
+                            <span class="p-hide-txt">My Account</span>
+                        </span>
+                        <span class="bag p-cart-slide">
+                            <i class="icon-Shopping-Bag-Icon"></i>
+                        </span>
+                    </div>
+                </div>
+            </header>
+            <section class="Thanks_order">
+                <% include include/menu.ejs %>
+                    <div class="Thanks_sec" style="margin-left:15%;">
+                        <div class="container">
+                            <ul class="progressbar">
+                                <li class="active">Order Sent</li>
+                                <li>In the works</li>
+                                <li>Order completed</li>
+                            </ul>
+                            <div class="order-confirmation-thanks text-center">
+                                <h2>The restaurant is preparing your food</h2>
+                                <p>The ETA for your order from
+                                    <%=output.Result.restName%> is from 2pm - 2:15pm. The order number is
+                                        <span class="theme-color order-number">
+                                            <%=output.Result.orderId%>
+                                        </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-content-ordo container" style="width: 75%; margin-left: 22%;">
+                        <div class="order-form-deatils half left bg-secondary pos-rel">
+                            <span class="p-receipt">Print Receipt</span>
+                            <h3 class="p-account-head mar_bottom_10">Ordered From</h3>
+                            <h2 class="txt-black p-add-head">
+                                <%=output.Result.restName%>
+                            </h2>
+                            <span class="basic-addro clearfix p-num-info">
+                                <span class="full left">
+                                    <%=output.Result.restContactNumber%>
+                                </span>
+                                <span class="full left adrr">
+                                    <%=output.Result.address%>
+                                </span>
+                            </span>
+                            <!-- <h3 class="p-account-head mar_top_20">Payment Method</h3>
+                            <div class="ord-sect left full">
+                                <ul class="unstyle card-added full left unstyle no-pad">
+                                    <li class="full left">
+                                        <div class="adr">
+                                            <span class="icon-Credit-Card-Icon"></span>
+                                            <p>xxx-xxx-xxx-9999</p>
+                                        </div>
+                                        <div class="ph-no card-exp">
+                                            <p>Exp. 11/20</p>
+                                        </div>
+                                        <div class="p-amount right">$6.50</div>
+                                    </li>
+                                </ul>
+                            </div> -->
+                            <div class="receipt-area left bg-secondary">
+                                <ul class="recipt-listing unstyle no-pad full left">
+
+                                    <li class="left full">
+                                        <span class="itm-count left p-label">1</span>
+                                        <span class="itm-disc left">
+                                            <span class="left full p-label">
+                                                <strong>
+                                                    <%=output.itemName%>
+                                                </strong>
+                                            </span>
+                                            <span>Balsamic Dressing
+                                                <br />Add Chicken</span>
+                                        </span>
+                                        <span class="item-price right">$
+                                            <%=output.itemPrice%>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <ul class="sub-total unstyle left full">
+                                    <li class="left full">
+                                        <span class="item-norm left">Item Subtotal:</span>
+                                        <span class="itm-rate right">$
+                                            <%=output.subTotal%>
+                                        </span>
+                                    </li>
+                                    <li class="left full">
+                                        <span class="item-norm left">Sales Tax:</span>
+                                        <span class="itm-rate right">$
+                                            <%=output.tax%>
+                                        </span>
+                                    </li>
+                                    <li class="left full">
+                                        <span class="item-norm left">Discount-Applied-15</span>
+                                        <span class="itm-rate right">$
+                                            <%=output.discount%>
+                                        </span>
+                                    </li>
+                                    <li class="left full">
+                                        <span class="item-norm left">Tip-Amount-15</span>
+                                        <span class="itm-rate right">
+                                            <%=output.tipAmount%>
+                                        </span>
+                                    </li>
+                                    <li class="left full sub-total-uts">
+                                        <span class="item-norm left">Total</span>
+                                        <span class="itm-rate right">$
+                                            <%=output.totalAmount%>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="rhs blog-n-refer">
+                            <h1>
+                                <span class="red">Get $5</span> for every
+                                <br> friend you refer</h1>
+                            <p>Your friends get $5 off their first-time Forkspot order of $15+ and you get $5 off after their
+                                first order!</p>
+                            <ul class="social-share unstyle left full mar_bottom_20">
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="icon-Email-Icon"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="icon-Phone-Icon"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)">
+                                        <span class="icon-facebook"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="inp-log">
+                                <div class="form-group left full">
+                                    <span class="icon-Email-Icon"></span>
+                                    <input type="text" placeholder="TO">
+                                </div>
+                                <div class="form-group left full">
+                                    <span class="icon-Email-Icon"></span>
+                                    <input type="text" placeholder="From">
+                                </div>
+                                <input class="btn btn-fork referal-btn" type="button" value="Send">
+                                <div class="referallink">
+                                    <p class="text-center left full">And share your link wherever:</p>
+                                    <p class="text-center left full switch-to-pop">
+                                        <a class="st-log" href="https://www.forkspot.com/ahfoyea.ahde">https://www.forkspot.com/ahfoyea.ahde</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="blog-area">
+                                <div class="area-blog-logo">
+                                    <img src="images/thespot.png" />
+                                </div>
+                                <p class="text-center">Visit our blog and get the latest in discounts, app updates, and humorous subject lines!</p>
+                                <a class="btn btn-fork vis-blog">Visit our Blog</a>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+        </div>
+    </body>
+
+    </html>

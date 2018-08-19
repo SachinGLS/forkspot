@@ -1,0 +1,410 @@
+﻿<% include include/head.ejs %>
+
+    <body>
+        <div class="pop-wrapper">
+            <% include include/header.ejs %>
+                <section class="dash-main-wrapper">
+                    <% include include/menu.ejs %>
+                        <div class="rhs-main-content">
+                            <div class="inner-page-cont p-wrapper">
+                                <h2 class="page-heading">Payment Methods</h2>
+                                <span class="success">
+                                    <%=success_messages%>
+                                </span>
+                                <span class="error">
+                                    <%=error_messages%>
+                                </span>
+                                <div class="adress-list pay-meth-lists">
+                                    <ul class="p-pay-list">
+                                        <%
+                                for(var i=0;i< output.creditCards.length;i++){
+                                %>
+                                            <li id="row<%=output.creditCards[i].id%>">
+                                                <div class="p-card-num">
+                                                    <span>
+                                                        <%=output.creditCards[i].cardNumber%>
+                                                    </span>
+                                                    <span class="p-card-exp mar_left_30">Exp.
+                                                        <%=output.creditCards[i].expiryMonth%>/
+                                                            <%=output.creditCards[i].expiryYear%>
+                                                    </span>
+                                                </div>
+                                                <div class="p-icon-wrap">
+                                                    <span>
+                                                        <% if(i==0){%>
+                                                            <i class="fa fa-check-circle active"></i>
+                                                            <span href="javascript:void(0)">Default</span>
+                                                            <%}else{%>
+                                                                <i class="fa fa-check-circle"></i>
+                                                                <a href="javascript:void(0)" onclick="setDefaultCard('<%=output.creditCards[i].id%>')">Set default</a>
+                                                                <%}%>
+                                                    </span>
+                                                    <span class="p-del mar_left_15">
+                                                        <% if(i==0){%>
+                                                            <i class="icon-Delete-Icon"></i>
+                                                            <span>
+                                                                <span href="javascript:void(0)">Delete</span>
+                                                            </span>
+                                                            <%}else{%>
+                                                                <i class="icon-Delete-Icon"></i>
+                                                                <span>
+                                                                    <a href="javascript:void(0)" onclick="deleteCard('<%=output.creditCards[i].id%>')">Delete</a>
+                                                                </span>
+                                                                <%}%>
+                                                    </span>
+                                                </div>
+                                                <span class="icon-Credit-Card-Icon p-card-icon"></span>
+                                            </li>
+                                            <% } %>
+
+                                    </ul>
+
+                                    <!-- <ul class="unstyle">
+                            <li>
+                                <div class="adr"><p>xxx-xxx-xxx-9999</p></div>
+                                <div class="ph-no card-exp"><p>Exp. 11/20</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p>xxx-xxx-xxx-9999</p></div>
+                                <div class="ph-no card-exp"><p>Exp. 11/20</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p>xxx-xxx-xxx-9999</p></div>
+                                <div class="ph-no card-exp"><p>Exp. 11/20</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p>xxx-xxx-xxx-9999</p></div>
+                                <div class="ph-no card-exp"><p>Exp. 11/20</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p>xxx-xxx-xxx-9999</p></div>
+                                <div class="ph-no card-exp"><p>Exp. 11/20</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p>xxx-xxx-xxx-9999</p></div>
+                                <div class="ph-no card-exp"><p>Exp. 11/20</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p>xxx-xxx-xxx-9999</p></div>
+                                <div class="ph-no card-exp"><p>Exp. 11/20</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p>xxx-xxx-xxx-9999</p></div>
+                                <div class="ph-no card-exp"><p>Exp. 11/20</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span></div>
+                            </li>
+                            <li>
+                                <div class="adr"><p>xxx-xxx-xxx-9999</p></div>
+                                <div class="ph-no card-exp"><p>Exp. 11/20</p></div>
+                                <div class="action flex flex-wrap"><span class="adr-edt edts"><i class="icon-Pencil-Icon"></i>Edit</span><span class="adr-edt dlts"><i class="icon-Delete-Icon"></i>Delete</span></div>
+                            </li>
+
+                        </ul> -->
+                                    <a href="javascript:void(0)" data-attribute="add-card" class="btn btn-fork ad-new-adr p-new-add">
+                                        <span class="add-sign"></span>
+                                        <span class="inner-btn-txt">Add Credit Card</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                </section>
+                <!-- <div id="loader-sec" style="display:block">
+                    <div class="loader-img">
+                        <img src="images/fork_new.gif" alt="loader image">
+                    </div>
+                </div> -->
+                <!--profile page loader start-->
+                <div id="loader-sec" style="display:block">
+                    <div class="box-loader-html">
+                        <header class="fixed_header fs-header">
+                            <div class="container">
+                                <a class="logo" href="#">
+                                    <img src="images/logo-gray.png" alt="Fork Spot">
+                                </a>
+                                <div class="topbar-actions">
+                                    <span class="bag p-cart-slide">
+                                        <i class="icon-Shopping-Bag-Icon"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </header>
+                        <section class="dash-main-wrapper">
+                            <div class="lhs-menu" style="z-index:99;">
+                                <div class="box-loader__pavatar-row">
+                                    <div class="box-loader__animation box-loader__profile-avatar"></div>
+                                    <div class="box-loader__animation box-loader__pavatar-name"></div>
+                                </div>
+                                <div class="box-loader__menu-wrap">
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rhs-main-content">
+                                <div class="inner-page-cont">
+                                    <div class="box-loader__animation box-loading__heading"></div>
+
+                                    <!--<div class="box-loading__adress-row">
+                            <div class="box-loader__animation box-loading__adress-col1"></div>
+                            <div class="box-loader__animation box-loading__adress-col2"></div>
+                            <div class="box-loader__animation box-loading__adress-col3"></div>
+                            </div>-->
+
+                                    <div class="box-loading__adress-list">
+                                        <div class="box-loading__adress-row">
+                                            <div class="box-loader__animation box-loading__adress-col1"></div>
+                                            <div class="box-loader__animation box-loading__adress-col3"></div>
+                                        </div>
+                                        <div class="box-loading__adress-row">
+                                            <div class="box-loader__animation box-loading__adress-col1"></div>
+                                            <div class="box-loader__animation box-loading__adress-col3"></div>
+                                        </div>
+                                        <div class="box-loading__adress-row">
+                                            <div class="box-loader__animation box-loading__adress-col1"></div>
+                                            <div class="box-loader__animation box-loading__adress-col3"></div>
+                                        </div>
+                                        <div class="box-loading__adress-row">
+                                            <div class="box-loader__animation box-loading__adress-col1"></div>
+                                            <div class="box-loader__animation box-loading__adress-col3"></div>
+                                        </div>
+                                        <div class="box-loading__adress-row">
+                                            <div class="box-loader__animation box-loading__adress-col1"></div>
+                                            <div class="box-loader__animation box-loading__adress-col3"></div>
+                                        </div>
+                                        <div class="box-loading__adress-row">
+                                            <div class="box-loader__animation box-loading__adress-col1"></div>
+                                            <div class="box-loader__animation box-loading__adress-col3"></div>
+                                        </div>
+                                        <div class="box-loader__animation box-loading__adress-button"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <!--profile page loader end-->
+
+        </div>
+
+        <div data-pop="add-card" class="fork-pop pay-pop">
+            <div class="fork-pop-header">
+                <h2 class="text-center">Add new payment method</h2>
+                <span class="close_model">X</span>
+            </div>
+            <span class="p-close p-res-close">x</span>
+            <div class="pop-container">
+                <span class="errorCard">
+                </span>
+                <div class="inp-log p-res-form">
+                    <h2 class="p-pay-head">Payment Methods</h2>
+                    <!-- <form method="POST" action="/createStripeCustomer" id="addCreditCardForm"> -->
+                    <div class="form-group p-card-inp p-icon-inp">
+                        <i class="icon-Credit-Card-Icon"></i>
+                        <input type="text" id="txtCardHolderName" placeholder="Name on Card" name="name" maxlength="200" />
+                    </div>
+
+                    <div class="form-group p-card-inp p-icon-inp">
+                        <i class="icon-Credit-Card-Icon"></i>
+                        <input type="text" id="txtCardNo" placeholder="Card number*" name="cardNumber" maxlength="16" />
+                    </div>
+                    <!-- <div class="form-group half left p-icon-inp">
+                            <i class="icon-Expiration-Date-Icon"></i>
+                            <input type="text" placeholder="Expire On*" />
+                        </div> -->
+                    <div class="form-group half right p-icon-inp">
+                        <i class="icon-Security-Code-Icon"></i>
+                        <input type="text" id="txtCvv" placeholder="CVV Code*" name="cvv" maxlength="4" />
+                    </div>
+                    <div class="form-group half right p-icon-inp">
+                        <i class="icon-Security-Code-Icon"></i>
+                        <input type="text" id="txtZip" placeholder="ZIP Code*" name="zipcode" maxlength="10" />
+                    </div>
+                    <div class="form-group half right p-icon-inp">
+                        <i class="fa fa-calendar"></i>
+                        <select name="expiryYear" id="year" class="yea  f-control">
+                            <option value="2018">2018</option>
+                            <option value="2019">2019</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                        </select>
+                    </div>
+                    <div class="form-group half right p-icon-inp">
+                        <i class="fa fa-calendar"></i>
+                        <select name="expiryMonth" id="month" class="month f-control">
+                            <option value="1">JAN</option>
+                            <option value="2">FEB</option>
+                            <option value="3">MAR</option>
+                            <option value="4">APR</option>
+                            <option value="5">MAY</option>
+                            <option value="6">JUNE</option>
+                            <option value="7">JULY</option>
+                            <option value="8">AUG</option>
+                            <option value="9">SEP</option>
+                            <option value="10">OCT</option>
+                            <option value="11">NOV</option>
+                            <option value="12">DEC</option>
+                        </select>
+                    </div>
+                    <div class="pay-controler p-pop-btn">
+                        <div class="half">
+                            <input class="btn btn-default half close_model p-btn-alt" type="button" value="Cancel" />
+                        </div>
+                        <div class="half">
+                            <input class="btn btn-fork half" type="button" onclick="addCard()" value="Submit" />
+                        </div>
+                    </div>
+                    <!-- </form> -->
+                </div>
+            </div>
+        </div>
+    </body>
+
+    </html>
+
+
+    <script src="js/validate.min.js"></script>
+    <script>
+        $("#addCreditCardForm").validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                cardNumber: {
+                    required: true
+                },
+                cardNumber: {
+                    required: true
+                },
+                cvv: {
+                    required: true
+                },
+                zipcode: {
+                    required: true
+                }
+            },
+            messages: {
+                email: {
+                    required: "please provide email address",
+                    email: "Your email address must be in the format of name@domain.com"
+                }, password: {
+                    required: "This field is required"
+                }
+            }
+        });
+
+        function deleteCard(cardId) {
+            if (confirm('Are you sure want to delete this credit card?') == true) {
+                $.ajax({
+                    method: "POST",
+                    url: "/deleteCard",
+                    data: { cardId: cardId },
+                    success: function (res) {
+                        console.log(res);
+                        $('#success').html(res.Message);
+                        $('#row' + res.result.id).hide();
+                    }
+                });
+            }
+        }
+        //$(document).ready(function () {
+        // $.ajax({
+        //     method: "GET",
+        //     url: "/getStripeCards",
+        //     data: {},
+        //     success: function (res) {
+        //         console.log(res);
+        //     }
+        // });
+        // });
+
+        function addCard() {
+            var cardHolderName = $("#txtCardHolderName").val();
+            var cardNumber = $("#txtCardNo").val();
+            var cvc = $("#txtCvv").val();
+            var zipCode = $("#txtZip").val();
+            if (cardNumber || cvc || zipCode) {
+                $(".errorCard").html("");
+                $.ajax({
+                    method: "POST",
+                    url: "/addCard",
+                    data: {
+                        name: cardHolderName,
+                        exp_month: $("#month").val(),
+                        exp_year: $("#year").val(),
+                        cvc: cvc,
+                        number: cardNumber,
+                        address_zip: zipCode,
+                    },
+                    success: function (res) {
+                        console.log(res);
+                        $(".success").html("Card added successfully");
+                        location.reload();
+                        // $(".pop-wrapper").removeClass("overlaypop");
+                        // $(".fork-pop").removeClass("opend-pop");
+                        // $(".fork-pop").fadeOut();
+                        // $("html,body").css("overflow", "visible");
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
+            else {
+                $(".errorCard").html("Please fill all the required fields");
+            }
+        }
+
+        function setDefaultCard(cardId) {
+            $.ajax({
+                method: "POST",
+                url: "/setDefaultCard",
+                data: { cardId: cardId },
+                success: function (res) {
+                    console.log(res);
+                    location.reload();
+                }
+            });
+        }
+
+    </script>

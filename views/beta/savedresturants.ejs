@@ -1,0 +1,480 @@
+﻿<% include include/head.ejs %>
+
+    <body>
+        <% include include/header.ejs %>
+            <div class="pop-wrapper">
+                <section class="dash-main-wrapper">
+                    <% include include/menu.ejs %>
+                        <div class="rhs-main-content">
+                            <div class="inner-page-cont">
+                                <h2 class="page-heading mb20">Saved Resturants</h2>
+                                <span class="success_message success">
+                                    <%=success_messages%>
+                                </span>
+                                <span class="error_message success">
+                                    <%=error_messages%>
+                                </span>
+                                <div class="top-filter-bar p-res-filters">
+                                    <div class="left half find-order">
+                                        <span class="icon-Search-Icon"></span>
+                                        <input type="text" placeholder="Find Order History" />
+                                    </div>
+                                    <div class="right half filter-order">
+                                        <select>
+                                            <option value="Alphabetically">Alphabetically</option>
+                                            <option value="Order Number">Order Number</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Completed">Completed</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="p-saved-rest-wrap">
+                                    <ul class="p-rest-list">
+                                        <% 
+                            for(var i=0;i<output.resList.length;i++){
+                            %>
+                                            <li>
+
+                                                <div class="p-rest-img">
+                                                    <img src="images/636007074473328840-1022745645_Singapore-Restaurant-Week-2012-Visual.jpg">
+                                                    <span class="p-res-label p-bg-megenta">
+                                                        <%=output.resList[i].discount %>% OFF</span>
+                                                </div>
+                                                <div class="p-rest-mid">
+                                                    <div class="p-rest-head">
+
+                                                        <span>
+                                                            <a href="/resturants-details?request=<%=output.resList[i].restaurantId%>" class="p-rest-link">
+                                                                <%=output.resList[i].name %>
+                                                            </a>
+                                                        </span>
+                                                    </div>
+                                                    <div class="p-info-list">
+                                                        <div class="p-rating-res">
+                                                            <ul>
+                                                                <% 
+                                            for(let j=0;j<output.resList[i].rating;j++){       
+                                            %>
+                                                                    <li>
+                                                                        <i class="fa fa-star"></i>
+                                                                    </li>
+                                                                    <% } %>
+                                                                        <!-- half rating -->
+                                                                        <!-- <li><i class="fa fa-star-half"></i></li> -->
+                                                            </ul>
+                                                            <span>
+                                                                <%=output.resList[i].ratingCount %> Ratings</span>
+                                                        </div>
+                                                        <ul class="p-price-rating">
+                                                            <% 
+                                            for(var j=0;j<5;j++){ %>
+                                                                <li <% if(output.resList[i].price> j){ %> class="active"
+                                                                    <% } %> >$</li>
+                                                                <% } %>
+                                                        </ul>
+                                                        <div class="p-rest-loc">
+                                                            <i class="icon-Address-Icon p-megenta"></i>
+                                                            <p>
+                                                                <span>
+                                                                    <%=output.resList[i].distance %>
+                                                                </span>
+                                                            </p>
+                                                            <p>
+                                                                <span>10-20</span>
+                                                                <span>min</span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="p-info-wrap p-bg-megenta">
+                                                    <div class="p-star-rating">
+                                                        <ul>
+                                                            <% 
+                                        for(let j=0;j<output.resList[i].rating;j++){
+                                        %>
+                                                                <li>
+                                                                    <i class="fa fa-star"></i>
+                                                                </li>
+                                                                <% } %>
+                                                                    <!-- <li><i class="fa fa-star-half"></i></li> -->
+                                                        </ul>
+                                                        <span>
+                                                            <%=output.resList[i].ratingCount %> Ratings</span>
+                                                    </div>
+                                                    <div class="p-discount-per">
+                                                        <span>
+                                                            <%=output.resList[i].discount %>% OFF</span>
+                                                    </div>
+                                                </div>
+                                                <div class="p-rest-delete">
+                                                    <i class="icon-Delete-Icon"></i>
+                                                    <span onclick="remove('<%=output.resList[i].restaurantId %>')">Remove</span>
+                                                </div>
+                                            </li>
+                                            <% } %>
+
+                                    </ul>
+                                </div>
+
+                                <!-- <div class="resturant-list left">
+                        <ul class="saved-list unstyle">
+                            <li class="resta-saved fork-warn">
+                                <div class="resta-img left">
+                                    <img src="images/636007074473328840-1022745645_Singapore-Restaurant-Week-2012-Visual.jpg" />
+                                </div>
+                                <div class="resta-name left">Thai Me UP</div>
+                                <div class="resta-act right"><span class="icon-Delete-Icon"></span><span class="rmv">Remove</span></div>
+                                <div class="resta-loc right">
+                                    <span class="loc-rate right">
+                                        <span class="star-rates">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star-half"></span>
+                                        </span>
+                                        <span class="number-of-rates">
+                                            <span class="rate-number">125 <span>Ratings</span></span>
+                                            <span class="discoout-rate"><span class="amount-rate">15</span>% OFF</span>
+                                        </span>
+                                    </span>
+                                    <span class="loc-points right">
+                                        <span class="dolllar-cont">
+                                            $$$$$
+                                        </span>
+                                        <span class="location-lef">
+                                            <span class="icon-Address-Icon">
+                                            </span>
+                                            <span class="est-time">
+                                                <span class="mi"><span class="val-mi">0.04</span>mi</span>
+                                                <span class="min"><span class="val-min">10-20</span>min</span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </div>
+
+
+                            </li>
+                            <li class="resta-saved fork-success">
+                                <div class="resta-img left">
+                                    <img src="images/636007074473328840-1022745645_Singapore-Restaurant-Week-2012-Visual.jpg" />
+                                </div>
+                                <div class="resta-name left">Thai Me UP</div>
+                                <div class="resta-act right"><span class="icon-Delete-Icon"></span><span class="rmv">Remove</span></div>
+                                <div class="resta-loc right">
+                                    <span class="loc-rate right">
+                                        <span class="star-rates">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star-half"></span>
+                                        </span>
+                                        <span class="number-of-rates">
+                                            <span class="rate-number">125 <span>Ratings</span></span>
+                                            <span class="discoout-rate"><span class="amount-rate">15</span>% OFF</span>
+                                        </span>
+                                    </span>
+                                    <span class="loc-points right">
+                                        <span class="dolllar-cont">
+                                            $$$$$
+                                        </span>
+                                        <span class="location-lef">
+                                            <span class="icon-Address-Icon">
+                                            </span>
+                                            <span class="est-time">
+                                                <span class="mi"><span class="val-mi">0.04</span>mi</span>
+                                                <span class="min"><span class="val-min">10-20</span>min</span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </div>
+
+
+                            </li>
+                            <li class="resta-saved fork-pend">
+                                <div class="resta-img left">
+                                    <img src="images/636007074473328840-1022745645_Singapore-Restaurant-Week-2012-Visual.jpg" />
+                                </div>
+                                <div class="resta-name left">Thai Me UP</div>
+                                <div class="resta-act right"><span class="icon-Delete-Icon"></span><span class="rmv">Remove</span></div>
+                                <div class="resta-loc right">
+                                    <span class="loc-rate right">
+                                        <span class="star-rates">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star-half"></span>
+                                        </span>
+                                        <span class="number-of-rates">
+                                            <span class="rate-number">125 <span>Ratings</span></span>
+                                            <span class="discoout-rate"><span class="amount-rate">15</span>% OFF</span>
+                                        </span>
+                                    </span>
+                                    <span class="loc-points right">
+                                        <span class="dolllar-cont">
+                                            $$$$$
+                                        </span>
+                                        <span class="location-lef">
+                                            <span class="icon-Address-Icon">
+                                            </span>
+                                            <span class="est-time">
+                                                <span class="mi"><span class="val-mi">0.04</span>mi</span>
+                                                <span class="min"><span class="val-min">10-20</span>min</span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </div>
+
+
+                            </li>
+                            <li class="resta-saved fork-warn">
+                                <div class="resta-img left">
+                                    <img src="images/636007074473328840-1022745645_Singapore-Restaurant-Week-2012-Visual.jpg" />
+                                </div>
+                                <div class="resta-name left">Thai Me UP</div>
+                                <div class="resta-act right"><span class="icon-Delete-Icon"></span><span class="rmv">Remove</span></div>
+                                <div class="resta-loc right">
+                                    <span class="loc-rate right">
+                                        <span class="star-rates">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star-half"></span>
+                                        </span>
+                                        <span class="number-of-rates">
+                                            <span class="rate-number">125 <span>Ratings</span></span>
+                                            <span class="discoout-rate"><span class="amount-rate">15</span>% OFF</span>
+                                        </span>
+                                    </span>
+                                    <span class="loc-points right">
+                                        <span class="dolllar-cont">
+                                            $$$$$
+                                        </span>
+                                        <span class="location-lef">
+                                            <span class="icon-Address-Icon">
+                                            </span>
+                                            <span class="est-time">
+                                                <span class="mi"><span class="val-mi">0.04</span>mi</span>
+                                                <span class="min"><span class="val-min">10-20</span>min</span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </div>
+
+
+                            </li>
+                            <li class="resta-saved fork-success">
+                                <div class="resta-img left">
+                                    <img src="images/636007074473328840-1022745645_Singapore-Restaurant-Week-2012-Visual.jpg" />
+                                </div>
+                                <div class="resta-name left">Thai Me UP</div>
+                                <div class="resta-act right"><span class="icon-Delete-Icon"></span><span class="rmv">Remove</span></div>
+                                <div class="resta-loc right">
+                                    <span class="loc-rate right">
+                                        <span class="star-rates">
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star-half"></span>
+                                        </span>
+                                        <span class="number-of-rates">
+                                            <span class="rate-number">125 <span>Ratings</span></span>
+                                            <span class="discoout-rate"><span class="amount-rate">15</span>% OFF</span>
+                                        </span>
+                                    </span>
+                                    <span class="loc-points right">
+                                        <span class="dolllar-cont">
+                                            $$$$$
+                                        </span>
+                                        <span class="location-lef">
+                                            <span class="icon-Address-Icon">
+                                            </span>
+                                            <span class="est-time">
+                                                <span class="mi"><span class="val-mi">0.04</span>mi</span>
+                                                <span class="min"><span class="val-min">10-20</span>min</span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </div>
+
+
+                            </li>
+                            
+                        </ul>
+                    </div> -->
+                            </div>
+                        </div>
+                </section>
+
+                <!-- <div id="loader-sec" style="display:block">
+            <div class="loader-img"><img src="images/fork_new.gif" alt="loader image"></div>
+        </div> -->
+
+                <!-- page loader start-->
+                <div id="loader-sec" style="display:block">
+                    <div class="box-loader-html">
+                        <header class="fixed_header fs-header">
+                            <div class="container">
+                                <a class="logo" href="#">
+                                    <img src="images/logo-gray.png" alt="Fork Spot">
+                                </a>
+                                <div class="topbar-actions">
+                                    <span class="bag p-cart-slide">
+                                        <i class="icon-Shopping-Bag-Icon"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </header>
+                        <section class="dash-main-wrapper">
+                            <div class="lhs-menu" style="z-index:99;">
+                                <div class="box-loader__pavatar-row">
+                                    <div class="box-loader__animation box-loader__profile-avatar"></div>
+                                    <div class="box-loader__animation box-loader__pavatar-name"></div>
+                                </div>
+                                <div class="box-loader__menu-wrap">
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                    <div class="box-loader__menu-row">
+                                        <div class="box-loader__menu-icon box-loader__animation"></div>
+                                        <div class="box-loader__menu-name box-loader__animation"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rhs-main-content">
+                                <div class="inner-page-cont">
+                                    <div class="box-loader__animation box-loading__heading"></div>
+                                    <br>
+                                    <div class="box-loading__orders-row" style="margin-bottom:0px;">
+                                        <div class="box-loader__animation box-loading__order-search"></div>
+                                        <div class="box-loader__animation box-loading__order-search"></div>
+                                    </div>
+                                    <div class="box-loading__saved-row">
+                                        <div class="box-loader__animation box-loading__saved-col1"></div>
+                                        <div class="box-loading__saved-col2">
+                                            <div class="box-loader__animation box-loading__saved-col2-title"></div>
+                                        </div>
+                                        <div class="box-loading__saved-col3">
+                                            <div class="box-loader__animation box-loading__saved-location"></div>
+                                            <div class="box-loader__animation box-loading__saved-ratings"></div>
+                                            <div class="box-loader__animation box-loading__saved-delete"></div>
+                                        </div>
+                                    </div>
+                                    <div class="box-loading__saved-row">
+                                        <div class="box-loader__animation box-loading__saved-col1"></div>
+                                        <div class="box-loading__saved-col2">
+                                            <div class="box-loader__animation box-loading__saved-col2-title"></div>
+                                        </div>
+                                        <div class="box-loading__saved-col3">
+                                            <div class="box-loader__animation box-loading__saved-location"></div>
+                                            <div class="box-loader__animation box-loading__saved-location"></div>
+                                            <div class="box-loader__animation box-loading__saved-delete"></div>
+                                        </div>
+                                    </div>
+                                    <div class="box-loading__saved-row">
+                                        <div class="box-loader__animation box-loading__saved-col1"></div>
+                                        <div class="box-loading__saved-col2">
+                                            <div class="box-loader__animation box-loading__saved-col2-title"></div>
+                                        </div>
+                                        <div class="box-loading__saved-col3">
+                                            <div class="box-loader__animation box-loading__saved-location"></div>
+                                            <div class="box-loader__animation box-loading__saved-location"></div>
+                                            <div class="box-loader__animation box-loading__saved-delete"></div>
+                                        </div>
+                                    </div>
+                                    <div class="box-loading__saved-row">
+                                        <div class="box-loader__animation box-loading__saved-col1"></div>
+                                        <div class="box-loading__saved-col2">
+                                            <div class="box-loader__animation box-loading__saved-col2-title"></div>
+                                        </div>
+                                        <div class="box-loading__saved-col3">
+                                            <div class="box-loader__animation box-loading__saved-location"></div>
+                                            <div class="box-loader__animation box-loading__saved-location"></div>
+                                            <div class="box-loader__animation box-loading__saved-delete"></div>
+                                        </div>
+                                    </div>
+                                    <div class="box-loading__saved-row">
+                                        <div class="box-loader__animation box-loading__saved-col1"></div>
+                                        <div class="box-loading__saved-col2">
+                                            <div class="box-loader__animation box-loading__saved-col2-title"></div>
+                                        </div>
+                                        <div class="box-loading__saved-col3">
+                                            <div class="box-loader__animation box-loading__saved-location"></div>
+                                            <div class="box-loader__animation box-loading__saved-location"></div>
+                                            <div class="box-loader__animation box-loading__saved-delete"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <!-- page loader end-->
+
+            </div>
+            <!-- Search Popup -->
+            <div data-pop="p-search-pop" class="fork-pop">
+                <span class="p-close p-res-close">x</span>
+                <div class="p-search-wrap">
+                    <div class="p-search-inp-wrap mar_bottom_35">
+                        <div class="p-search-inp mar_bottom_15">
+                            <i class="icon-Address-Icon"></i>
+                            <input type="text" placeholder="Street address, city, state">
+                        </div>
+                        <div class="p-search-inp">
+                            <i class="icon-Search-Icon"></i>
+                            <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                        </div>
+                    </div>
+                    <div class="p-serch-btn pad_left_10 pad_right_10">
+                        <input type="submit" value="Search">
+                    </div>
+                </div>
+            </div>
+            <!-- Search Popup -->
+
+    </body>
+
+    </html>
+
+    <script>
+
+        function remove(id) {
+            if (confirm('Are you sure want to delete this') == true) {
+                $.ajax({
+                    method: "delete",
+                    url: "/savedresturants",
+                    data: { restId: id },
+                    success: function (res) {
+                        location.reload();
+                    }
+                })
+            }
+        }    
+    </script>

@@ -1,0 +1,307 @@
+﻿<% include include/head.ejs %>
+
+    <body>
+        <div class="pop-wrapper">
+            <% include include/header.ejs %>
+                <section class="dash-main-wrapper">
+                    <% include include/menu.ejs %>
+                        <div class="rhs-main-content profile-dec p-profile-wrap pad_bottom_50 rhs-fixwidth">
+                            <div class="inp-box clearfix">
+                                <span class="success">
+                                    <%=success_messages%>
+                                </span>
+                                <form method="post" id="profileForm" action="/updatePrfile">
+                                    <div class="half p-res">
+                                        <input class="left pro-field" id="firstName" name="firstName" type="text" placeholder="First Name" value="<%=output.firstName%>"
+                                        />
+                                    </div>
+                                    <div class="half p-res pro-field">
+                                        <input class="right" name="lastName" type="text" placeholder="Last Name" value="<%=output.lastName%>" />
+                                    </div>
+                                    <div class="full p-icon-res pro-field">
+                                        <i class="icon-Email-Icon"></i>
+                                        <input type="email" placeholder="Email" name="email" value="<%=output.email%>" />
+                                        <input type="hidden" id="fbId" />
+                                    </div>
+
+                                    <div class="p-btn-wrap flex">
+                                        <input type="submit" name="submit" value="Edit" class="p-edit" id="btnSumbit" />
+                                        <a href="#" class="p-fb-btn flex flex-middle mar_left_20" id="connect_facebook">
+                                            <i class="icon-facebook mar_right_10"></i>
+                                            <span>Connect With Facebook</span>
+                                        </a>
+                                    </div>
+                                </form>
+
+                                <!-- <input type="button" value="Edit" class="btn-fork edt" />
+                    <a class="cnt-fb" href="fb-connect"><i class="icon-facebook"></i><span class="btn-txt">Connect With Facebook</span></a> -->
+
+                                <div class="promo">
+                                    <h1>Promotions</h1>
+                                    <div class="promo-code">
+                                        <div class="prom-inp">
+                                            <input class="p-promo-inp" type="text" placeholder="Enter a promocode" />
+                                            <a hrer="javascript:void(0)">Apply</a>
+                                        </div>
+                                        <p style="color: rgba(193, 39, 45, 0.5);" class="error note">This promo code has expired</p>
+                                    </div>
+                                </div>
+                                <div class="promolist">
+                                    <ul class="promoliz">
+                                        <li>
+                                            <span class="left promodec">
+                                                <span class="promo-code-txt">QtgR45</span>
+                                                <span class="prom-status active-promo">Active</span>
+                                            </span>
+                                            <span class="right promo-amt">$5</span>
+                                            <p class="left full">Get $5 credit on you first order</p>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                <div class="reminder-sec">
+                                    <ul class="unstyle centered no-pad">
+                                        <li>
+                                            <input class="styled-checkbox" id="styled-checkbox-1" type="checkbox" value="value1">
+                                            <label for="styled-checkbox-1">Coffee and Lunch Reminder</label>
+                                        </li>
+                                        <li>
+                                            <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2">
+                                            <label for="styled-checkbox-2">Markiting Notification</label>
+                                        </li>
+                                        <!--<li>
+                                <input class="styled-checkbox" id="styled-checkbox-2" type="checkbox" value="value2" checked>
+                                <label for="styled-checkbox-2">CSS Only</label>
+                            </li>
+                            <li>
+                                <input class="styled-checkbox" id="styled-checkbox-3" type="checkbox" value="value3" disabled>
+                                <label for="styled-checkbox-3">A disabled checkbox</label>
+                            </li>
+                            <li>
+                                <input class="styled-checkbox" id="styled-checkbox-4" type="checkbox" value="value4">
+                                <label for="styled-checkbox-4">Fourth option</label>
+                            </li>-->
+                                    </ul>
+                                    <p>Forkspot sends marketing notifications to tell you about new features and new restaurants
+                                        on our network.</p>
+                                </div>
+                            </div>
+                            <div class="profile-sec">
+                                <div class="uploded-one">
+                                    <img class="pro-pik-edt" src="<%=profileImage%>" />
+                                </div>
+                                <!-- <form method="POST" id="#ImageForm" action="upload" enctype="multipart/form-data" class="actions"> -->
+                                <div class="actions">
+                                    <span class="change-dp">
+                                        Change
+                                        <input type="file" id="imgProfilePic" value="Change" style="opacity: 0;" class="changefile-field" />
+                                    </span>
+                                    <!-- <input class="btn btn-fork" value="upload" onclick="uploadFile()"> -->
+                                    <span class="dlt-dp">Delete</span>
+                                </div>
+                                <!-- </form> -->
+                            </div>
+                        </div>
+        </div>
+        </section>
+
+        <!-- <div id="loader-sec" style="display:block">
+            <div class="loader-img">
+                <img src="images/fork_new.gif" alt="loader image">
+            </div>
+        </div> -->
+
+        <!--profile page loader start-->
+        <div id="loader-sec" style="display:block">
+            <div class="box-loader-html">
+                <header class="fixed_header fs-header">
+                    <div class="container">
+                        <a class="logo" href="#">
+                            <img src="images/logo-gray.png" alt="Fork Spot">
+                        </a>
+                        <div class="topbar-actions">
+                            <span class="bag p-cart-slide">
+                                <i class="icon-Shopping-Bag-Icon"></i>
+                            </span>
+                        </div>
+                    </div>
+                </header>
+                <section class="dash-main-wrapper">
+                    <div class="lhs-menu" style="z-index:99;">
+                        <div class="box-loader__pavatar-row">
+                            <div class="box-loader__animation box-loader__profile-avatar"></div>
+                            <div class="box-loader__animation box-loader__pavatar-name"></div>
+                        </div>
+                        <div class="box-loader__menu-wrap">
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                            <div class="box-loader__menu-row">
+                                <div class="box-loader__menu-icon box-loader__animation"></div>
+                                <div class="box-loader__menu-name box-loader__animation"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rhs-main-content profile-dec p-profile-wrap pad_bottom_50 rhs-fixwidth">
+                        <div class="inp-box">
+                            <div class="box-loader__formrow">
+                                <div class="box-loader__animation box-loader__formcol"></div>
+                                <div class="box-loader__animation box-loader__formcol"></div>
+                            </div>
+                            <div class="box-loader__formrow">
+                                <div class="box-loader__animation box-loader__formcolf"></div>
+                            </div>
+                            <div class="box-loader__formrow">
+                                <div class="box-loader__animation box-loader__formbt"></div>
+                                <div class="box-loader__animation box-loader__formbt"></div>
+                            </div>
+                            <div class="box-loader__promo">
+                                <div class="box-loader__animation box-loader__formcol"></div>
+                            </div>
+                            <div class="box-loader__promolist">
+                                <div class="box-loader__animation box-loader__promolist-left"></div>
+                                <div class="box-loader__animation box-loader__promolist-right"></div>
+                            </div>
+                            <div class="box-loader__reminder-sec">
+                                <div class="box-loader__animation box-loader__reminder-checkbox"></div>
+                                <div class="box-loader__animation box-loader__reminder-checkbox"></div>
+                                <div class="box-loader__animation box-loader__reminder-content"></div>
+                                <div class="box-loader__animation box-loader__reminder-content2"></div>
+                            </div>
+                        </div>
+                        <div class="profile-sec">
+                            <div class="box-loader__pphoto-row">
+                                <div class="box-loader__animation box-loader__profile-pphoto"></div>
+                                <div class="box-loader__animation box-loader__pphoto-bt"></div>
+                                <div class="box-loader__animation box-loader__pphoto-bt"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!--profile page loader end-->
+        </div>
+
+    </body>
+
+    </html>
+    <script src="js/validate.min.js"></script>
+    <script>
+
+        $(".pro-field").on("keyup", function () {
+            $("#btnSumbit").val("Save");
+        });
+
+        $("#connect_facebook").click(function () {
+            FB.login(function (response) {
+                if (response.authResponse) {
+                    console.log('Welcome!  Fetching your information.... ');
+                    FB.api('/me?fields=picture,name,first_name,last_name,middle_name,email', function (response) {
+                        console.log(response);
+                        console.log('Good to see you, ' + response.name + '.');
+                        // $("#firstName").val(response.first_name);
+                        // $("#lastName").val(response.last_name);
+                        // $("#email").val(response.email);
+                        $("#fbId").val(response.id);
+                    });
+                } else {
+                    console.log('User cancelled login or did not fully authorize.');
+                }
+            }, { scope: 'email' });
+        });
+
+        $("#profileForm").validate({
+            rules: {
+                firstName: {
+                    required: true,
+                }, lastName: {
+                    required: true,
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+            },
+            messages: {
+                email: {
+                    email: "Your email address must be in the format of name@domain.com"
+                }
+            }
+        });
+
+        function uploadFile() {
+            var uploadedFile = $("#imgProfilePic")[0].files[0];
+            var formdata = new FormData();
+
+            formdata.append("image", $("#imgProfilePic")[0].files[0]);
+            $.ajax({
+                method: "POST",
+                url: "/upload",
+                data: formdata,
+                processData: false,
+                contentType: false,
+                success: function (res) {
+                    console.log(res);
+                    if (res.Success == true) {
+                        console.log(res);
+                    } else {
+                        console.log(res);
+                    }
+                }
+            });
+
+        }
+
+        $("#ImageForm").validate(
+            {
+                // rules: {
+                //     image: {
+                //         required: true,
+                //     },
+                // },
+                // messages: {
+                //     image: {
+                //         image: "Upload an image"
+                //     }
+                // },
+                submitHandler: function (form) {
+                    console.log(form);
+                    // $.ajax({
+                    //     method: "POST",
+                    //     url: "/upload",
+                    //     data: { email: $('#subsEmail').val(), zipcode: $('#subsZipcode').val() },
+                    //     success: function (res) {
+                    //         console.log(res);
+                    //         if (res.Success == true) {
+                    //             console.log(res);
+                    //         } else {
+                    //             console.log(res);
+                    //         }
+                    //     }
+                    // });
+                }
+            }
+        );
+    </script>

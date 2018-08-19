@@ -1,0 +1,44 @@
+<% include include/head.ejs %>
+<body>
+    <div class="pop-wrapper">
+        <div class="main_warapper">
+                <% include include/header.ejs %>
+            
+            <section class="p-main-sec">                
+                <div class="p-review-sec">
+                    <div class="p-container">
+                        <div class="p-hand-wrap clearfix">
+                            <img src="images/hand-group.png" alt="" />
+                        </div>
+                        <div class="p-rev-form">
+                            <div class="p-form-head flex flex-center">
+                                <h3 class="p-head-txt">Thank You!</h3>
+                            </div>
+                            <div class="p-form-mid">
+                                <p class="p-form-ques mar_bottom_20">We appreciate your feedback.</p>
+                                <p class="p-review-para">Your reviews help others stay in the know and discover great tastes.</p>
+                            </div>
+                            <div class="p-form-bottom">
+                                <div class="p-form-btn-wrap p-form-btn-alt">
+                                    <button class="p-form-btn p-btn-lg"><i class="icon-Save-Restaurant-Icon"></i><span>Save this Restaurant</span></button>
+                                    <button class="p-form-btn p-btn-lg p-second">Browse other restaurants</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <% include include/footer.ejs %>
+        </div>
+      
+        <div id="loader-sec" style="display:block">
+            <div class="loader-img"><img src="images/fork_new.gif" alt="loader image"></div>
+        </div>        
+    </div>
+
+        <!-- Login Popups -->
+        <% include include/loginPopUp.ejs %>
+        <!-- Login Popups -->
+</body>
+</html>

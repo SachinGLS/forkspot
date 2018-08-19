@@ -1,0 +1,889 @@
+﻿<% include include/head.ejs %>
+
+    <body>
+        <div class="pop-wrapper">
+            <div class="main_warapper">
+                <header class="fixed_header">
+                    <div class="container">
+                        <a class="logo" href="#">
+                            <img src="images/logo.png" alt="Fork Spot">
+                        </a>
+                        <div class="searc-for-resta">
+                            <span class="location-fill half">
+                                <span class="icon-forkpoint icon-Address-Icon"></span>
+                                <input type="text" placeholder="Enter Location">
+                            </span>
+                            <span class="location-fill half">
+                                <span class="icon-forkpoint icon-Search-Icon"></span>
+                                <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                            </span>
+                        </div>
+                        <div class="topbar-actions">
+                            <span class="my-Account">
+                                <i class="icon-Profile2-Icon"></i>
+                                <span class="p-hide-txt">My Account</span>
+                            </span>
+                            <span class="bag p-cart-slide">
+                                <i class="icon-Shopping-Bag-Icon"></i>
+                            </span>
+                        </div>
+                        <div class="p-res-search" data-attribute="p-search-pop">
+                            <span class="icon-Search-Icon"></span>
+                        </div>
+                    </div>
+                </header>
+                <div class="container place-order-page" style="width:100%;">
+                    <% include include/menu.ejs %>
+                        <div class="lhs-ord-flow" style="width: 55%;float: right;margin-right: 25%;">
+                            <h1>Review and Place order</h1>
+                            <div class="ord-sect left full">
+                                <span class="exis-title full left">Your Order settings</span>
+                                <span class="below-info pick-up-eta">
+                                    <span class="left addr-order" id="txtPickupTime">Pickup, ASAP (15-20min)</span>
+                                    <span class="change-act" data-attribute="changetime" onclick="changePickup()">
+                                        <i class="icon-Pencil-Icon"></i>Change</span>
+                                </span>
+                            </div>
+                            <!-- <div class="ord-sect left full">
+                                <span class="exis-title full left">Home</span>
+                                <span class="below-info">
+                                    <%
+                                        if(address.length>0){
+                                        %>
+                                        <span class="left addr-order">
+                                            <%=address[0].address%>,
+                                                <%=address[0].city%>
+                                                    <%=address[0].zipcode%>
+                                                        <%=address[0].phone%>
+                                        </span>
+                                        <%}%>
+                                            <span class="change-act">
+                                                <i class="icon-Pencil-Icon"></i>Change</span>
+                                </span>
+                            </div> -->
+                            <div class="ord-sect left full">
+                                <span class="sp-inst p-head-hide">Special Instructions</span>
+                                <div class="p-inst-wrap flex-middle">
+                                    <span class="p-inst-txt">Special Instructions</span>
+                                    <span class="p-add-btn"></span>
+                                </div>
+                                <span class="txt-area inst">
+                                    <textarea rows="5" id="txtSpecialInstruction" placeholder="Delivery instructions (e.g. Check in with the doorman)" maxlength="500"></textarea>
+                                </span>
+                            </div>
+                            <div class="form-group spec-adress  left full">
+                                <label class="left pay-inf">Payment information</label>
+                                <div class="clearfix p-fix">
+                                    <a href="#" class="sp-ad btn btn-fork active p-order">Saved
+                                        <span class="p-txt-hide">Credit</span> Card</a>
+                                    <a data-attribute="add-card" href="#" class="sp-ad btn btn-fork">New
+                                        <span class="p-txt-hide">Credit</span> Card</a>
+                                </div>
+                                <div class="ord-sect left full p-card-list">
+                                    <ul class="unstyle card-added p-card mt30 full left">
+                                        <%
+                                            if(!(cards===undefined) && (cards.length>0)){ 
+                                                for(var i=0;i< cards.length;i++){
+                                                %>
+                                            <li class="full left" id="cardli<%=i%>">
+                                                <div class="adr">
+                                                    <input id="card<%=i%>" type="hidden" value="<%=cards[i].id%>">
+                                                    <input id="cardNo<%=i%>" type="hidden" value="<%=cards[i].cardNumber%>">
+                                                    <input id="cardType<%=i%>" type="hidden" value="<%=cards[i].cardType%>">
+                                                    <span class="icon-Credit-Card-Icon"></span>
+                                                    <p>xxx-xxx-xxx-
+                                                        <%=cards[i].cardNumber%>
+                                                    </p>
+                                                </div>
+                                                <div class="ph-no card-exp">
+                                                    <p>Exp.
+                                                        <%=cards[i].expiryMonth%>/
+                                                            <%=cards[i].expiryYear%>
+                                                    </p>
+                                                </div>
+                                                <!-- <div class="action">
+                                                    <p>
+                                                        <input type="radio" id="card<%=i%>" name="radio-group" value="<%=i+1%>" checked>
+                                                        <label class="radio-lab" for="card<%=i%>"></label>
+                                                    </p>
+                                                </div> -->
+                                                <div class="action2">
+                                                    <label class="checkradio">
+                                                        <input name="cardgrp" type="radio" id="card<%=i%>" value="<%=i+1%>" checked="">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                            <%}} else{%>
+                                                <%}%>
+                                    </ul>
+                                </div>
+                                <div class="p-discount-wrap flex">
+                                    <label class="p-dis-label" onclick="calculeteTip(1)">
+                                        <input type="radio" class="p-dis-inp" name="p-discount-label">
+                                        <span class="p-dis-bg"></span>
+                                        <span id="tip1">10% - $2</span>
+                                    </label>
+                                    <label class="p-dis-label" onclick="calculeteTip(2)">
+                                        <input type="radio" class="p-dis-inp" name="p-discount-label">
+                                        <span class="p-dis-bg"></span>
+                                        <span id="tip2">15% - $2.5</span>
+                                    </label>
+                                    <label class="p-dis-label" onclick="calculeteTip(3)">
+                                        <input type="radio" class="p-dis-inp" name="p-discount-label">
+                                        <span class="p-dis-bg"></span>
+                                        <span id="tip3">20% - $3.5</span>
+                                    </label>
+                                    <label class="p-dis-label p-alt">
+                                        <input type="radio" class="p-dis-inp" name="p-discount-label">
+                                        <span class="p-dis-bg"></span>
+                                        <span>Custom Tip</span>
+                                    </label>
+                                    <input type="text" class="p-dis-txt-inp" id="txtTip" placeholder="Tip" maxlength="10" onkeypress="return isNumberKey(event,this)">
+                                </div>
+
+                                <div class="p-radio-wrap">
+                                    <div class="flex flex-middle flex-sp-btw">
+                                        <div class="p-radio">
+                                            <input type="radio" id="p-disc1">
+                                            <label for="p-disc1" class="p-radio-label">10% - $2</label>
+                                        </div>
+                                        <div class="p-radio">
+                                            <input type="radio" id="p-disc2">
+                                            <label for="p-disc2" class="p-radio-label">15% - $2.5</label>
+                                        </div>
+                                        <div class="p-radio">
+                                            <input type="radio" id="p-disc3">
+                                            <label for="p-disc3" class="p-radio-label">20% - $3.5</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex">
+                                        <div class="p-radio p-alt-radio">
+                                            <input type="radio" id="p-disc3">
+                                            <label for="p-disc3" class="p-radio-label">Custom Tip</label>
+                                        </div>
+                                        <div class="p-tip-wrap">
+                                            <input type="text" class="p-tip-inp" placeholder="Custom Tip Amount">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="ord-sect left promo-stack p-promo-head p-accord-wrap">
+                                    <span class="add-sign p-head-hide p-accord-btn"></span>
+                                    <span class="exis-title promo-ad full left p-head-hide">Add Promo Codes</span>
+                                    <div class="p-inst-wrap flex-middle">
+                                        <span class="p-inst-txt">Add Promo Codes</span>
+                                        <span class="p-add-btn p-accord-btn"></span>
+                                    </div>
+                                    <div class="promo inner-page p-accord-slide">
+                                        <div class="promo-code p-code">
+                                            <div class="prom-inp">
+                                                <input type="text" placeholder="Enter a promocode" />
+                                                <a hrer="javascript:void(0)">Apply</a>
+                                            </div>
+                                            <p style="color: rgba(193, 39, 45, 0.5);" class="error note">This promo code has expired</p>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="promolist p-mar">
+                                        <ul class="promoliz">
+                                            <li>
+                                                <span class="left promodec">
+                                                    <span class="promo-code-txt">QtgR45</span>
+                                                    <span class="prom-status active-promo">Active</span>
+                                                </span>
+                                                <span class="right promo-amt">$5</span>
+                                                <p class="left full">Get $5 credit on you first order</p>
+                                            </li>
+                                        </ul>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <p class="error_messages error">
+                            </p>
+                            <div class="place-ord-command left p-order-btn">
+                                <div class="text-center">
+                                    <input type="button" class="btn btn-fork p-order-btn" value="Place your Order" onclick="addOrder(event)" />
+                                    <button class="p-pay-btn">Pay with
+                                        <span class="p-blue-dark">Pay</span>
+                                        <span class="p-blue-light">Pal</span>
+                                    </button>
+                                </div>
+                                <p class="switch-to-pop p-terms-hide">By placing your order, you agree to Forkspot’s
+                                    <a href="javascript:void(0)">Term of services</a> &amp;
+                                    <a href="javascript:void(0)">Privacy Policy</a>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Bag Items -->
+                        <div class="rhs-fixed-ord-deatail resto-profile-page" id="divBag">
+                            <span class="p-top-arrow active"></span>
+                            <div class="bill-view left">
+                                <!-- <a href="#" class="p-edit-link">Edit your order</a> -->
+                                <h4>Your Order</h4>
+                                <p class="theme-color no-margin">
+                                    <% if(!(output.Result.cartItems===undefined))%>
+                                        <%=output.Result.cartItems[0].name%>
+                                </p>
+                                <input type="hidden" id="hfCartItemId" value="">
+                                <ul class="recipt-listing unstyle  left no-pad">
+                                    <%
+                                    if(!(output.Result.cartItems===undefined)){ 
+                                        for(var i=0;i< output.Result.cartItems[0].items.length;i++){
+                                        %>
+                                        <li class="left full" id="cartItem<%=output.Result.cartItems[0].items[i].cartItemid%>">
+                                            <span class="itm-count left">
+                                                <%=output.Result.cartItems[0].items[i].itemQty%>
+                                            </span>
+                                            <span class="itm-disc left">
+                                                <span class="left full">
+                                                    <strong>
+                                                        <%=output.Result.cartItems[0].items[i].itemName%>
+                                                    </strong>
+                                                </span>
+                                                <%if(output.Result.cartItems[0].items[i].specialInstruction){%>
+                                                    <span>
+                                                        Special Instrunction
+                                                        <br>
+                                                        <%=output.Result.cartItems[0].items[i].specialInstruction%>
+                                                            <br>
+                                                    </span>
+                                                    <%} else{}%>
+                                                        <!-- Required items -->
+                                                        <% if(!(output.Result.cartItems[0].items[i].reqItems===undefined) && !(output.Result.cartItems[0].items[i].reqItems[0] ===undefined)){
+                                                            for(var j=0;j< output.Result.cartItems[0].items[i].reqItems.length;j++){%>
+                                                            <span class="bag-list-item">
+                                                                <%=output.Result.cartItems[0].items[i].reqItems[j].reqCatName%>
+                                                                    <br>
+                                                            </span>
+                                                            <% if(!(output.Result.cartItems[0].items[i].reqItems[j].reqItems===undefined) && !(output.Result.cartItems[0].items[i].reqItems[j].reqItems[0] ===undefined)){
+                                                                for(var k=0;k< output.Result.cartItems[0].items[i].reqItems[j].reqItems.length;k++){%>
+
+                                                                <span class="bag-sub-item">
+                                                                    <%=output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].reqItemName%>
+                                                                        <%if(parseFloat(output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].reqItemPrice)==0){%>
+                                                                            <%} else {%>
+                                                                                : $
+                                                                                <%=output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].reqItemPrice%>
+                                                                                    <%}%>
+                                                                                        <br>
+                                                                </span>
+                                                                <% if(!(output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems===undefined) && !(output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[0] ===undefined)){
+                                                                        for(var l=0;l< output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems.length;l++){%>
+                                                                    <span class="bag-list-item">
+                                                                        <%=output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dynCatName%>
+                                                                            <br>
+                                                                    </span>
+                                                                    <% if(!(output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dItems===undefined) && !(output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dItems[0] ===undefined)){
+                                                                        for(var m=0;m< output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dItems.length;m++){%>
+                                                                        <span class="bag-sub-item">
+                                                                            <%=output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dItems[m].dynItemName%>
+                                                                                <%if(parseFloat(output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dItems[m].dynItemPrice)==0){%>
+                                                                                    <%} else {%>
+                                                                                        : $
+                                                                                        <%=output.Result.cartItems[0].items[i].reqItems[j].reqItems[k].dynItems[l].dItems[m].dynItemPrice%>
+                                                                                            <%}%>
+                                                                                                <br>
+                                                                        </span>
+                                                                        <%}} else{ %>
+                                                                            <br>
+                                                                            <%}%>
+                                                                                <%}} else{ %>
+                                                                                    <br>
+                                                                                    <%}%>
+
+                                                                                        <%}} else{ %>
+                                                                                            <br>
+                                                                                            <%}%>
+                                                                                                <%}} else{ %>
+                                                                                                    <br>
+                                                                                                    <%}%>
+                                                                                                        <!-- Optional items -->
+                                                                                                        <% if(!(output.Result.cartItems[0].items[i].optItems===undefined) && !(output.Result.cartItems[0].items[i].optItems[0] ===undefined)){
+                                                                        for(var j=0;j< output.Result.cartItems[0].items[i].optItems.length;j++){%>
+                                                                                                            <span class="bag-list-item">
+                                                                                                                <%=output.Result.cartItems[0].items[i].optItems[j].optCatName%>
+                                                                                                                    <br>
+                                                                                                            </span>
+                                                                                                            <% if(!(output.Result.cartItems[0].items[i].optItems[j].optItems===undefined) && !(output.Result.cartItems[0].items[i].optItems[j].optItems[0] ===undefined)){
+                                                                            for(var k=0;k< output.Result.cartItems[0].items[i].optItems[j].optItems.length;k++){%>
+                                                                                                                <span class="bag-sub-item">
+                                                                                                                    <%=output.Result.cartItems[0].items[i].optItems[j].optItems[k].optItemsName%>
+                                                                                                                        <%if(parseFloat(output.Result.cartItems[0].items[i].optItems[j].optItems[k].optItemsPrice)==0){%>
+                                                                                                                            <%} else {%>
+                                                                                                                                : $
+                                                                                                                                <%=output.Result.cartItems[0].items[i].optItems[j].optItems[k].optItemsPrice%>
+                                                                                                                                    <%}%>
+                                                                                                                                        <br>
+                                                                                                                </span>
+                                                                                                                <%}} else{ %>
+                                                                                                                    <br>
+                                                                                                                    <%}%>
+                                                                                                                        <%}} else{ %>
+                                                                                                                            <br>
+                                                                                                                            <%}%>
+                                            </span>
+                                            <span class="item-price right">$
+                                                <span class="item-total">
+                                                    <%=output.Result.cartItems[0].items[i].itemTotalPrice%>
+                                                </span>
+                                                <br>
+                                                <span class="cartedit">
+                                                    <a href="#" class="edit">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                    <a href="#" class="trash" onclick="deleteCartItem('<%=output.Result.cartItems[0].restId%>', '<%=output.Result.cartItems[0].cartId%>', '<%=output.Result.cartItems[0].items[i].cartItemid%>')">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </span>
+                                            </span>
+                                        </li>
+                                        <input type="hidden" id="hfDiscount" value="<%=output.Result.discount%>" />
+                                        <input type="hidden" id="hfTax" value="<%=output.Result.tax%>" />
+                                        <input type="hidden" id="hfUserCredits" value="<%=output.Result.cartItems[0].userCredits%>" />
+                                        <% }}
+                                                    else { %>
+                                            <span class="resta-name">
+                                                <%=output.Message%>
+                                            </span>
+                                            <%} %>
+                                </ul>
+                                <div class="remove-all right full">
+                                    <span class="Delete-Icon" style="cursor:pointer;" onclick="clearBag('<%=output.Result.cartItems[0].restId%>')">
+                                        <i class="icon-Delete-Icon"></i>
+                                        <span class="right">Empty Bag</span>
+                                    </span>
+                                </div>
+                                <ul class="sub-total unstyle left full">
+                                    <li class="left full">
+                                        <span class="item-norm left">Item Subtotal:</span>
+                                        <span class="itm-rate right item-subtotal">$
+                                        </span>
+                                    </li>
+                                    <li class="left full">
+                                        <span class="item-norm left">Sales Tax:</span>
+                                        <span class="itm-rate right" id="tax">$
+                                        </span>
+                                    </li>
+                                    <li class="left full">
+                                        <span class="item-norm left">Discount-Applied</span>
+                                        <span id="dis-percent"></span>
+                                        <span class="itm-rate right" id="discount">$
+                                        </span>
+                                    </li>
+                                    <li class="left full">
+                                        <span class="item-norm left">Tip-Amount</span>
+                                        <span class="itm-rate right" id="tip">$
+                                        </span>
+                                    </li>
+                                    <li class="left full sub-total-uts">
+                                        <span class="item-norm left">Total</span>
+                                        <span class="itm-rate right total-amt">$00.00</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- <span class="manage-order"><span><span class="mg-ord"></span> Manage you order</span></span> -->
+
+                            <a class="btn btn-fork pro-to-pay">
+                                <span class="left">Total</span>
+                                <span class="right total-amt">$00.00</span>
+                            </a>
+                        </div>
+                </div>
+
+            </div>
+            <div id="loader-sec" style="display:block">
+                <div class="loader-img">
+                    <img src="images/fork_new.gif" alt="loader image">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Send OTP Popup -->
+        <div data-pop="confirm-identity" class="fork-pop log-pop" id="sendOtp">
+            <div class="fork-pop-header p-login-bar">
+                <img src="images/logo.png" />
+                <span class="close_model">X</span>
+            </div>
+            <span class="p-close p-res-close">x</span>
+            <div class="pop-container">
+                <h2 class="p-login-head text-center">Confirm Identity</h2>
+                <div class="rhs blog-n-refer p-pop-form pad_bottom_15">
+                    <div class="inp-log">
+                        <div class="form-group left full">
+                            <span class="icon-Phone-book-Icon"></span>
+                            <input type="text" placeholder="Phone Number" id="txtPhoneNo" maxlength="16">
+                            <a href="#" class="p-sms-txt" onclick="sendOtp()">Send SMS</a>
+                        </div>
+                        <div class="p-mid-wrap">
+                            <div class="p-sms-inp">
+                                <p>SMS code sent. Enter it here:</p>
+                                <input type="text" id="txtOtp" maxlength="8">
+                            </div>
+                            <p class="p-upper-txt bold-txt">We need to validate your mobile number</p>
+                            <p class="p-lower-txt">We'll text you 5 digit code to enter in next step</p>
+                        </div>
+                        <div>
+                            <input class="btn btn-fork referal-btn" type="button" onclick="verifyOtp()" value="Confirm Identity">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Search Popup -->
+        <div data-pop="p-search-pop" class="fork-pop">
+            <span class="p-close p-res-close">x</span>
+            <div class="p-search-wrap">
+                <div class="p-search-inp-wrap mar_bottom_35">
+                    <div class="p-search-inp mar_bottom_15">
+                        <i class="icon-Address-Icon"></i>
+                        <input type="text" placeholder="Street address, city, state">
+                    </div>
+                    <div class="p-search-inp">
+                        <i class="icon-Search-Icon"></i>
+                        <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                    </div>
+                </div>
+                <div class="p-serch-btn pad_left_10 pad_right_10">
+                    <input type="submit" value="Search">
+                </div>
+            </div>
+        </div>
+        <!-- Search Popup -->
+        <div data-pop="add-card1" class="fork-pop pay-pop">
+            <div class="fork-pop-header">
+                <h2 class="text-center">Add New payment Method</h2>
+                <span class="close_model">X</span>
+            </div>
+            <span class="p-close p-res-close">x</span>
+            <div class="pop-container">
+                <div class="inp-log p-res-form">
+                    <h2 class="p-pay-head">Payment Methods</h2>
+                    <div class="form-group p-card-inp p-icon-inp">
+                        <i class="icon-Credit-Card-Icon"></i>
+                        <input type="text" placeholder="Card number*" />
+                    </div>
+                    <div class="form-group half left p-icon-inp">
+                        <i class="icon-Expiration-Date-Icon"></i>
+                        <input type="text" placeholder="Expire On*" />
+                    </div>
+                    <div class="form-group half right p-icon-inp">
+                        <i class="icon-Security-Code-Icon"></i>
+                        <input type="text" placeholder="Security Code*" />
+                    </div>
+                    <div class="form-group half left p-icon-inp">
+                        <i class="icon-Zip-Code-Icon"></i>
+                        <input type="text" placeholder="Zip Code*" />
+                    </div>
+                    <div class="pay-controler p-pop-btn">
+                        <div class="half">
+                            <input class="btn btn-default half close_model p-btn-alt" type="button" value="Cancel" />
+                        </div>
+                        <div class="half">
+                            <input class="btn btn-fork half" type="Submit" value="Submit" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- change time Popup -->
+        <div data-pop="changetime" class="fork-pop">
+            <div class="fork-pop-header">
+                <h2 class="text-center">Order settings</h2>
+                <span class="close_model">X</span>
+            </div>
+            <span class="p-close p-res-close">x</span>
+            <!-- popup start -->
+            <div class="pop-container">
+                <div class="changetime">
+                    <div class="p-asap-wrap2" id="divSchedule">
+                        <h5>Schedule order</h5>
+                        <div class="p-asap-select-wrap">
+                            <div class="p-asap-select">
+                                <select id="ddlDays">
+                                    <option>Today</option>
+                                </select>
+                            </div>
+                            <div class="p-asap-select">
+                                <select id="ddlHours">
+                                    <option value="1">01</option>
+                                    <option value="2">02</option>
+                                    <option value="3">03</option>
+                                    <option value="4">04</option>
+                                    <option value="5">05</option>
+                                    <option value="6">06</option>
+                                    <option value="7">07</option>
+                                    <option value="8">08</option>
+                                    <option value="9">09</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                            <div class="p-asap-select">
+                                <select id="ddlMins">
+                                    <option value="0">00</option>
+                                    <option value="1">10</option>
+                                    <option value="2">20</option>
+                                    <option value="3">30</option>
+                                    <option value="4">40</option>
+                                    <option value="5">50</option>
+                                </select>
+                            </div>
+                            <div class="p-asap-select" style="flex: 0.7;">
+                                <select id="ddlTimeformat">
+                                    <option>AM</option>
+                                    <option>PM</option>
+                                </select>
+                            </div>
+                            <div class="p-apply" onclick="changeOrderTime(1)">
+                                <input type="submit" value="Apply" style="cursor: pointer;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-asap-wrap2" id="divPickup" style="margin-top: 5%;">
+                        <h5>Pickup order</h5>
+                        <div class="p-asap-select-wrap">
+                            <div class="p-asap-select">
+                                <span class="left addr-order" id="txtPickupTime" style="margin: 12px 0px 0px 100px;">ASAP</span>
+                            </div>
+                            <div class="p-apply" onclick="changeOrderTime(2)">
+                                <input type="submit" value="Apply" style="cursor: pointer;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- popup end -->
+        </div>
+        <!-- change time Popup -->
+
+        <% include include/addcard.ejs %>
+    </body>
+
+    </html>
+
+    <script>
+        $(document).ready(function () {
+            var total = 0, subTotal = 0;
+            $(".item-total").each(function (k, v) {
+                var itemTotal = $(this).text();
+                subTotal = subTotal + parseFloat(itemTotal);
+            });
+            $(".item-subtotal").text("$" + subTotal.toFixed(2));
+
+            var discountPercent = $("#hfDiscount").val();
+            var taxPercent = $("#hfTax").val();
+
+            var discount = ((subTotal * parseFloat(discountPercent)) / 100).toFixed(2);
+            var newSubtotal = subTotal - discount;
+            var tax = ((newSubtotal * parseFloat(taxPercent)) / 100).toFixed(2);
+
+            var userCredits = parseFloat($("#hfUserCredits").val());
+
+            $("#dis-percent").text(": " + discountPercent + "%");
+            $("#tax").text("$" + tax);
+            $("#discount").text("$" + discount);
+
+            var total = (newSubtotal + parseFloat(tax)).toFixed(2);
+
+            if (userCredits >= total)
+                total = 0;
+            else
+                total = (total - userCredits).toFixed(2);
+            $(".total-amt").text("$" + total);
+
+            var tip1 = ((newSubtotal * (getTipPercent(1))) / 100).toFixed(2);
+            $("#tip1").text("10% - $" + tip1);
+
+            var tip2 = ((newSubtotal * (getTipPercent(2))) / 100).toFixed(2);
+            $("#tip2").text("15% - $" + tip2);
+
+            var tip3 = ((newSubtotal * (getTipPercent(3))) / 100).toFixed(2);
+            $("#tip3").text("20% - $" + tip3);
+        });
+
+        var otpCode, phoneNo, tipPercent = 0;
+        function changePickup() {
+            var dayList = $("#ddlDays");
+            dayList.html('');
+            dayList.append("<option value=0>Today</option>");
+            for (i = 1; i < 7; i++) {
+                var dtNow = new Date();
+                dayList.append("<option value =" + i + ">" + ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][new Date(dtNow.setDate(dtNow.getDate() + i)).getDay()] + "</option>");
+            }
+
+            var day = parseInt($("#ddlDays").val());
+            bindHours(day);
+        }
+
+        $("#ddlDays").on("change", function () {
+            var day = parseInt($("#ddlDays").val());
+            bindHours(day);
+        });
+
+        function bindHours(day) {
+            //var hourList = $("#ddlHours");
+            //hourList.html('');
+            var currentHour = new Date();
+            var hr = currentHour.getHours();
+            var hours = 0;
+            if (day == 0)
+                hours = currentHour.getHours() < 12 ? (12 - currentHour.getHours()) : (24 - currentHour.getHours());
+            else
+                hours = 12;
+            // for (i = 0; i < hours; i++) {
+            //     var dtHour = new Date();
+            //     var min = i % 2 == 0 ? "00" : "30";
+            //     var hour = min == "30" ? (i % 2 == 0 ? i + 1 : i) : i;
+            //     hourList.append("<option value =" + i + ">" + hour + ":" + min + "</option>");
+            //     if (i % 2 != 0)
+            //         hr = hr + 1;
+            // }
+
+            // for (i = 1; i <= hours; i++) {
+            //     $('#ddlHours option[value=' + i + ']').attr("disabled", "disabled");
+            // }
+        }
+
+        function clearBag(id) {
+            $.ajax({
+                method: "GET",
+                url: "/clearCart",
+                data: { restId: id },
+                success: function (res) {
+                    console.log(res);
+                    if (res.Success == true) {
+                        $("#divBag").hide();
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function deleteCartItem(restId, cartId, cartItemId) {
+            $("#hfCartItemId").val(cartItemId);
+            $.ajax({
+                method: "GET",
+                url: "/deleteCartItem",
+                data: { restId: restId, cartId: cartId, cartItemId: cartItemId },
+                success: function (res) {
+                    console.log(res);
+                    if (res.Success == true) {
+                        var id = $("#hfCartItemId").val();
+                        $("#cartItem" + id).hide();
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function calculeteTip(option) {
+            var total = 0, tip = 0;
+            var subTotal = parseFloat($(".item-subtotal").text().split('$')[1]);
+            var discount = parseFloat($("#discount").text().split('$')[1]);
+            var tax = parseFloat($("#tax").text().split('$')[1]);
+
+            var newSubtotal = subTotal - discount;
+
+            tip = ((newSubtotal * (getTipPercent(option))) / 100).toFixed(2);
+
+            var userCredits = parseFloat($("#hfUserCredits").val());
+            $("#tip").text("$" + tip);
+            var total = (newSubtotal + parseFloat(tax) + parseFloat(tip)).toFixed(2);
+
+            if (userCredits >= total)
+                total = 0;
+            else
+                total = (total - userCredits).toFixed(2);
+            $(".total-amt").text("$" + total);
+            $("#txtTip").val('');
+            tipPercent = getTipPercent(option);
+        }
+
+        function getTipPercent(id) {
+            switch (id) {
+                case 1: return 10;
+                    break;
+                case 2: return 15;
+                    break;
+                case 3: return 20;
+                    break;
+                default: return 10;
+                    break;
+            }
+        }
+
+        $("#txtTip").on("change", function () {
+            tipPercent = 0;
+            var total = 0, tip = 0;
+            var subTotal = parseFloat($(".item-subtotal").text().split('$')[1]);
+            var discount = parseFloat($("#discount").text().split('$')[1]);
+            var tax = parseFloat($("#tax").text().split('$')[1]);
+
+            var newSubtotal = subTotal - discount;
+
+            tip = (parseFloat($(this).val())).toFixed(2);
+
+            var userCredits = parseFloat($("#hfUserCredits").val());
+            $("#tip").text("$" + tip);
+            var total = (newSubtotal + parseFloat(tax) + parseFloat(tip)).toFixed(2);
+
+            if (userCredits >= total)
+                total = 0;
+            else
+                total = (total - userCredits).toFixed(2);
+            $(".total-amt").text("$" + total);
+        });
+
+        function changeOrderTime(id) {
+
+            if (id == 1) {
+                var day = $("#ddlDays :selected").text();
+                var hour = $("#ddlHours :selected").text();
+                var timeFormat = $("#ddlTimeformat").val();
+                var min = $("#ddlMins :selected").text();
+
+                $("#txtPickupTime").text(day + ", " + hour + ":" + min + " " + timeFormat);
+            } else
+                $("#txtPickupTime").text("Pickup, ASAP (15-20min)");
+
+            $(".pop-wrapper").removeClass("overlaypop");
+            $(".fork-pop").removeClass("opend-pop");
+            $(".fork-pop").fadeOut();
+            $("html,body").css("overflow", "visible");
+        }
+
+        function sendOtp() {
+            var phoneNumber = ($("#txtPhoneNo").val()).trim();
+            if (phoneNumber != "") {
+                phoneNumber = "855-367-5699";
+                phoneNo = phoneNumber;
+                $.ajax({
+                    method: "POST",
+                    url: "/sendOtp",
+                    data: { phone: phoneNumber },
+                    success: function (res) {
+                        console.log(res);
+                        if (res.Success == true) {
+                            otpCode = res.Result.otpCode;
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
+        }
+
+        function verifyOtp() {
+            var otp = ($("#txtOtp").val()).trim();
+            if (otp != "") {
+                $.ajax({
+                    method: "POST",
+                    url: "/verifyOtp",
+                    data: { otpCode: otp, phone: phoneNo },
+                    success: function (res) {
+                        console.log(res);
+                        if (res.Success == true) {
+                            $(".error_messages").html("");
+                            $("#sendOtp").fadeOut();
+                            $(".pop-wrapper").removeClass("overlaypop");
+                            $("html,body").css("overflow", "visible");
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
+            }
+        }
+
+        function addOrder(e) {
+            $(".error_messages").html("");
+            var arrival = $("#txtPickupTime").text().split(',');
+            var scheduleTime = 0, hr, min;
+
+            if (arrival[0].trim() != "Pickup") {
+                var day = parseInt($("#ddlDays").val());
+                var hour = $("#ddlHours :selected").text().split(':');
+                var timeFormat = $("#ddlTimeformat").val();
+
+                min = hour[1];
+                if (timeFormat == "AM") {
+                    hr = hour[0];
+                }
+                else {
+                    hr = parseInt(hour[0]) - 12;
+                }
+                var currentdt = new Date();
+                var orderDate = new Date(currentdt.getFullYear(), currentdt.getMonth(), currentdt.getDate() + day, hr, min, 0);
+                scheduleTime = arrival[0].trim() != "Pickup" ? orderDate.getTime() + (orderDate.getTimezoneOffset() * 60000) : 0;
+            }
+            var subtotal = parseFloat($(".item-subtotal").text().split('$')[1]);
+            var discount = parseFloat($("#discount").text().split('$')[1]);
+            var tax = parseFloat($("#tax").text().split('$')[1]);
+            var tipAmount = $("#tip").text().split('$')[1].trim() == "" ? 0 : parseFloat($("#tip").text().split('$')[1]);
+
+            var processingFee = "0";
+            var totalAmount = parseFloat($(".total-amt").text().split('$')[1]);
+            var cardSourceId = $("#card0").val();
+            var tipPercentage = tipPercent;
+            var specialNotes = $("#txtSpecialInstruction").val();
+            var pickupType = "1"; // $("#pickupType").val();  // 1=>Pickup,2=>Dine In
+            var arrivalType = arrival[0].trim() != "Pickup" ? "2" : "1";    // 1=> ASAP , 2=> Schedule Order            
+            var cardType = $("#cardType0").val();
+            var cardNumber = $("#cardNo0").val();
+            var userCredits = $("#hfUserCredits").val();
+
+            $.ajax({
+                method: "POST",
+                url: "/addOrder",
+                data: {
+                    tax: tax, processingFee: processingFee, discount: discount, tipAmount: tipAmount,
+                    subtotal: subtotal, totalAmount: totalAmount, cardSourceId: cardSourceId,
+                    tipPercentage: tipPercentage, specialNotes: specialNotes, scheduleTime: scheduleTime,
+                    pickupType: pickupType, arrivalType: arrivalType, cardType: cardType,
+                    cardNumber: cardNumber, userCredits: userCredits
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.Success == true) {
+                        location.href = "/orders";
+                    }
+                    else if (res.Status == 303) {
+                        //Phone no is not verified, validate the phone number
+                        $(".error_messages").html(res.Message);
+                        $("#sendOtp").fadeIn();
+                        $(".pop-wrapper").addClass("overlaypop");
+                        $("html,body").css("overflow", "hidden");
+                    }
+                    else {
+                        $(".error_messages").html(res.Message);
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function isNumberKey(evt, obj) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            var value = obj.value;
+            var dotcontains = value.indexOf(".") != -1;
+            if (dotcontains)
+                if (charCode == 46) return false;
+            if (charCode == 46) return true;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+    </script>

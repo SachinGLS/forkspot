@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Forkspot</title>
+    <link rel="stylesheet" type="text/css" href="fonts/stylesheet.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="css/responsive.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/jquery.slimscroll.min.js"></script>
+    <script src="js/custom.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="pop-wrapper">
+        <div class="main_warapper">
+            <header class="fixed_header">
+                <div class="container">
+                    <a class="logo" href="#">
+                        <img src="images/logo.png" alt="Fork Spot">
+                    </a>
+                    <div class="p-head-inp-wrap">
+                        <div class="p-head-inp">
+                            <i class="icon-Address-Icon"></i>
+                            <input type="text" placeholder="Enter Location">
+                        </div>
+                        <div class="p-head-inp">
+                            <i class="icon-Search-Icon"></i>
+                            <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                        </div>
+                    </div>
+                    <div class="topbar-actions">
+                        <span class="login-act act">
+                            <a data-attribute="fork-login" href="javascript:void(0)">Log In</a>
+                        </span>
+                        <span class="bag p-cart-slide">
+                            <i class="icon-Shopping-Bag-Icon"></i>
+                        </span>
+                    </div>
+                    <div class="p-res-search" data-attribute="p-search-pop">
+                        <span class="icon-Search-Icon"></span>
+                    </div>
+                </div>
+            </header>
+            <% include include/restaurantprofile.ejs %>
+                <!-- <footer class="p-alt-footer">                
+                <div class="foot-nav-mobile">
+                   <div class="container">
+                        <div class="mob-foot">
+                           <h5>Sign Up For Special offers<span class=""></span></h5>
+                           <ul>
+                               <li>
+                                  <div><input type="text" placeholder="Email*" /></div>
+                                  <div><input type="text" placeholder="Zip code*" /></div>
+                                  <div><input type="button" class="btn btn-fork" value="Surprise Me" /></div>
+                                </li>
+                           </ul>
+
+                        </div>
+                        <div class="mob-foot">
+                           <h5>Contact Us <span class=""></span></h5>
+                           <ul>
+                               <li>
+
+                                </li>
+                           </ul>
+
+                        </div>
+                        <div class="mob-foot">
+                           <h5>Connect with us <span class=""></span></h5>
+                           <ul>
+                               <li><a class="facebook" href="https://www.facebook.com/forkspot" target="_blank">Facebook</a></li>
+                              <li><a class="twitter" href="https://twitter.com/forkspot" target="_blank">Twitter</a></li>
+                              <li><a class="instagram" href="https://www.instagram.com/forkspot/" target="_blank">Instagram</a></li>
+                              <li><a class="youtube" href="https://www.youtube.com/channel/UC_vJWIgDtSAa7j2BOGFgEzw" target="_blank">YouTube</a></li>
+                             <li><a class="product-hunt" href="https://www.producthunt.com/posts/forkspot" target="_blank">Product Hunt</a></li>
+                           </ul>
+
+                        </div>
+                        <div class="mob-foot">
+                           <h5>Partner with us <span class=""></span></h5>
+                           <ul>
+                                 <li><a href="https://biz.forkspot.com" target="_blank">For restaurants</a></li>
+                                <li><a href="https://biz.forkspot.com/login" target="_blank">Marchant login</a></li>
+                           </ul>
+
+                        </div>
+                      </div>
+                </div>
+                <div class="bot-strip">
+                    <div class="container relateive">
+                        <ul class="mobile-boot-tags clearfix">
+                            <li><a href="https://biz.forkspot.com/privacy_policy" target="_blank">Privacy Policy</a></li>
+                            <li><a href="https://biz.forkspot.com/terms" target="_blank">Terms of Service</a></li>
+                        </ul>
+                        <p>© 2017 Forkspot.  All Rights Reserved</p><p>Made with <span class="icon-heart"></span> in Los Angeles</p>
+                        <ul class="desktop-boot-tags">
+                            <li><a href="https://biz.forkspot.com/privacy_policy" target="_blank">Privacy Policy</a></li>
+                            <li><a href="https://biz.forkspot.com/terms" target="_blank">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <a href="#" id="back-to-top" title="Back to top"><i class="icon-top_arrow"></i></a>
+            </footer> -->
+
+                <footer class="p-rest-footer">
+                    <div class="foot-text">
+                        <div class="foot-logo animate-element">
+
+                            <img src="images/down.png" />
+                        </div>
+                    </div>
+                    <div class="foot-nav desktop-footer">
+                        <div class="container">
+                            <div class="left-foot-nav">
+                                <ul>
+                                    <h5 class="foot-head">Sign Up For Special offers</h5>
+                                    <li>
+                                        <input type="text" placeholder="Email*" />
+                                        <input type="text" placeholder="Zip code*" />
+                                        <input type="button" class="btn btn-fork" value="Surprise Me" />
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <h5 class="foot-head">Get to know us</h5>
+                                    <!--<div class="foot-dvdr"></div>-->
+                                    <li>
+                                        <a href="comingsoon.html">About Forkspot</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://forkspot.com/blog/" target="_blank">Our Blog</a>
+                                    </li>
+                                    <li>
+                                        <a href="news.html" target="_blank">News</a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:invest@forkspot.com">Investor relations</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.indeed.com/cmp/Forkspot" target="_blank">Careers</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div class="right-foot-nav">
+                                <ul>
+                                    <h5>Partner with us</h5>
+                                    <!-- <div class="foot-dvdr"></div>-->
+                                    <li>
+                                        <a href="https://biz.forkspot.com" target="_blank">For restaurants</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://biz.forkspot.com/login" target="_blank">Merchant Login</a>
+                                    </li>
+
+                                    <h5>Help</h5>
+                                    <!--<div class="foot-dvdr"></div>-->
+                                    <!--                            <li><a href="#">FAQ</a></li>-->
+                                    <li>
+                                        <a href="comingsoon.html">Contact Us</a>
+                                    </li>
+                                </ul>
+                                <ul class="social-sec">
+                                    <h5>Connect with us</h5>
+                                    <div class="foot-dvdr"></div>
+                                    <li>
+                                        <a class="facebook" href="https://www.facebook.com/forkspot" target="_blank">Facebook</a>
+                                    </li>
+                                    <li>
+                                        <a class="twitter" href="https://twitter.com/forkspot" target="_blank">Twitter</a>
+                                    </li>
+                                    <li>
+                                        <a class="instagram" href="https://www.instagram.com/forkspot/" target="_blank">Instagram</a>
+                                    </li>
+                                    <li>
+                                        <a class="youtube" href="https://www.youtube.com/channel/UC_vJWIgDtSAa7j2BOGFgEzw" target="_blank">YouTube</a>
+                                    </li>
+                                    <li>
+                                        <a class="product-hunt" href="https://www.producthunt.com/posts/forkspot" target="_blank">Product Hunt</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="foot-nav-mobile">
+                        <div class="container">
+                            <div class="mob-foot">
+                                <h5>Sign Up For Special offers
+                                    <span class=""></span>
+                                </h5>
+                                <ul>
+                                    <li>
+                                        <input type="text" placeholder="Email*" />
+                                        <input type="text" placeholder="Zip code*" />
+                                        <input type="button" class="btn btn-fork" value="Surprise Me" />
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div class="mob-foot">
+                                <h5>Contact Us
+                                    <span class=""></span>
+                                </h5>
+                                <ul>
+                                    <li>
+
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div class="mob-foot">
+                                <h5>Connect with us
+                                    <span class=""></span>
+                                </h5>
+                                <ul>
+                                    <li>
+                                        <a class="facebook" href="https://www.facebook.com/forkspot" target="_blank">Facebook</a>
+                                    </li>
+                                    <li>
+                                        <a class="twitter" href="https://twitter.com/forkspot" target="_blank">Twitter</a>
+                                    </li>
+                                    <li>
+                                        <a class="instagram" href="https://www.instagram.com/forkspot/" target="_blank">Instagram</a>
+                                    </li>
+                                    <li>
+                                        <a class="youtube" href="https://www.youtube.com/channel/UC_vJWIgDtSAa7j2BOGFgEzw" target="_blank">YouTube</a>
+                                    </li>
+                                    <li>
+                                        <a class="product-hunt" href="https://www.producthunt.com/posts/forkspot" target="_blank">Product Hunt</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <div class="mob-foot">
+                                <h5>Partner with us
+                                    <span class=""></span>
+                                </h5>
+                                <ul>
+                                    <li>
+                                        <a href="https://biz.forkspot.com" target="_blank">For restaurants</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://biz.forkspot.com/login" target="_blank">Marchant login</a>
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bot-strip">
+                        <div class="container relateive">
+                            <ul class="mobile-boot-tags clearfix">
+                                <li>
+                                    <a href="https://biz.forkspot.com/privacy_policy" target="_blank">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="https://biz.forkspot.com/terms" target="_blank">Terms of Service</a>
+                                </li>
+                            </ul>
+                            <p>© 2017 Forkspot. All Rights Reserved</p>
+                            <p>Made with
+                                <span class="icon-heart"></span> in Los Angeles</p>
+                            <ul class="desktop-boot-tags">
+                                <li>
+                                    <a href="https://biz.forkspot.com/privacy_policy" target="_blank">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="https://biz.forkspot.com/terms" target="_blank">Terms of Service</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="#" id="back-to-top" title="Back to top">
+                        <i class="icon-top_arrow"></i>
+                    </a>
+                </footer>
+
+                <!-- <div class="rhs-fixed-ord-deatail resto-profile-page" style="height: 883px;">
+                <div class="bill-view left">
+                    <h4>Your Order</h4>
+                    <p class="theme-color no-margin">Tavern On Brand</p>
+                    <ul class="recipt-listing unstyle  left">
+                        <li class="left full">
+                            <span class="cut-product"></span>
+                            <span class="itm-count left">1</span>
+                            <span class="itm-disc left"><span class="left full"><strong>Caesar Salad</strong></span><span>Balsamic Dressing <br>Add Chicken</span></span>
+                            <span class="item-price right">$7.89</span>
+                        </li>
+                        <li class="left full">
+                            <span class="cut-product"></span>
+                            <span class="itm-count left">1</span>
+                            <span class="itm-disc left"><span class="left full"><strong>Caesar Salad</strong></span><span>Balsamic Dressing <br>Add Chicken</span></span>
+                            <span class="item-price right">$7.89</span>
+                        </li>
+                        <li class="left full">
+                            <span class="cut-product"></span>
+                            <span class="itm-count left">1</span>
+                            <span class="itm-disc left"><span class="left full"><strong>Caesar Salad</strong></span><span>Balsamic Dressing <br>Add Chicken</span></span>
+                            <span class="item-price right">$7.89</span>
+                        </li>
+
+                    </ul>
+                    <div class="remove-all right full">
+                        <span class="Delete-Icon">Empty Bag</span>
+                    </div>
+                    <ul class="sub-total unstyle left full">
+                        <li class="left full"><span class="item-norm left">ItemSubtotal:</span><span class="itm-rate right">$15.00</span></li>
+                        <li class="left full"><span class="item-norm left">Sales Tax:</span><span class="itm-rate right">$2.66</span></li>
+                        <li class="left full"><span class="item-norm left">Discount-Applied-15</span><span class="itm-rate right">$5.66</span></li>
+                        <li class="left full"><span class="item-norm left">Tip-Amount-15</span><span class="itm-rate right">$3.66</span></li>
+                        <li class="left full sub-total-uts"><span class="item-norm left">Total</span><span class="itm-rate right">$25.66</span></li>
+                    </ul>
+                </div>
+                <a class="btn btn-fork pro-to-pay">Proceed to checkout: $6.90</a>
+            </div> -->
+
+        </div>
+        <div id="loader-sec" style="display:block">
+            <div class="loader-img">
+                <img src="images/fork_new.gif" alt="loader image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Popup -->
+    <div data-pop="p-search-pop" class="fork-pop">
+        <span class="p-close p-res-close">x</span>
+        <div class="p-search-wrap">
+            <div class="p-search-inp-wrap mar_bottom_35">
+                <div class="p-search-inp mar_bottom_15">
+                    <i class="icon-Address-Icon"></i>
+                    <input type="text" placeholder="Street address, city, state">
+                </div>
+                <div class="p-search-inp">
+                    <i class="icon-Search-Icon"></i>
+                    <input type="text" placeholder="e.g. Sushi, Italian, John’s Pizza">
+                </div>
+            </div>
+            <div class="p-serch-btn pad_left_10 pad_right_10">
+                <input type="submit" value="Search">
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Popups -->
+    <div data-pop="fork-login" class="fork-pop log-pop">
+        <div class="fork-pop-header p-login-bar">
+            <img src="images/logo.png" />
+            <span class="close_model">X</span>
+        </div>
+        <span class="p-close p-res-close">x</span>
+        <div class="pop-container">
+            <h2 class="p-login-head text-center">Log In</h2>
+            <div class="inp-log p-login-inp">
+                <div class="form-group">
+                    <span class="icon-Email-Icon"></span>
+                    <input type="text" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                    <span class="icon-Password-Icon"></span>
+                    <input type="password" placeholder="Password" />
+                </div>
+                <div class="clearfix p-forgot-wrap">
+                    <a href="#" class="forgo-pass" data-attribute="fork-forgot-pass">Forgot Password ?</a>
+                </div>
+                <div class="p-login-btn">
+                    <input class="btn btn-fork p-login" type="button" value="Log In" />
+                    <div class="p-login-fb">
+                        <i class="icon-facebook"></i>
+                        <input class="btn btn-fork fb" type="button" value="Continue with Facebook" />
+                    </div>
+                </div>
+
+                <p class="switch-to-pop">Don't have an account?
+                    <a data-attribute="fork-reg" href="javascript:void(0)">Create Your Account</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div data-pop="fork-forgot-pass" class="fork-pop log-pop p-forgot-pop reg-pop">
+        <div class="fork-pop-header p-login-bar">
+            <img src="images/logo.png" />
+            <span class="close_model">X</span>
+        </div>
+        <span class="p-close p-res-close">x</span>
+        <div class="pop-container">
+            <h2 class="p-login-head text-center">Forgot Password</h2>
+            <div class="inp-log p-login-inp mar_bottom_35">
+                <div class="form-group">
+                    <span class="icon-Email-Icon"></span>
+                    <input type="text" placeholder="Email" />
+                </div>
+                <div class="p-login-btn">
+                    <input class="btn btn-fork p-login" type="button" value="Reset Password" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-pop="fork-reg" class="fork-pop reg-pop p-signup-pop">
+        <div class="fork-pop-header">
+            <img src="images/logo.png" />
+            <span class="close_model">X</span>
+        </div>
+        <span class="p-close p-res-close">x</span>
+        <div class="pop-container">
+            <h2 class="p-login-head text-center">Create Your Account</h2>
+
+            <div class="p-signup-wrap">
+                <div class="p-login-fb">
+                    <i class="icon-facebook"></i>
+                    <input class="btn btn-fork fb" type="button" value="Sign up via Facebook">
+                </div>
+                <div class="p-login-fb">
+                    <i class="icon-google-plus"></i>
+                    <input class="btn btn-fork google-up" type="button" value="Sign up via Google">
+                </div>
+                <div class="text-center">
+                    <span class="p-or-span">OR</span>
+                </div>
+            </div>
+
+            <div class="inp-log p-signup-form">
+                <div class="form-group half left">
+                    <input type="text" placeholder="First Name" />
+                </div>
+                <div class="form-group half right">
+
+                    <input type="text" placeholder="Last Name" />
+                </div>
+                <div class="form-group">
+                    <span class="icon-Email-Icon"></span>
+                    <input type="text" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                    <span class="icon-Password-Icon"></span>
+                    <input type="password" placeholder="Password" />
+                </div>
+                <div class="form-group p-form-mar">
+                    <span class="icon-Password-Icon"></span>
+                    <input type="password" placeholder="Confirm Password" />
+                </div>
+                <div class="p-signup-btn">
+                    <input class="btn btn-fork" type="button" value="Create your Account" />
+                </div>
+
+                <p class="p-pop-txt">By tapping ‘CreateYour Account’ You agree to the Forkspot
+                    <a href="javascript:void(0)">Term of services</a> &amp;
+                    <a href="javascript:void(0)">Privacy Policy</a>
+                </p>
+                <p class="p-pop-txt">Already a Forkspot member?
+                    <a data-attribute="fork-login" class="st-log" href="javascript:void(0)"> Sign In</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Login Popups -->
+
+    <script type="text/javascript">
+
+        $(function () {
+            $('.p-pop-scroll').slimScroll({
+            });
+        });
+
+        $(document).ready(function () {
+            //  GetDataForRestdetail();
+            var menuresponse;
+            $("#testimonial-slider").owlCarousel({
+                items: 1,
+                itemsDesktop: [1000, 1],
+                itemsDesktopSmall: [979, 1],
+                itemsTablet: [767, 1],
+                pagination: false,
+                transitionStyle: "fade",
+                navigation: true,
+                navigationText: ["", ""],
+                autoPlay: true
+            });
+
+            $("#flexiselDemo3").flexisel({
+                visibleItems: 3,
+                itemsToScroll: 1,
+                autoPlay: {
+                    enable: true,
+                    interval: 1000000,
+                    pauseOnHover: true
+                }
+            });
+            $("#flexiselDemo4").flexisel({
+                visibleItems: 3,
+                itemsToScroll: 1,
+                autoPlay: {
+                    enable: true,
+                    interval: 1000000,
+                    pauseOnHover: true
+                }
+            });
+            $("#flexiselDemo5").flexisel({
+                visibleItems: 2,
+                itemsToScroll: 1,
+                autoPlay: {
+                    enable: true,
+                    interval: 1000000,
+                    pauseOnHover: true
+                }
+            });
+
+            // New instance of Wallop
+            var slider = document.querySelector('.Wallop');
+            new Wallop(slider, {
+                carousel: false
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>

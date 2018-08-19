@@ -1,8 +1,8 @@
+let emailObj = require("../lib/email");
+let emailConfig = require("../config/email")();
 module.exports = function(app, express) {
 	var router = express.Router();
 
-	// GET routes.
-	
 	router.get("/", function(req, res) {
 	    res.render("cms/index");
 	});
@@ -16,7 +16,26 @@ module.exports = function(app, express) {
 	});
 
 	router.get("/contact", function(req, res) {
-	    res.render("cms/contact");
+		var data = {msg:''};
+		if (req.query.sent) {
+			data.msg = emailConfig.contactSuccessMsg;
+		}
+	    res.render("cms/contact", data);
+	});
+
+	router.post("/contact", function(req, res) {
+		let data = [];
+		var body = '';
+		console.log(emailConfig);
+        data.email = emailConfig.contactEmail;
+        body = emailConfig.contactEmailMessage;
+        body = body.replace('{name}', req.body.name);
+        body = body.replace('{email}', req.body.email);
+        body = body.replace('{message}', req.body.message);
+        data.emailMessage = body;
+        data.subject = emailConfig.contactSubject;
+        emailObj.sendEmail(data);
+	    res.redirect("contact?sent=1");
 	});
 
 	router.get("/app-landing", function(req, res) {
