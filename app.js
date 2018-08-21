@@ -50,6 +50,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use( session({ secret: "ilovescotchscotchyscotchscotch", cookie: { maxAge: 60000000 }, saveUninitialized: true, resave: true, proxy: true}));
+app.use(flash()); // use connect-flash for flash messages stored in session
+
 app.disable('x-powered-by');
 
 app.use('/', express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));

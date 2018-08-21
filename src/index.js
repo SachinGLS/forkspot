@@ -1,5 +1,8 @@
 let emailObj = require("../lib/email");
 let emailConfig = require("../config/email")();
+let request = require("request");
+var Mailchimp = require('mailchimp-api-v3'); 
+var mailchimp = new Mailchimp("d5e8f65a6a16b4c4b1be0b47f63e5bf6-us12");
 module.exports = function(app, express) {
 	var router = express.Router();
 
@@ -23,8 +26,41 @@ module.exports = function(app, express) {
 	    res.render("cms/contact", data);
 	});
 
+	router.post("/subscribe", function(req, res) {
+		let data = {
+			"email_address": req.body.email,
+		    "status": "subscribed"
+		};
+
+		mailchimp.request({
+			method: 'post',
+			path: "lists/a8e5dabe4a/members/",
+			body: data
+		}, function(error, response){
+			if (error) {
+				res.json({
+			        Success: false,
+			        Message: error.detail.split('. ')[0],
+			        Status: 401
+			    });
+			} else if (response.statusCode == 200) {
+				res.json({
+			        Success: true,
+			        Message: "Your are successfully subscribed!",
+			        Status: 200
+			    });
+			} else {
+				res.json({
+			        Success: false,
+			        Message: "Something went wrong!",
+			        Status: 401
+			    });
+			}
+		})
+
+	});
+
 	router.post("/contact", function(req, res) {
-		let data = [];
 		var body = '';
 		console.log(emailConfig);
         data.email = emailConfig.contactEmail;

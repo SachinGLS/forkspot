@@ -11,9 +11,9 @@
                             <ul>
                                 <h5 class="foot-head">Sign Up For Special offers</h5>
                                 <li>
-                                    <input type="text" placeholder="Email*" />
-                                    <input type="text" placeholder="Zip code*" />
-                                    <input type="button" class="btn btn-fork" value="Surprise Me" />
+                                    <input type="text" name="email" placeholder="Email*" id="email" />
+                                    <input type="submit" class="btn btn-fork" id="subscribe" value="Surprise Me" />
+                                  
                                 </li>
                             </ul>
                             <ul>
@@ -57,9 +57,8 @@
                            <h5>Sign Up For Special offers<span class=""></span></h5>
                            <ul>
                                <li>
-                                  <input type="text" placeholder="Email*" />
-                                  <input type="text" placeholder="Zip code*" />
-                                  <input type="button" class="btn btn-fork" value="Surprise Me" />
+                                  <input type="text" id="email" placeholder="Email*" />
+                                  <input type="button" class="btn btn-fork" id="subscribe" value="Surprise Me" />
                                 </li>
                            </ul>
 
@@ -109,3 +108,18 @@
                 </div>
                 <a href="#" id="back-to-top" title="Back to top"><i class="icon-top_arrow"></i></a>
             </footer>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#subscribe").click(function(){
+      $.ajax({
+        url: '/subscribe',
+        method: 'post',
+        data: {email:$("#email").val()},
+        dataType: 'json',
+        success: function(response) {
+          alert(response.Message);
+        }
+      })
+    })
+  })
+</script>
