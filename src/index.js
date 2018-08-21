@@ -2,7 +2,6 @@ let emailObj = require("../lib/email");
 let emailConfig = require("../config/email")();
 let request = require("request");
 var Mailchimp = require('mailchimp-api-v3'); 
-var mailchimp = new Mailchimp(process.env.MAILCHIMP_API_KEY);
 module.exports = function(app, express) {
 	var router = express.Router();
 
@@ -31,6 +30,7 @@ module.exports = function(app, express) {
 			"email_address": req.body.email,
 		    "status": "subscribed"
 		};
+		var mailchimp = new Mailchimp(process.env.MAILCHIMP_API_KEY);
 
 		mailchimp.request({
 			method: 'post',
