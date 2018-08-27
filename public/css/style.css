@@ -3855,7 +3855,7 @@ section.pad_top_100.about-sec {background-image: url('../images/aboutus_bgoverla
 .abt .device-sec.animate-element {width: 300px;display: table;margin: 60px auto 0;float: none;}
 .about-sec .device-sec {width: 300px !important;}
 .about-sec .device-sec {width: 300px !important;margin: 40px auto 0;display: table;float: none;}
-.about-sec .touchslider-item img {max-width: 232px;top: 24px;left: 12px;}
+.about-sec .touchslider-item img {max-width: 238px;top: 22px;left: 9px;}
 .about-sec .p-left-sec {-webkit-flex-basis: 80%;flex-basis: 80%;padding-left: 5%;}
 .rhs-cont {
     float: left;
